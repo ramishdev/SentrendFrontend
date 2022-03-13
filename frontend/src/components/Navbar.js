@@ -9,7 +9,7 @@ const MyNavbar = () => {
     return(
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
             <Container className="d-flex">
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand href="#home">Sentrend</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Form className="d-flex">
                     <FormControl
@@ -20,6 +20,7 @@ const MyNavbar = () => {
                     />
                     <Button variant="outline-success">Search</Button>
                 </Form>
+                
                 <Nav className="justify-content-left">
                     <NavDropdown title="Dropdown" id="collasible-nav-dropdown" align="end">
                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
