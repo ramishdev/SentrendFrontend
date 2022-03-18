@@ -22,7 +22,7 @@ const Sidebar = () => {
             <nav>
               {[0,1,2,3].map((p,index) => (
                   <div key={index}>
-                    <NavLink to={`/Trend/Hello${p}`}>
+                    <NavLink to={`/Trend/Trend${p}`}>
                       <CDBSidebarMenuItem>
                         Trend {p}
                       </CDBSidebarMenuItem>
