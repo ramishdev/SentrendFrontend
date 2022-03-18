@@ -11,7 +11,7 @@ const Hello= ()=> {
 const DashboardInfo = () => {
     const { id } = useParams()
     return (
-        <div style={{float: 'right',paddingTop: '5%',paddingRight:'50%'}}>
+        <div className="d-flex justify-content-center">
             <h2>{id}</h2>
             {console.log(id)}
         </div>
