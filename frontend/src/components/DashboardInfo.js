@@ -1,13 +1,13 @@
 import React from 'react';
 //import Sidebar from "./Sidebar"
-import { Routes,Route,useParams } from 'react-router-dom'
-const Hello= ()=> {
+import { useParams } from 'react-router-dom'
+/*const Hello= ()=> {
     return(
         <div>
             <h2>Hello</h2>
         </div>
     );
-}
+}*/
 const DashboardInfo = () => {
     const { id } = useParams()
     return (
