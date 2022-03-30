@@ -14,13 +14,15 @@ const axios = require('axios').default;
 const Sidebar = (props) => {
   const [trends,setTrends] = useState([])
   useEffect(() => {
+    const controller = new AbortController();
     const fetchTrends = async () => {
       //props.setloading(true);
       try{
         const data = await axios.get('/trends', {
           params: {
             count: 10
-          }
+          },
+          signal: controller.signal
         });
         setTrends(data);
         console.log(data);
@@ -31,6 +33,7 @@ const Sidebar = (props) => {
       //props.setloading(false);
     }
     fetchTrends();
+    return () => controller?.abort();
   },[/*trends,props*/]);
 
   return (
