@@ -11,31 +11,33 @@ import { NavLink } from 'react-router-dom'
 const axios = require('axios').default;
 
 
-const Sidebar = (props) => {
+const Sidebar = ({setloading}) => {
   const [trends,setTrends] = useState([])
+  //const [isloading,setloading] = useState(false);
+
   useEffect(() => {
     const controller = new AbortController();
     const fetchTrends = async () => {
-      //props.setloading(true);
+      //setloading(true);
       try{
-        const data = await axios.get('/trends', {
+        const data = await axios.get('http://localhost:8000/api/trends', {
           params: {
-            count: 10
+            limit: 10
           },
           signal: controller.signal
         });
-        setTrends(data);
+        console.log(data.data)
+        setTrends(data.data);
         console.log(data);
       }
       catch(err){
         console.error(err.message);
       }
-      //props.setloading(false);
+      //setloading(false);
     }
     fetchTrends();
     return () => controller?.abort();
-  },[/*trends,props*/]);
-
+  },[]);
   return (
     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
       <CDBSidebar textColor="#333" backgroundColor="#f0f0f0">
@@ -44,13 +46,13 @@ const Sidebar = (props) => {
         </CDBSidebarHeader>
         <CDBSidebarContent>
           <CDBSidebarMenu>
-            <CDBSidebarMenuItem icon="th-large">Dashboard</CDBSidebarMenuItem>
+            {/*<CDBSidebarMenuItem icon="th-large">Dashboard</CDBSidebarMenuItem>*/}
             <nav>
-              {trends && trends.map((trend,index) => (
-                  <div key={index}>
-                    <NavLink to={`/Trend/${trend}`}>
+              {trends && trends.map((trend) => (
+                  <div key={trend.id}>
+                    <NavLink to={`/Trend/${trend.trend_name}`}>
                       <CDBSidebarMenuItem>
-                        {trend}
+                        {trend.trend_name}
                       </CDBSidebarMenuItem>
                     </NavLink>
                   </div>
