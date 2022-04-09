@@ -11,18 +11,43 @@ import { NavLink } from 'react-router-dom'
 const axios = require('axios').default;
 
 
-const Sidebar = ({setloading}) => {
+const Sidebar = () => {
   const [trends,setTrends] = useState([])
-  //const [isloading,setloading] = useState(false);
+  const [isloading,setloading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
     const fetchTrends = async () => {
-      //setloading(true);
+      setloading(true);
       try{
+        await axios.post('http://localhost:8000/api/trends/update_trends/',{
+          auth: {
+            username: 'arslan',
+            password: '123'
+          },
+          body:{
+            crawler_id : 0
+          },
+          signal: controller.signal
+        });
         const data = await axios.get('http://localhost:8000/api/trends', {
           params: {
             limit: 10
+          },
+          signal: controller.signal
+        });
+        let newState = data.data.map((trend) => ({"trend_name":trend.name,"max_results":10,"count":1}));
+        await axios.post('http://localhost:8000/api/tweets/update_tweets/',{
+          body:{
+            "query":[
+                {newState}
+            ]
+            ,
+            "crawler":{
+                "id":1,
+                "type":["batch"],
+                "duration":10
+            }
           },
           signal: controller.signal
         });
@@ -33,11 +58,14 @@ const Sidebar = ({setloading}) => {
       catch(err){
         console.error(err.message);
       }
-      //setloading(false);
+      setloading(false);
     }
     fetchTrends();
     return () => controller?.abort();
   },[]);
+  if(isloading){
+    return <h1>Loading...</h1>;
+  }
   return (
     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
       <CDBSidebar textColor="#333" backgroundColor="#f0f0f0">
