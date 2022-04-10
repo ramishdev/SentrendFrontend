@@ -26,7 +26,7 @@ const Sidebar = () => {
             password: '123'
           },
           body:{
-            crawler_id : 0
+            crawler_id : 1
           },
           signal: controller.signal
         });
@@ -36,7 +36,7 @@ const Sidebar = () => {
           },
           signal: controller.signal
         });
-        let newState = data.data.map((trend) => ({"trend_name":trend.name,"max_results":10,"count":1}));
+        let newState = data.data.map((trend) => ({"trend_name":trend.trend_name,"max_results":10,"count":1}));
         await axios.post('http://localhost:8000/api/tweets/update_tweets/',{
           body:{
             "query":[
@@ -63,10 +63,13 @@ const Sidebar = () => {
     fetchTrends();
     return () => controller?.abort();
   },[]);
-  if(isloading){
-    return <h1>Loading...</h1>;
-  }
-  return (
+
+  return (isloading)?(
+
+    <div><h1>Loading...</h1></div>
+
+  ):(
+    
     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
       <CDBSidebar textColor="#333" backgroundColor="#f0f0f0">
         <CDBSidebarHeader prefix={<i className="fa fa-bars" />}>
