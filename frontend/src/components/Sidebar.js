@@ -47,11 +47,15 @@ const Sidebar = () => {
         });
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         let newState = data.data.map((trend) => ({"trend_name":trend.name,"max_results":10,"count":1}));
 =======
         let newState = data.data.map((trend) => ({"trend_name":trend.trend_name,"max_results":10,"count":1}));
 >>>>>>> parent of 099e53b (Revert)
+=======
+        let newState = data.data.map((trend) => ({"trend_name":trend.name,"max_results":10,"count":1}));
+>>>>>>> parent of fbf3fd3 (update)
         await axios.post('http://localhost:8000/api/tweets/update_tweets/',{
           body:{
             "query":[
@@ -84,6 +88,7 @@ const Sidebar = () => {
   },[]);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   if(isloading){
     return <h1>Loading...</h1>;
@@ -99,6 +104,12 @@ const Sidebar = () => {
   ):(
     
 >>>>>>> parent of 099e53b (Revert)
+=======
+  if(isloading){
+    return <h1>Loading...</h1>;
+  }
+  return (
+>>>>>>> parent of fbf3fd3 (update)
     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
       <CDBSidebar textColor="#333" backgroundColor="#f0f0f0">
         <CDBSidebarHeader prefix={<i className="fa fa-bars" />}>
