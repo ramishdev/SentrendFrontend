@@ -16,8 +16,10 @@ const Sidebar = () => {
   const [isloading,setloading] = useState(false);
 
   useEffect(() => {
+    
     const controller = new AbortController();
     const fetchTrends = async () => {
+
       setloading(true);
       try{
         await axios.post('http://localhost:8000/api/trends/update_trends/',{
@@ -62,8 +64,9 @@ const Sidebar = () => {
     }
     fetchTrends();
     return () => controller?.abort();
-  },[]);
 
+  }, [] );
+ 
   return (isloading)?(
 
     <div><h1>Loading...</h1></div>
