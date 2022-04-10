@@ -11,15 +11,16 @@ import { NavLink } from 'react-router-dom'
 const axios = require('axios').default;
 
 
-const Sidebar = () => {
+const Sidebar = ({setloading}) => {
   const [trends,setTrends] = useState([])
-  const [isloading,setloading] = useState(false);
+  //const [isloading,setloading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
     const fetchTrends = async () => {
-      setloading(true);
+      //setloading(true);
       try{
+<<<<<<< HEAD
         await axios.post('http://localhost:8000/api/trends/update_trends/',{
           auth: {
             username: 'arslan',
@@ -30,12 +31,15 @@ const Sidebar = () => {
           },
           signal: controller.signal
         });
+=======
+>>>>>>> parent of 7f6fb5e (update)
         const data = await axios.get('http://localhost:8000/api/trends', {
           params: {
             limit: 10
           },
           signal: controller.signal
         });
+<<<<<<< HEAD
         let newState = data.data.map((trend) => ({"trend_name":trend.trend_name,"max_results":10,"count":1}));
         await axios.post('http://localhost:8000/api/tweets/update_tweets/',{
           body:{
@@ -51,6 +55,8 @@ const Sidebar = () => {
           },
           signal: controller.signal
         });
+=======
+>>>>>>> parent of 7f6fb5e (update)
         console.log(data.data)
         setTrends(data.data);
         console.log(data);
@@ -58,11 +64,12 @@ const Sidebar = () => {
       catch(err){
         console.error(err.message);
       }
-      setloading(false);
+      //setloading(false);
     }
     fetchTrends();
     return () => controller?.abort();
   },[]);
+<<<<<<< HEAD
 
   return (isloading)?(
 
@@ -70,6 +77,9 @@ const Sidebar = () => {
 
   ):(
     
+=======
+  return (
+>>>>>>> parent of 7f6fb5e (update)
     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
       <CDBSidebar textColor="#333" backgroundColor="#f0f0f0">
         <CDBSidebarHeader prefix={<i className="fa fa-bars" />}>
