@@ -23,7 +23,7 @@ const Sidebar = () => {
       setloading(true);
       try{
 
-        await axios.post('http://localhost:8000/api/trends/update_trends/',{
+        /*await axios.post('http://localhost:8000/api/trends/update_trends/',{
           auth: {
             username: 'arslan',
             password: '123'
@@ -33,7 +33,7 @@ const Sidebar = () => {
           },
           signal: controller.signal
         });
-
+          */
         const data = await axios.get('http://localhost:8000/api/trends', {
           params: {
             limit: 10
@@ -43,7 +43,7 @@ const Sidebar = () => {
 
         let newState = data.data.map((trend) => ({"trend_name":trend.trend_name,"max_results":10,"count":1}));
 
-        await axios.post('http://localhost:8000/api/tweets/update_tweets/',{
+        {/*await axios.post('http://localhost:8000/api/tweets/update_tweets/',{
           body:{
             "query":[
                 {newState}
@@ -56,7 +56,7 @@ const Sidebar = () => {
             }
           },
           signal: controller.signal
-        });
+        });*/}
 
         console.log(data.data)
         setTrends(data.data);

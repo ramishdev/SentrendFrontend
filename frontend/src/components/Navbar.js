@@ -57,7 +57,7 @@ const MyNavbar = () => {
                     <Nav className="mx-auto" >
                         <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
                             <NavLink to={"/Login"}>
-                                <NavDropdown.Item>Login</NavDropdown.Item>
+                                Login
                             </NavLink>
                         </NavDropdown>
                     </Nav>

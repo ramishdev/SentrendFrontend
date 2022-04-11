@@ -41,6 +41,7 @@ export const AuthProvider = ({children}) => {
 
         if(response.status === 201){
             alert('user created, you can now login')
+            navigate('/login');
         }
         else{
             alert(JSON.stringify(data))

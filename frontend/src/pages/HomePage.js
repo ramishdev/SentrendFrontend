@@ -34,7 +34,6 @@ const HomePage = () => {
   return (
     <div>
         <p>you are logged to the homepage</p>
-
         <ul>
             {notes.map(note => (
               <li key = {note.id}>{JSON.stringify(note)}</li>

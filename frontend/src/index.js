@@ -21,7 +21,7 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Admin />
   </React.StrictMode>,
   document.getElementById('root')
 );
