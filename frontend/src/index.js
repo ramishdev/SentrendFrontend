@@ -6,6 +6,8 @@ import './index.css';
 import Admin from './Admin';
 import reportWebVitals from './reportWebVitals';
 
+import App from './App';
+
 //const container = document.getElementById('root');
 
 // Create a root.
@@ -19,7 +21,7 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Admin />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
