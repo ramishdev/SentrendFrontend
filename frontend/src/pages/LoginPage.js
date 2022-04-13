@@ -1,10 +1,12 @@
 import React, {useContext} from 'react'
 import AuthContext from '../context/AuthContext'
 import '../css/login.css'
+import { useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
 
   let {loginUser} = useContext(AuthContext)
+  const navigate = useNavigate()
 
   return (
     <div className="auth-wrapper">
@@ -20,6 +22,9 @@ const LoginPage = () => {
                     <input type="password" name = "password" className="form-control" placeholder="Enter Password" />
                 </div>
                 <button type="submit" className="btn mt-2 btn-primary btn-block">Submit</button>
+                <p className="forgot-password text-right">
+                    Want to register <button className="btn btn-primary btn-block" onClick={() => navigate('/register')}>sign un?</button>
+                </p>
             </form>
             {/*<form onSubmit = {loginUser}>
                 <input type="text" name = "username" placeholder="Enter Username" />  
