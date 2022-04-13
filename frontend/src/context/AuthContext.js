@@ -82,7 +82,7 @@ export const AuthProvider = ({children}) => {
         setUser(null)
 
         localStorage.removeItem('authTokens')
-        navigate('/login')
+        navigate('/')
     } 
 
     let updateToken = async ()=> {
@@ -147,7 +147,7 @@ export const AuthProvider = ({children}) => {
     return (
 
         <AuthContext.Provider value = {contextData}>
-
+            {console.log(loading)}
             {loading? null : children}
 
         </AuthContext.Provider>

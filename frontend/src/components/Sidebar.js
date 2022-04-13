@@ -1,4 +1,6 @@
 import React,{useState,useEffect} from 'react';
+import { NavLink } from 'react-router-dom'
+
 import {
   CDBSidebar,
   CDBSidebarContent,
@@ -7,13 +9,15 @@ import {
   CDBSidebarMenuItem,
   CDBSidebarFooter,
 } from 'cdbreact';
-import { NavLink } from 'react-router-dom'
+//import useAuth from "../hooks/useAuth"
+
 const axios = require('axios').default;
 
 
 const Sidebar = () => {
   const [trends,setTrends] = useState([])
   const [isloading,setloading] = useState(false);
+  //let {authTokens} = useAuth()
 
   useEffect(() => {
     
@@ -43,7 +47,7 @@ const Sidebar = () => {
 
         let newState = data.data.map((trend) => ({"trend_name":trend.trend_name,"max_results":10,"count":1}));
 
-        {/*await axios.post('http://localhost:8000/api/tweets/update_tweets/',{
+        /*await axios.post('http://localhost:8000/api/tweets/update_tweets/',{
           body:{
             "query":[
                 {newState}
@@ -56,7 +60,7 @@ const Sidebar = () => {
             }
           },
           signal: controller.signal
-        });*/}
+        });*/
 
         console.log(data.data)
         setTrends(data.data);
