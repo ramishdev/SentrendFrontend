@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from 'react'
 import jwt_decode from "jwt-decode";
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate,useLocation } from 'react-router-dom'
 
 
 const AuthContext = createContext()
@@ -21,6 +21,8 @@ export const AuthProvider = ({children}) => {
     let [loading,setLoading] = useState(true)
 
     const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.pathname || "/";
 
 
 
@@ -82,7 +84,9 @@ export const AuthProvider = ({children}) => {
         setUser(null)
 
         localStorage.removeItem('authTokens')
-        navigate('/')
+        console.log(location)
+        console.log(from)
+        navigate(from,{replace:true})
     } 
 
     let updateToken = async ()=> {
@@ -132,13 +136,16 @@ export const AuthProvider = ({children}) => {
         let fourMinutes = 1000 * 60 * 4
 
         let interval = setInterval(()=>{
+            
             if(authTokens){
                 updateToken()
             }
+
         }, fourMinutes)
+        
         return ()=> clearInterval(interval)
 
-    }, [authTokens] ,[loading])
+    }, [authTokens,loading] )
 
 
 

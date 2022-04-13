@@ -53,14 +53,12 @@ const MyNavbar = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mx-auto" >
                         <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
-                            <NavDropdown.Item ><NavLink to={"/login"}>
-                                Login
-                            </NavLink></NavDropdown.Item>
-                            <NavDropdown.Item ><NavLink to={"/register"}>
+                            <NavDropdown.Item ><NavLink to={"/login"} style={{color: 'black'}}>
+                                Login</NavLink>
+                            </NavDropdown.Item>
+                            <NavDropdown.Item ><NavLink to={"/register"} style={{color: 'black'}}>
                                 Register
                             </NavLink></NavDropdown.Item>
-                            
-                            
                         </NavDropdown>
                     </Nav>
                     </Navbar.Collapse>

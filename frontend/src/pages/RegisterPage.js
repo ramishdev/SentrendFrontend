@@ -29,7 +29,7 @@ const RegisterPage = () => {
                             <input type="password" name = "password" className="form-control" placeholder="Enter Password" />
                         </div>
                         <button type="submit" className="form-control btn btn-primary btn-block mt-2">Sign Up</button>
-                        <p className="forgot-password text-right">
+                        <p className="forgot-password text-right  mt-2">
                             Already registered <button className="btn btn-primary btn-block" onClick={() => navigate('/login')}>sign in?</button>
                         </p>
                 </form>

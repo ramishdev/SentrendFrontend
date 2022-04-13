@@ -82,10 +82,8 @@ const Sidebar = () => {
 
   ):(
     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
-      <CDBSidebar textColor="#333" backgroundColor="#f0f0f0">
-        <CDBSidebarHeader prefix={<i className="fa fa-bars" />}>
-          Contrast Light Mode
-        </CDBSidebarHeader>
+      <CDBSidebar >
+        <CDBSidebarHeader prefix={<i className="fa fa-bars" />}>Contrast</CDBSidebarHeader>
         <CDBSidebarContent>
           <CDBSidebarMenu>
             {/*<CDBSidebarMenuItem icon="th-large">Dashboard</CDBSidebarMenuItem>*/}
@@ -93,7 +91,7 @@ const Sidebar = () => {
               {trends && trends.map((trend) => (
                   <div key={trend.id}>
                     <NavLink to={`/Trend/${trend.trend_name}`}>
-                      <CDBSidebarMenuItem>
+                      <CDBSidebarMenuItem icon="chart-line" iconType="solid">
                         {trend.trend_name}
                       </CDBSidebarMenuItem>
                     </NavLink>
