@@ -6,11 +6,7 @@ import { useNavigate,useLocation } from 'react-router-dom'
 
 const AuthContext = createContext()
 
-
-
-
 export default AuthContext;
-
 
 export const AuthProvider = ({children}) => {
 
@@ -71,7 +67,7 @@ export const AuthProvider = ({children}) => {
             setUser(jwt_decode(data.access))
             localStorage.setItem('authTokens', JSON.stringify(data))
             
-            navigate('/')
+            navigate('/',{replace : true})
         }
         else{
             alert('Something went wrong')
@@ -142,10 +138,10 @@ export const AuthProvider = ({children}) => {
             }
 
         }, fourMinutes)
-        
+
         return ()=> clearInterval(interval)
 
-    }, [authTokens,loading] )
+    }, [authTokens,loading])
 
 
 

@@ -6,13 +6,15 @@ import useAuth from "../hooks/useAuth"
 import './Navbar.css';
 //import {useNavigate} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from 'react-router-dom'
 
 
 const MyNavbar = () => {
     //const navigate = useNavigate()
     let {user} = useAuth()
     let {logoutUser} = useAuth()
-    
+    const navigate = useNavigate()
+
     function handleSubmit(e) {
         e.preventDefault();    
         console.log('You clicked submit.');
@@ -30,9 +32,7 @@ const MyNavbar = () => {
                     <Button onClick={(e) => handleSubmit(e)} variant="outline-success" >Search</Button>
                     <Nav className="mx-auto" >
                         <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
-                            <NavLink to={"/Profile"}>
-                                <NavDropdown.Item>Profile</NavDropdown.Item>
-                            </NavLink>
+                            <NavDropdown.Item onClick={()=> navigate("/profile",{ replace: true })}>Profile</NavDropdown.Item>
                             <NavDropdown.Item >Settings</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={logoutUser}>Logout</NavDropdown.Item>
@@ -53,12 +53,12 @@ const MyNavbar = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mx-auto" >
                         <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
-                            <NavDropdown.Item ><NavLink to={"/login"} style={{color: 'black'}}>
-                                Login</NavLink>
+                            <NavDropdown.Item onClick={() => navigate("/login")}>
+                                Login
                             </NavDropdown.Item>
-                            <NavDropdown.Item ><NavLink to={"/register"} style={{color: 'black'}}>
+                            <NavDropdown.Item onClick={() => navigate("/register")}>
                                 Register
-                            </NavLink></NavDropdown.Item>
+                            </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     </Navbar.Collapse>
