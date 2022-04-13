@@ -2,18 +2,18 @@ import React, {useState, useEffect, useContext} from 'react'
 import AuthContext from '../context/AuthContext'
  
 
-const HomePage = () => {
+const CrawlerPage = () => {
 
-  let [notes, setNotes] = useState([]) 
+  let [crawlers, setCrawlers] = useState([]) 
 
   let {authTokens, logoutUser} = useContext(AuthContext)
 
   useEffect(() => {
-    getNotes()
+    getCrawlers()
   }, [])
 
-  let getNotes = async () => {
-    let response = await fetch('http://127.0.0.1:8000/api/trends',{
+  let getCrawlers = async () => {
+    let response = await fetch('http://127.0.0.1:8000/crawler/crawlers',{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -24,7 +24,7 @@ const HomePage = () => {
     let data = await response.json()
 
     if(response.status === 200){
-      setNotes(data) 
+      setCrawlers(data) 
     }
     else if(response.statusText === 'Unauthorized'){
       logoutUser()
@@ -36,8 +36,8 @@ const HomePage = () => {
         <p>you are logged to the homepage</p>
 
         <ul>
-            {notes.map(note => (
-              <li key = {note.id}>{JSON.stringify(note)}</li>
+            {crawlers.map(crawler => (
+              <li key = {crawler.id}>{JSON.stringify(crawler)}</li>
             ))}
         </ul>
 

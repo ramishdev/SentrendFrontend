@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import AuthContext from '../context/AuthContext'
-
+import '../css/Header.css';
 
 const Header = () => {
 
@@ -11,7 +11,7 @@ const Header = () => {
         <Link to = "/">Home</Link>
         <span> | </span>
         {user ? (
-        <p onClick={logoutUser}>logout</p>
+        <p onClick={logoutUser}><mark>logout</mark></p>
         ) : (
         <Link to ='/login'>Login</Link>
         )}
