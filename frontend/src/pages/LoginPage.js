@@ -10,7 +10,7 @@ const LoginPage = () => {
     <div className="auth-wrapper">
         <div className="auth-inner">
             <form onSubmit = {loginUser}>
-                <h3>Login In</h3>
+                <h3>Login</h3>
                 <div className="form-group mt-2">
                     <label>Username</label>
                     <input type="text" name = "username" className="form-control" placeholder="Enter Username" />
