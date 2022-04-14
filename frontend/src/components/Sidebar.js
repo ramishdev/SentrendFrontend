@@ -1,5 +1,4 @@
 import React,{useState,useEffect} from 'react';
-import { NavLink } from 'react-router-dom'
 
 import {
   CDBSidebar,
@@ -14,30 +13,21 @@ import {
 const axios = require('axios').default;
 
 
-const Sidebar = () => {
+const Sidebar = ({setdata}) => {
   const [trends,setTrends] = useState([])
   const [isloading,setloading] = useState(false);
   //let {authTokens} = useAuth()
 
+  const passTrends = (trend) =>{
+    setdata(trend)
+  }
   useEffect(() => {
     
     const controller = new AbortController();
     const fetchTrends = async () => {
-
       setloading(true);
       try{
 
-        /*await axios.post('http://localhost:8000/api/trends/update_trends/',{
-          auth: {
-            username: 'arslan',
-            password: '123'
-          },
-          body:{
-            crawler_id : 1
-          },
-          signal: controller.signal
-        });
-          */
         const data = await axios.get('http://localhost:8000/api/trends', {
           params: {
             limit: 10
@@ -45,22 +35,8 @@ const Sidebar = () => {
           signal: controller.signal
         });
 
-        let newState = data.data.map((trend) => ({"trend_name":trend.trend_name,"max_results":10,"count":1}));
+        //let newState = data.data.map((trend) => ({"trend_name":trend.trend_name,"max_results":10,"count":1}));
 
-        /*await axios.post('http://localhost:8000/api/tweets/update_tweets/',{
-          body:{
-            "query":[
-                {newState}
-            ]
-            ,
-            "crawler":{
-                "id":1,
-                "type":["batch"],
-                "duration":10
-            }
-          },
-          signal: controller.signal
-        });*/
 
         console.log(data.data)
         setTrends(data.data);
@@ -90,11 +66,11 @@ const Sidebar = () => {
             <nav>
               {trends && trends.map((trend) => (
                   <div key={trend.id}>
-                    <NavLink to={`/Trend/${trend.trend_name}`}>
-                      <CDBSidebarMenuItem icon="chart-line" iconType="solid">
+                    {/*<NavLink to={`/Trend/${trend.trend_name}`}>*/}
+                      <CDBSidebarMenuItem onClick={()=>passTrends(trend)} icon="chart-line" iconType="solid">
                         {trend.trend_name}
                       </CDBSidebarMenuItem>
-                    </NavLink>
+                    {/*</div>*/}
                   </div>
               ))}
             </nav>

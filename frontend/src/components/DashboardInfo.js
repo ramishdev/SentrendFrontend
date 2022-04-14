@@ -1,12 +1,10 @@
-import React/*,{useState,useEffect}*/  from 'react';
-//import Sidebar from "./Sidebar"
-import { useParams } from 'react-router-dom'
+import React  from 'react';
 
 //import useAuth from "../hooks/useAuth"
-
+import { useOutletContext } from "react-router-dom";
 
 const DashboardInfo = () => {
-    const { id } = useParams()
+    const data = useOutletContext()
     //For debuging purpose
     /*let [notes, setNotes] = useState([]) 
 
@@ -34,12 +32,11 @@ const DashboardInfo = () => {
         logoutUser()
         }
     }*/
-
     return (
         <div>
             <div className="d-flex justify-content-center">
-                <h2>{id}</h2>
-                {console.log(id)}
+                <h2>{data && JSON.stringify(data.url)}</h2>
+                {console.log(data)}
             </div>
             {/*
             <div className="d-flex justify-content-center">

@@ -141,7 +141,7 @@ export const AuthProvider = ({children}) => {
 
         return ()=> clearInterval(interval)
 
-    }, [authTokens,loading])
+    }, [authTokens, loading])
 
 
 

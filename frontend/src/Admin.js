@@ -20,7 +20,7 @@ function Admin(){
                 <AuthProvider>
                     <Routes>
                         <Route path="/" element={<Dashboard/>}>
-                            <Route path="Trend/:id/*" element={<DashboardInfo/>}/>
+                            <Route path="/" element={<DashboardInfo/>}/>
                         </Route>
                         <Route element={<LoginPage/>} path = "/login"/>
                         <Route element={<RegisterPage/>} path = "/register"/>
