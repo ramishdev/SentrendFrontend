@@ -32,7 +32,7 @@ const MyNavbar = () => {
                     <Nav className="mx-auto" >
                         <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
                             <NavDropdown.Item onClick={()=> navigate("/profile",{ replace: true })}>Profile</NavDropdown.Item>
-                            <NavDropdown.Item >Settings</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=> navigate("/settings",{ replace: true })}>Settings</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={logoutUser}>Logout</NavDropdown.Item>
                             

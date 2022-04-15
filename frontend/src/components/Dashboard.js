@@ -13,7 +13,7 @@ const Dashboard = () => {
     }*/
     /*let contextData = {
         data : data,
-        setdata: setdata,
+        setdata: setdata,npm
     }*/
     return (
             <div className="d-flex" style={{height: '100vh',overflow: 'auto'}} >

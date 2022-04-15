@@ -12,6 +12,7 @@ import DashboardInfo from "./components/DashboardInfo"
 import {AuthProvider} from "./context/AuthContext"
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
+import SettingsPage from './pages/SettingsPage'
 
 function Admin(){
     return(
@@ -24,6 +25,7 @@ function Admin(){
                         </Route>
                         <Route element={<LoginPage/>} path = "/login"/>
                         <Route element={<RegisterPage/>} path = "/register"/>
+                        <Route element={<SettingsPage/>} path = "/settings"/>
                     </Routes>
                 </AuthProvider>
             </BrowserRouter>
