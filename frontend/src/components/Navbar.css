@@ -4,3 +4,9 @@
     flex-grow: 0;
     align-items: center;
 }
+.navbar-theme {
+
+    background-color: #006B38FF;
+    background-size: medium;
+    
+}
