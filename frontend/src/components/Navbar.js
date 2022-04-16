@@ -21,7 +21,7 @@ const MyNavbar = () => {
       }
     return (user)?(
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar collapseOnSelect expand="lg" bg = 'dark' variant = 'dark'>
                 <Container fluid>
                 <Navbar.Brand href="/">Sentrend</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

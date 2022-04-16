@@ -59,7 +59,7 @@ const Sidebar = ({setdata}) => {
   ):(
     <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
       <CDBSidebar >
-        <CDBSidebarHeader prefix={<i className="fa fa-bars" />}>Contrast</CDBSidebarHeader>
+        <CDBSidebarHeader prefix={<i className="fa fa-bars" />}>TOP TRENDS</CDBSidebarHeader>
         <CDBSidebarContent>
           <CDBSidebarMenu>
             {/*<CDBSidebarMenuItem icon="th-large">Dashboard</CDBSidebarMenuItem>*/}
@@ -81,7 +81,7 @@ const Sidebar = ({setdata}) => {
             className="sidebar-btn-wrapper"
             style={{padding: '20px 5px'}}
           >
-            Sidebar Footer
+            Worldwide
           </div>
         </CDBSidebarFooter>
       </CDBSidebar>

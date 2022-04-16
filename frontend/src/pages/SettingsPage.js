@@ -7,6 +7,7 @@ import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import { Col, Row} from "react-bootstrap";
 import Crawler from '../components/crawler/crawler'
+import Profile from '../components/profile/Profile'
 
 const SettingsPage = () => {
 
@@ -21,13 +22,13 @@ const SettingsPage = () => {
             <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3" >
 
             
-                <Tab eventKey="profile" title="Profile" disabled>
-                    <p> PROFILE </p>
+                <Tab eventKey="profile" title="Profile">
+                    <Profile/>
                 </Tab>
                 <Tab eventKey="crawler" title="Crawler">
                     <Crawler/>
                 </Tab>
-                <Tab eventKey="privacy" title="Privacy" disabled>
+                <Tab eventKey="privacy" title="Privacy" >
                     <p> Privacy </p>
                 </Tab>
             </Tabs>  

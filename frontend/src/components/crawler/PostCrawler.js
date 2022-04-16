@@ -50,22 +50,16 @@ const PostCrawler = () => {
 
   const ShowAlert = ({show,alertVariant}) => {
 
-
     return(
 
         <Alert show={show} variant={alertVariant} onClose={() => setShow(false)}  dismissible>
         <Alert.Heading> {alertVariant === "success"? (<p>NICE!</p>):(<p>OOPS!</p>)}</Alert.Heading>
-
         {alertVariant === "success"? (<p>New crawler has been created!</p>):(<p>Failed to create crawler</p>)}
-
         <hr />
-       
-        {alertVariant === "success"? (<p className="mb-0">dekh le bc kar liya hai maine.</p>):(<p className="mb-0">Make sure you provided correct keys</p>)}
+        {alertVariant === "success"? (<p className="mb-0">You can now start using it.</p>):(<p className="mb-0">Make sure you provide correct keys</p>)}
     </Alert>
     )
   }
-
-
 
   return (
 
@@ -114,9 +108,9 @@ const PostCrawler = () => {
                 </Form.Text>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
+            </Form.Group> */}
             <Button variant="primary" type="submit">
                 Submit
             </Button>

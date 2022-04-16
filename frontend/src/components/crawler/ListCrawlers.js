@@ -1,7 +1,11 @@
 import React, {useState, useEffect, useContext} from 'react'
 import AuthContext from '../../context/AuthContext'
 import ListGroup from 'react-bootstrap/ListGroup'
+// import Dropdown from 'react-bootstrap/Dropdown'
+// import ButtonGroup from 'react-bootstrap/ButtonGroup'
+// import Button from 'react-bootstrap/Button'
 
+import '../../css/listcrawler.css';
 
 const ListCrawlers = () => {
 
@@ -34,13 +38,8 @@ const ListCrawlers = () => {
 
   const CrawlerInfo = ({note}) => {
     return (
-      <div>
-        <p>Id = {note.id}</p>
-        <p>Consumer key = {note.consumer_key}</p>
-        <p>Consumer secret = {note.consumer_secret}</p>
-        <p>Access token = {note.access_token}</p>
-        <p>Access token secret = {note.access_token_secret}</p>
-        <p>Bearer token = {note.bearer_token}</p>
+      <div className = "crawler-info">
+        <p>{note.access_token}</p>
       </div>
       
     )
@@ -48,7 +47,7 @@ const ListCrawlers = () => {
 
   return (
     <div>
-        <p>your crawlers</p>
+        <h1>your crawlers</h1>
         <ListGroup>
             {notes.map((note,index) => (
                 <ListGroup.Item key = {note.id}>
