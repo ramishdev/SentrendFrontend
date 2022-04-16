@@ -1,14 +1,12 @@
 import React, {useState, useEffect, useContext} from 'react'
 import AuthContext from '../../context/AuthContext'
-import { useNavigate } from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
 
 const PostCrawler = () => {
 
-  let [notes, setNotes] = useState([]) 
-  let {authTokens, logoutUser} = useContext(AuthContext)
+  let {authTokens} = useContext(AuthContext)
 
   const [show, setShow] = useState(false);
   const [alertVariant, setAlertVariant] = useState("success");
@@ -37,7 +35,6 @@ const PostCrawler = () => {
 
     if(response.status === 201){
         
-        let data = await response.json()
 
         setShow(true)
         setAlertVariant("success")
