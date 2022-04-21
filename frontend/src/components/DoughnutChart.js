@@ -31,23 +31,21 @@ function DrawDoughnut() {
                     signal: controller.signal
                 });
 
-                const data = await axios.get(trendinfo?.url + 'sentiment', {
+                const response = await axios.get(trendinfo?.url + 'sentiment', {
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     signal: controller.signal
                 });
-                console.log(data)
-                if(data.status === 200){
-                    setResults(data.data)
+                if(response.status === 200){
+                    setResults(response.data)
                 }
-                if(data.status === 400){
-                    setResults({})
-                }   
-                
             }
             catch(err){
                 console.error(err.message);
+                if(err.response.status === 400){
+                    setResults({})
+                }
             }
             setloading(false)
 
