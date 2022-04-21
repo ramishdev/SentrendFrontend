@@ -12,7 +12,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 function DrawDoughnut() {
     const trendinfo = useOutletContext()
-    const [results, setResults] = useState();
+    const [results, setResults] = useState({});
     const [loading, setloading] = useState(false);
 
     useEffect(() => {
@@ -38,10 +38,13 @@ function DrawDoughnut() {
                     signal: controller.signal
                 });
                 console.log(data)
-                setResults(data.data)
                 if(data.status === 200){
-                    console.log("Done")
+                    setResults(data.data)
                 }
+                if(data.status === 400){
+                    setResults({})
+                }   
+                
             }
             catch(err){
                 console.error(err.message);
@@ -68,6 +71,7 @@ function DrawDoughnut() {
             }
         ]
     };
+
     if(loading){
         return (
             <div >
@@ -75,13 +79,14 @@ function DrawDoughnut() {
             </div>
         );
     }
-    return (results)?
+    return (results && Object.keys(results).length > 0)?
     ( 
+
         <div>
             <div style={{ width: '20rem' }}>
                 <Pie data={data} options={{
-                responsive: true,
-                maintainAspectRatio: true,
+                    responsive: true,
+                    maintainAspectRatio: true,
                 }}/>
             </div>
         </div>
