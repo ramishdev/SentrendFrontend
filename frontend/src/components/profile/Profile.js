@@ -20,6 +20,7 @@ const Profile = () => {
                     <Nav.Item>
                         <Nav.Link eventKey="second">Change Password</Nav.Link>
                     </Nav.Item>
+                 
                 </Nav>
                 </Col>
                 <Col sm={9}>
@@ -30,6 +31,7 @@ const Profile = () => {
                         <Tab.Pane eventKey="second">
                             I am
                         </Tab.Pane>
+                       
                     </Tab.Content>
                 </Col>
             </Row>

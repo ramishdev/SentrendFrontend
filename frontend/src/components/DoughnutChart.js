@@ -21,6 +21,7 @@ function DrawDoughnut() {
             setloading(true)
 
             try{
+                console.log(trendinfo?.trend_name)
                 let newState = {"trend_name":trendinfo?.trend_name,"count":1};
                 await axios.post('http://localhost:8000/api/sentiments/update_sentiment/', {
                     "query":[newState],
@@ -60,10 +61,10 @@ function DrawDoughnut() {
                 data: [results?.pos_pol_count, results?.neg_pol_count, results?.neu_pol_count],
                 backgroundColor: [
                     'rgba(255, 214, 98, 1.00)',
-                    'rgba(0, 83, 156, 1.00)',
                     'rgba(233, 75, 60, 1.00)',
+                    'rgba(0, 83, 156, 1.00)'
                 ],
-                borderWidth: 1,
+                borderWidth: 2,
             }
         ]
     };

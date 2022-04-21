@@ -2,14 +2,17 @@ import React from 'react';
 
 import { useOutletContext } from "react-router-dom";
 import DoughnutChart from "./DoughnutChart"
+
+import TabsInterface from "./TabsInterface"
 const DashboardInfo = () => {
     //const trendinfo = useOutletContext()
 
     return (
         <div>
-            <div className="d-flex justify-content-center">
-                <DoughnutChart/>
+            <div>
+                <TabsInterface/>
             </div>
+          
         </div>
     );
 }
