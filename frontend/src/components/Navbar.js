@@ -24,11 +24,9 @@ const MyNavbar = () => {
                 <Container fluid>
                 <Navbar.Brand href="/">Sentrend</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                
-                        
+                <Navbar.Collapse className="justify-end">
                     <Button onClick={(e) => handleSubmit(e)} variant="outline-success" >Search</Button>
-                    <Nav className="mx-auto" >
+                    <Nav >
                         <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
                             <NavDropdown.Item onClick={()=> navigate("/profile",{ replace: true })}>Profile</NavDropdown.Item>
                             <NavDropdown.Item onClick={()=> navigate("/settings",{ replace: true })}>Settings</NavDropdown.Item>
@@ -44,19 +42,19 @@ const MyNavbar = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container fluid>
-                <Navbar.Brand href="/">Sentrend</Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mx-auto" >
-                        <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
-                            <NavDropdown.Item onClick={() => navigate("/login")}>
-                                Login
-                            </NavDropdown.Item>
-                            <NavDropdown.Item onClick={() => navigate("/register")}>
-                                Register
-                            </NavDropdown.Item>
-                        </NavDropdown>
-                    </Nav>
+                    <Navbar.Brand href="/">Sentrend</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                    <Navbar.Collapse className="justify-end">
+                        <Nav>
+                            <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
+                                <NavDropdown.Item onClick={() => navigate("/login")}>
+                                    Login
+                                </NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => navigate("/register")}>
+                                    Register
+                                </NavDropdown.Item>
+                            </NavDropdown>
+                        </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

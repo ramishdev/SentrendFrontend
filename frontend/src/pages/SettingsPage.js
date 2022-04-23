@@ -1,20 +1,13 @@
-import React, {useState, useEffect, useContext} from 'react'
-import Button from 'react-bootstrap/Button'
-import { useNavigate } from 'react-router-dom'
-import AuthContext from '../context/AuthContext'
+import React from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
-import { Col, Row} from "react-bootstrap";
 import Crawler from '../components/crawler/crawler'
 import Profile from '../components/profile/Profile'
 
-import Location from '../components/Location'
 
 const SettingsPage = () => {
 
-
-    const navigate = useNavigate()
     
     return (
         <div >

@@ -14,9 +14,10 @@ const Crawler = () => {
 
     return (
 
-        <div>
-           
-            <button type="button"  class="btn btn-outline-success" onClick={() => navigate('/settings/new-crawler')}>New Crawler</button>
+        <div className="">
+            <div className="flex justify-content-center">
+                <button type="button"  className="btn btn-outline-success" onClick={() => navigate('/settings/new-crawler')}>New Crawler</button>
+            </div>
             <ListCrawlers/>
         </div>
 

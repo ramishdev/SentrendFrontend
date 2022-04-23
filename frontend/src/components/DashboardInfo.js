@@ -1,7 +1,6 @@
 import React from 'react';
 
-import { useOutletContext } from "react-router-dom";
-import DoughnutChart from "./DoughnutChart"
+//import { useOutletContext } from "react-router-dom";
 
 import TabsInterface from "./TabsInterface"
 const DashboardInfo = () => {

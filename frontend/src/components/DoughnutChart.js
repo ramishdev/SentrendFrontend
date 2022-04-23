@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
-import {Card} from 'react-bootstrap'
+//import { Doughnut } from 'react-chartjs-2';
+//import {Card} from 'react-bootstrap'
 import { Pie } from 'react-chartjs-2';
 
 import { useOutletContext } from "react-router-dom";
@@ -44,6 +44,9 @@ function DrawDoughnut() {
             catch(err){
                 console.error(err.message);
                 if(err.response.status === 400){
+                    setResults({})
+                }
+                if(err.response.status === 404){
                     setResults({})
                 }
             }

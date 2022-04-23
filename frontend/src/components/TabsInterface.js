@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+//import { useNavigate } from 'react-router-dom'
 
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
@@ -9,7 +9,7 @@ import DoughnutChart from "./DoughnutChart"
 const TabsInterface = () => {
 
 
-    const navigate = useNavigate()
+    //const navigate = useNavigate()
     
     return (
         <div >

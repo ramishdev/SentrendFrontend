@@ -1,5 +1,7 @@
 import React,{useState} from 'react';
 import Sidebar from "./Sidebar"
+//import Sidebar from "./Sidebar-old"
+
 import MyNavbar from './Navbar'
 import {Outlet} from 'react-router-dom'
 //import { createContext } from 'react'
@@ -16,8 +18,8 @@ const Dashboard = () => {
         setdata: setdata,npm
     }*/
     return (
-            <div className="d-flex" style={{height: '100vh',overflow: 'auto'}} >
-                <div className="">
+            <div className="d-flex" >
+                <div className="h-100 d-flex">
                     <Sidebar setdata={setdata}/>
                 </div>
                 <div style={{height:'100%',width:'100vw'}}>

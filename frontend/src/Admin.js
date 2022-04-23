@@ -2,7 +2,6 @@ import React from "react";
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 
 // reactstrap components
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
