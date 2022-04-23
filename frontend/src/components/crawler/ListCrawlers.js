@@ -38,25 +38,30 @@ const ListCrawlers = () => {
 
   const CrawlerInfo = ({note}) => {
     return (
-      <div className = "crawler-info">
-        <p>{note.access_token}</p>
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Crawler ID:{note.id}</h5>
+            <small>3 days ago</small>
+          </div>
+          <p class="mb-1">Some placeholder content in a paragraph.</p>
+          <small>And some small print.</small>
+        </a>
       </div>
-      
     )
   }
+
 
   return (
     <div>
         <h1>your crawlers</h1>
-        <ListGroup>
+        <ol class="list-group list-group-numbered">
             {notes.map((note,index) => (
-                <ListGroup.Item key = {note.id}>
+                <li class="list-group-item" key = {note.id}>
                     <CrawlerInfo note = {note}/>
-                </ListGroup.Item>
+                </li>
             ))}
-            
-        </ListGroup>
-
+         </ol>
     </div>
   )
 }

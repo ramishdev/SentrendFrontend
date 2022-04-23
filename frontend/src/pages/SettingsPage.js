@@ -9,6 +9,8 @@ import { Col, Row} from "react-bootstrap";
 import Crawler from '../components/crawler/crawler'
 import Profile from '../components/profile/Profile'
 
+import Location from '../components/Location'
+
 const SettingsPage = () => {
 
 
@@ -31,6 +33,7 @@ const SettingsPage = () => {
                 <Tab eventKey="privacy" title="Privacy" >
                     <p> Privacy </p>
                 </Tab>
+                
             </Tabs>  
                  
         </div>

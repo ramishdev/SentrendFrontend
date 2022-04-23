@@ -30,7 +30,8 @@ const Sidebar = ({setdata}) => {
 
         const data = await axios.get('http://localhost:8000/api/trends', {
           params: {
-            limit: 10
+            limit: 10,
+            location:"Worldwide"
           },
           signal: controller.signal
         });
@@ -65,7 +66,7 @@ const Sidebar = ({setdata}) => {
             {/*<CDBSidebarMenuItem icon="th-large">Dashboard</CDBSidebarMenuItem>*/}
             <nav>
               {trends && trends.map((trend) => (
-                  <div key={trend.id}>
+                  <div key={trend.id} >
                     {/*<NavLink to={`/Trend/${trend.trend_name}`}>*/}
                       <CDBSidebarMenuItem onClick={()=>passTrends(trend)} icon="chart-line" iconType="solid">
                         {trend.trend_name}
@@ -79,9 +80,8 @@ const Sidebar = ({setdata}) => {
         <CDBSidebarFooter style={{ textAlign: 'center' }}>
           <div
             className="sidebar-btn-wrapper"
-            style={{padding: '20px 5px'}}
-          >
-            Worldwide
+            style={{padding: '20px 5px'}}>
+
           </div>
         </CDBSidebarFooter>
       </CDBSidebar>
