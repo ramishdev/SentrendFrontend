@@ -30,7 +30,7 @@ function DrawDoughnut() {
                     signal: controller.signal
                 });
 
-                const response = await axios.get(trendinfo?.url + 'sentiment', {
+                const response = await axios.get(trendinfo?.url + 'sentiment/', {
                     headers: {
                         'Content-Type': 'application/json'
                     },

@@ -12,7 +12,6 @@ const Sidebar = ({setdata}) => {
   //let {authTokens} = useAuth()
 
   const passTrends = (trend) =>{
-    console.log("Hello")
     setdata(trend)
   }
   const trenddata={
@@ -30,19 +29,19 @@ const Sidebar = ({setdata}) => {
       setloading(true);
       try{
 
-        const data = await axios.get('http://localhost:8000/api/trends', {
+        const data = await axios.get('http://localhost:8000/api/trends/', {
           params: {
             limit: 10,
-            location: 'Winnipeg'
+            location: 'Lahore'
           },
           signal: controller.signal
         });
 
         //let newState = data.data.map((trend) => ({"trend_name":trend.trend_name,"max_results":10,"count":1}));
 
-
-        console.log(data.data)
-        setTrends(data.data);
+        
+        console.log(data?.data)
+        setTrends(data?.data);
         console.log(data);
       }
       catch(err){
