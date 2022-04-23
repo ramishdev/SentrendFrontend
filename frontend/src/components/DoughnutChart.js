@@ -19,7 +19,6 @@ function DrawDoughnut() {
         const controller = new AbortController();
         const fetchdata = async () => {
             setloading(true)
-
             try{
                 console.log(trendinfo?.trend_name)
                 let newState = {"trend_name":trendinfo?.trend_name,"count":1};
@@ -53,7 +52,9 @@ function DrawDoughnut() {
             setloading(false)
 
         }
-        fetchdata();
+        if(trendinfo){
+            fetchdata();
+        }
         return () => controller?.abort();
     }, [trendinfo])
 

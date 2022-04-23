@@ -1,9 +1,10 @@
 import React from 'react'
-import Nav from 'react-bootstrap/Nav'
+import {Button} from 'react-bootstrap/'
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import Crawler from '../components/crawler/crawler'
 import Profile from '../components/profile/Profile'
+import { NavLink } from 'react-router-dom'
 
 
 const SettingsPage = () => {
@@ -11,9 +12,8 @@ const SettingsPage = () => {
     
     return (
         <div >
-            <Nav.Item>
-                <Nav.Link href="/">Back</Nav.Link>
-            </Nav.Item>
+            <Button variant="outline-primary"><NavLink to={'/'} style={{  textDecoration: 'none'}}>Back</NavLink></Button>
+            
             <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3" >
 
             

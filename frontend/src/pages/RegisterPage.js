@@ -30,7 +30,7 @@ const RegisterPage = () => {
                         </div>
                         <button type="submit" className="form-control btn btn-primary btn-block mt-2">Sign Up</button>
                         <p className="forgot-password text-right  mt-2">
-                            Already registered <button className="btn btn-primary btn-block" onClick={() => navigate('/login')}>sign in?</button>
+                            Already registered <button className="btn btn-primary btn-block" onClick={() => navigate('/login')}>Sign in?</button>
                         </p>
                 </form>
           {/*<form onSubmit = {registerUser}>

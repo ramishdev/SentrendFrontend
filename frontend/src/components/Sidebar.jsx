@@ -1,9 +1,11 @@
 import React,{useState,useEffect} from 'react';
 import SubMenu from './SubMenu'
+import useAuth from "../hooks/useAuth"
 
 const axios = require('axios').default;
 
 const Sidebar = ({setdata}) => {
+  let {user} = useAuth()
   const [open, setOpen] = useState(true);
   const [trends,setTrends] = useState([])
   const [isloading,setloading] = useState(false);
@@ -51,7 +53,7 @@ const Sidebar = ({setdata}) => {
     fetchTrends();
     return () => controller?.abort();
 
-  }, [] );
+  }, [user] );
   return (isloading)?(
 
     <div><h1>Loading...</h1></div>
