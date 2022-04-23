@@ -36,8 +36,8 @@ function DrawDoughnut() {
                     },
                     signal: controller.signal
                 });
-                if(response.status === 200){
-                    setResults(response.data)
+                if(response?.status === 200){
+                    setResults(response?.data)
                 }
             }
             catch(err){
