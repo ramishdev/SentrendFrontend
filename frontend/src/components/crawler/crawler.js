@@ -1,11 +1,4 @@
-import Nav from 'react-bootstrap/Nav'
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
-import TabContainer from 'react-bootstrap/TabContainer'
-import { Col, Row} from "react-bootstrap";
-
 import ListCrawlers from './ListCrawlers';
-import PostCrawler from './PostCrawler';
 import { useNavigate } from 'react-router-dom'
 
 const Crawler = () => {

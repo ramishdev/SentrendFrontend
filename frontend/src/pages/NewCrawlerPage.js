@@ -1,6 +1,4 @@
-import React, {useContext} from "react"
-import AuthContext from '../context/AuthContext'
-import { useNavigate } from 'react-router-dom'
+import React from "react"
 
 
 import PostCrawler from "../components/crawler/PostCrawler"
