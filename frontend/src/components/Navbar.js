@@ -7,7 +7,6 @@ import './Navbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom'
 
-
 const MyNavbar = () => {
     //const navigate = useNavigate()
     let {user} = useAuth()
@@ -26,7 +25,7 @@ const MyNavbar = () => {
                 <Navbar.Brand href="/">Sentrend</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    
+                
                         
                     <Button onClick={(e) => handleSubmit(e)} variant="outline-success" >Search</Button>
                     <Nav className="mx-auto" >
@@ -35,13 +34,11 @@ const MyNavbar = () => {
                             <NavDropdown.Item onClick={()=> navigate("/settings",{ replace: true })}>Settings</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={logoutUser}>Logout</NavDropdown.Item>
-                            
                         </NavDropdown>
                     </Nav>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        
         </div>
     ):(
         <div>
