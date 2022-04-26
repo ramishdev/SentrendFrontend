@@ -13,6 +13,8 @@ import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import SettingsPage from './pages/SettingsPage'
 import NewCrawlerPage from './pages/NewCrawlerPage'
+import SearchPage from './pages/SearchPage'
+
 
 function Admin(){
     return(
@@ -25,9 +27,9 @@ function Admin(){
                         </Route>
                         <Route element={<LoginPage/>} path = "/login"/>
                         <Route element={<RegisterPage/>} path = "/register"/>
-                        <Route element={<SettingsPage/>} path = "/settings">
-                        </Route>
+                        <Route element={<SettingsPage/>} path = "/settings"/>
                         <Route path="/settings/new-crawler" element={<NewCrawlerPage/>}/>
+                        <Route path="/search" element={<SearchPage/>}/>
                     </Routes>
                 </AuthProvider>
             </BrowserRouter>

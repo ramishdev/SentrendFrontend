@@ -88,24 +88,29 @@ export const AuthProvider = ({children}) => {
     let updateToken = async ()=> {
 
         console.log("updated token called")
+        try{
+            let response = await fetch('http://127.0.0.1:8000/api/token/refresh/' , {
+                method: 'POST',
+                headers : {'Content-Type': 'application/json'},
+                body : JSON.stringify({'refresh': authTokens?.refresh})
+            })
+            
+            let data = await response.json()
+            if(response.status === 200){
 
-        let response = await fetch('http://127.0.0.1:8000/api/token/refresh/' , {
-            method: 'POST',
-            headers : {'Content-Type': 'application/json'},
-            body : JSON.stringify({'refresh': authTokens?.refresh})
-        })
-
-        let data = await response.json()
-
-        if(response.status === 200){
-
-            setAuthTokens(data)
-            setUser(jwt_decode(data.access))
-            localStorage.setItem('authTokens', JSON.stringify(data))
+                setAuthTokens(data)
+                setUser(jwt_decode(data.access))
+                localStorage.setItem('authTokens', JSON.stringify(data))
+            }
+            else{
+                logoutUser()
+            }
         }
-        else{
+        catch(err){
+            console.error(err.message);
             logoutUser()
         }
+
 
         if(loading){
             setLoading(false)

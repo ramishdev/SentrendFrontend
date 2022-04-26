@@ -18,6 +18,7 @@ const MyNavbar = () => {
         console.log('You clicked submit.');
         //navigate('/products')
       }
+    console.log(user)
     return (user)?(
         <div>
             <Navbar collapseOnSelect expand="lg" bg = 'dark' variant = 'dark'>
