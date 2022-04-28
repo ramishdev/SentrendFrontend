@@ -5,6 +5,7 @@ import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 
 import DoughnutChart from "./DoughnutChart"
+import RadarChart from "./RadarChart"
 
 const TabsInterface = () => {
 
@@ -17,6 +18,7 @@ const TabsInterface = () => {
                 <Tab eventKey="sentiment" title="Sentiment">
                     <div className="d-flex justify-content-center">
                         <DoughnutChart/>
+                        <RadarChart/>
                     </div>
                 </Tab>
                 <Tab eventKey="rankings" title="Rankings">

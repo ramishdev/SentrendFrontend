@@ -1,16 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-//import { Doughnut } from 'react-chartjs-2';
-//import {Card} from 'react-bootstrap'
-import { Pie } from 'react-chartjs-2';
-
 import { useOutletContext } from "react-router-dom";
+
+
+import {
+  Chart as ChartJS,
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+
+
+import { Radar } from 'react-chartjs-2';
+
+
 const axios = require('axios').default;
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(
+  RadialLinearScale,
+  PointElement,
+  LineElement,
+  Filler,
+  Tooltip,
+  Legend
+);
 
 
-function DrawDoughnut() {
+
+function RadarChart() {
+
+
     const trendinfo = useOutletContext()
     const [results, setResults] = useState({});
     const [loading, setloading] = useState(false);
@@ -22,15 +43,8 @@ function DrawDoughnut() {
             try{
                 console.log(trendinfo?.trend_name)
                 let newState = {"trend_name":trendinfo?.trend_name,"count":1};
-                await axios.post('http://localhost:8000/api/sentiments/update_sentiment/', {
-                    "query":[newState],
-                    headers:{
-                        'Content-Type': 'application/json'
-                    },
-                    signal: controller.signal
-                });
 
-                const response = await axios.get(trendinfo?.url + 'sentiment/', {
+                const response = await axios.get(trendinfo?.url + 'get_stats/', {
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -58,21 +72,20 @@ function DrawDoughnut() {
         return () => controller?.abort();
     }, [trendinfo])
 
+
     const data = {
-        labels: ['Positive','Negative','Neutral'],
+        labels: Object.keys(results?.source),
         datasets: [
-            {
-                label: '# of Votes',
-                data: [results?.pos_pol_count, results?.neg_pol_count, results?.neu_pol_count],
-                backgroundColor: [
-                    'rgba(255, 214, 98, 1.00)',
-                    'rgba(233, 75, 60, 1.00)',
-                    'rgba(0, 83, 156, 1.00)'
-                ],
-                borderWidth: 2,
-            }
-        ]
-    };
+          {
+            label: 'No of tweets',
+            data: Object.values(results?.source),
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1,
+          },
+        ],
+      };
+
 
     if(loading){
         return (
@@ -81,21 +94,22 @@ function DrawDoughnut() {
             </div>
         );
     }
-    return (results && Object.keys(results).length > 0)?
-    ( 
-        <div>
-            <div style={{ width: '20rem' }}>
-                <Pie data={data} options={{
-                    responsive: true,
-                    maintainAspectRatio: true,
-                }}/>
-            </div>
+
+  return(results && Object.keys(results).length > 0)?
+  (
+
+        <div style={{ width: '30rem' }}>
+            <Radar data={data} options={{
+                responsive: true,
+                maintainAspectRatio: false,
+            }}/>
         </div>
-    ):
-    (
-        <div>
-            
-        </div>
-    )
+
+  ):
+  (
+      <div>
+
+      </div>
+  )
 }
-export default DrawDoughnut;
+export default RadarChart
