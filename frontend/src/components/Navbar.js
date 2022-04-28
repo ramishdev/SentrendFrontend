@@ -15,10 +15,11 @@ const MyNavbar = () => {
 
     function handleSubmit(e) {
         e.preventDefault();    
+        navigate("search")
         console.log('You clicked submit.');
         //navigate('/products')
       }
-    console.log(user)
+
     return (user)?(
         <div>
             <Navbar collapseOnSelect expand="lg" bg = 'dark' variant = 'dark'>
@@ -29,8 +30,8 @@ const MyNavbar = () => {
                     <Button onClick={(e) => handleSubmit(e)} variant="outline-success" >Search</Button>
                     <Nav >
                         <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
-                            <NavDropdown.Item onClick={()=> navigate("/profile",{ replace: true })}>Profile</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=> navigate("/settings",{ replace: true })}>Settings</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=> navigate("/profile")}>Profile</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=> navigate("/settings")}>Settings</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={logoutUser}>Logout</NavDropdown.Item>
                         </NavDropdown>

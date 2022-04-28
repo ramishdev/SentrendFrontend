@@ -8,6 +8,9 @@ module.exports = {
         'purple': '#3f3cbb',
         "nav-color": "rgba(33,37,41,255)",
       },
+      fontSize: {
+        'md': '1.1rem',
+      }
     },
   },
   plugins: [],

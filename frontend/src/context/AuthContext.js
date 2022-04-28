@@ -25,24 +25,29 @@ export const AuthProvider = ({children}) => {
     let registerUser = async (e) => {
 
         e.preventDefault()
+        try{
+            let response = await fetch('http://127.0.0.1:8000/api/users/', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body : JSON.stringify({
+                    'username' : e.target.username.value,
+                    'email':e.target.email.value,
+                    'password': e.target.password.value})
+            })
 
-        let response = await fetch('http://127.0.0.1:8000/api/users/', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body : JSON.stringify({
-                'username' : e.target.username.value,
-                'email':e.target.email.value,
-                'password': e.target.password.value})
-        })
+            let data = await response.json()
 
-        let data = await response.json()
-
-        if(response.status === 201){
-            alert('user created, you can now login')
-            navigate('/login');
+            if(response.status === 201){
+                alert('user created, you can now login')
+                navigate('/login');
+            }
+            else{
+                alert(JSON.stringify(data))
+            }
         }
-        else{
-            alert(JSON.stringify(data))
+        catch(err){
+            console.error(err.message);
+            logoutUser()
         }
 
 
@@ -51,26 +56,30 @@ export const AuthProvider = ({children}) => {
     let loginUser = async(e) => {
 
         e.preventDefault()
+        try {
+            let response = await fetch('http://127.0.0.1:8000/api/token/' , {
+                method: 'POST',
+                headers : {'Content-Type': 'application/json'},
+                body : JSON.stringify({'username':e.target.username.value, 'password':e.target.password.value})
+            })
 
-        let response = await fetch('http://127.0.0.1:8000/api/token/' , {
-            method: 'POST',
-            headers : {'Content-Type': 'application/json'},
-            body : JSON.stringify({'username':e.target.username.value, 'password':e.target.password.value})
-        })
+            let data = await response.json()
+            console.log('data: ', data)
 
-        let data = await response.json()
-        console.log('data: ', data)
+            if (response.status === 200){
 
-        if (response.status === 200){
-
-            setAuthTokens(data)
-            setUser(jwt_decode(data.access))
-            localStorage.setItem('authTokens', JSON.stringify(data))
-            
-            navigate('/',{replace : true})
+                setAuthTokens(data)
+                setUser(jwt_decode(data.access))
+                localStorage.setItem('authTokens', JSON.stringify(data))
+                
+                navigate('/',{replace : true})
+            }
+            else{
+                alert('Something went wrong')
+            }
         }
-        else{
-            alert('Something went wrong')
+        catch(err){
+            console.error(err.message);
         }
     }
 
@@ -80,8 +89,7 @@ export const AuthProvider = ({children}) => {
         setUser(null)
 
         localStorage.removeItem('authTokens')
-        console.log(location)
-        console.log(from)
+
         navigate(from,{replace:true})
     } 
 
@@ -155,9 +163,7 @@ export const AuthProvider = ({children}) => {
     return (
 
         <AuthContext.Provider value = {contextData}>
-            {console.log(loading)}
-            {loading? null : children}
-
+            {loading ? null : children}
         </AuthContext.Provider>
     )
 }
