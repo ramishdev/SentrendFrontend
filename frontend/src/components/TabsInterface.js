@@ -13,7 +13,7 @@ const TabsInterface = () => {
     
     return (
         <div >
-            <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3" >
+            <Tabs defaultActiveKey="sentiment" id="uncontrolled-tab-example" className="mb-3" >
                 <Tab eventKey="sentiment" title="Sentiment">
                     <div className="d-flex justify-content-center">
                         <DoughnutChart/>

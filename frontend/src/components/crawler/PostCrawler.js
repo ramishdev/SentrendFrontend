@@ -10,12 +10,17 @@ const PostCrawler = () => {
 
   const [show, setShow] = useState(false);
   const [alertVariant, setAlertVariant] = useState("success");
+  const [validated, setValidated] = useState(false);
+
+  
 
   useEffect(() => {
     //getNotes()
   }, [])
 
   let postNotes = async (e) => {
+
+    const form = e.currentTarget;
 
     e.preventDefault()
 
@@ -33,9 +38,16 @@ const PostCrawler = () => {
     })
     })
 
-    if(response.status === 201){
-        
+    if (form.checkValidity() === false) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("Error")
+    
+    }
+    setValidated(true)
 
+
+    if(response.status === 201){
         setShow(true)
         setAlertVariant("success")
     }
@@ -60,49 +72,69 @@ const PostCrawler = () => {
 
   return (
 
-    <div>
+    <div className="container flex min-h-screen flex-col justify-center">
+
+        <div className="flex justify-center">
+            <h1>Set up your crawler</h1>
+        </div>
 
         <ShowAlert show = {show} alertVariant = {alertVariant} />
         
-        <Form onSubmit = {postNotes}>
+        <Form noValidate validated={validated} onSubmit = {postNotes}>
+
             <Form.Group className="mb-3"  controlId="formConsumerKey">
                 <Form.Label>Consumer key</Form.Label>
-                <Form.Control type="text" placeholder="Enter Consumer Key" name = "consumer_key"/>
+                <Form.Control required type="text" placeholder="Enter Consumer Key" name = "consumer_key" />
                 <Form.Text className="text-muted">
                     We'll never share your consumer key with anyone else.
                 </Form.Text>
+                <Form.Control.Feedback type="invalid">
+                    Please provide a Consumer key.
+                </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formConsumerSecret">
                 <Form.Label>Consumer secret</Form.Label>
-                <Form.Control type="text" placeholder="Enter Consumer secret" name = "consumer_secret" />
+                <Form.Control type="text" placeholder="Enter Consumer secret" name = "consumer_secret" required />
                 <Form.Text className="text-muted">
                     We'll never share your Consumer secret with anyone else.
                 </Form.Text>
+                <Form.Control.Feedback type="invalid">
+                    Please provide a Consumer secret.
+                </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formAccessKey">
                 <Form.Label>Access key</Form.Label>
-                <Form.Control type="text" placeholder="Enter Access key" name = "access_key"/>
+                <Form.Control type="text" placeholder="Enter Access key" name = "access_key" required/>
                 <Form.Text className="text-muted">
                     We'll never share your Access key with anyone else.
                 </Form.Text>
+                <Form.Control.Feedback type="invalid">
+                    Please provide a  Access token.
+                </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formAccessSecret">
                 <Form.Label>Access secret</Form.Label>
-                <Form.Control type="text" placeholder="Enter Access Secret" name = "access_secret" />
+                <Form.Control type="text" placeholder="Enter Access Secret" name = "access_secret" required/>
                 <Form.Text className="text-muted">
                     We'll never share your Acess secret with anyone else.
                 </Form.Text>
+                <Form.Control.Feedback type="invalid">
+                    Please provide a Access secret token.
+                </Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBearerKey">
                 <Form.Label>Bearer key</Form.Label>
-                <Form.Control type="text" placeholder="Enter Bearer Key" name = "bearer_key" />
+                <Form.Control type="text" placeholder="Enter Bearer Key" name = "bearer_key" required/>
                 <Form.Text className="text-muted">
                     We'll never share your Bearer key with anyone else.
                 </Form.Text>
+                <Form.Control.Feedback type="invalid">
+                    Please provide a Bearer token.
+                </Form.Control.Feedback>
             </Form.Group>
 
             {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">

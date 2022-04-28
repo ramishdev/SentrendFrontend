@@ -11,7 +11,10 @@ const Crawler = () => {
             <div className="flex justify-content-center">
                 <button type="button"  className="btn btn-outline-success" onClick={() => navigate('/settings/new-crawler')}>New Crawler</button>
             </div>
-            <ListCrawlers/>
+            <div className = "mt-10">
+                <ListCrawlers/>
+            </div>
+            
         </div>
 
         // <Tab.Container id="left-tabs-example" defaultActiveKey="first">
