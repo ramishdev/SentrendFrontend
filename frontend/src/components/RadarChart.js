@@ -31,7 +31,7 @@ ChartJS.register(
 
 function RadarChart() {
 
-
+    let data = {}
     const trendinfo = useOutletContext()
     const [results, setResults] = useState({});
     const [loading, setloading] = useState(false);
@@ -42,8 +42,6 @@ function RadarChart() {
             setloading(true)
             try{
                 console.log(trendinfo?.trend_name)
-                let newState = {"trend_name":trendinfo?.trend_name,"count":1};
-
                 const response = await axios.get(trendinfo?.url + 'get_stats/', {
                     headers: {
                         'Content-Type': 'application/json'
@@ -72,19 +70,39 @@ function RadarChart() {
         return () => controller?.abort();
     }, [trendinfo])
 
+    console.log(results)
 
-    const data = {
-        labels: Object.keys(results?.source),
-        datasets: [
-          {
-            label: 'No of tweets',
-            data: Object.values(results?.source),
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1,
-          },
-        ],
-      };
+    if(results.source){
+
+        data = {
+        
+            labels: Object.keys(results.source),
+            datasets: [
+              {
+                label: 'No of tweets',
+                data: Object.values(results.source) ,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1,
+              },
+            ],
+        };
+
+    }
+
+    // const data = {
+        
+    //     labels: results? Object.keys(results?.source) : ['a','b','c'],
+    //     datasets: [
+    //       {
+    //         label: 'No of tweets',
+    //         data:Object.values(results?.source) ,
+    //         backgroundColor: 'rgba(255, 99, 132, 0.2)',
+    //         borderColor: 'rgba(255, 99, 132, 1)',
+    //         borderWidth: 1,
+    //       },
+    //     ],
+    // };
 
 
     if(loading){
