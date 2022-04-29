@@ -11,24 +11,20 @@ import '../../css/listcrawler.css';
 
 const ListCrawlers = () => {
 
-  let [notes, setNotes] = useState([])
-  const [refresh,setRefresh] = useState(false)
-  
+  let [crawlerList, setcrawlerList] = useState([])
+  console.log(crawlerList)
   const refreshData = {
-    refresh:refresh,
-    setRefresh:setRefresh
-  }
-
-  console.log(refreshData)
- 
+    crawlerList:crawlerList,
+    setcrawlerList:setcrawlerList
+  } 
 
   let {authTokens, logoutUser} = useContext(AuthContext)
 
   useEffect(() => {
-    getNotes()
+    getcrawlerList()
   }, [])
 
-  let getNotes = async () => {
+  let getcrawlerList = async () => {
     let response = await fetch('http://127.0.0.1:8000/crawler/crawlers',{
       method: 'GET',
       headers: {
@@ -40,10 +36,10 @@ const ListCrawlers = () => {
     let data = await response.json()
 
     if(response.status === 200){
-      setNotes(data) 
+      setcrawlerList(data) 
     }
     else if(response.statusText === 'Unauthorized'){
-      setNotes([])
+      setcrawlerList([])
     }
   }
 
@@ -55,7 +51,7 @@ const ListCrawlers = () => {
           <Row>
             <Col className="ml-10 border-solid border-r-4 border-indigo-500 ">
               <Nav variant="pills" className="flex-column">
-              {notes.map((note,index) => (
+              {crawlerList.map((note,index) => (
                 <Nav.Item key = {index}>
                   <Nav.Link className = "text-black	text-lg	hover:text-2xl" eventKey={index}>Crawler {index} </Nav.Link>
                 </Nav.Item>
@@ -64,9 +60,9 @@ const ListCrawlers = () => {
             </Col>
             <Col sm={9}>
               <Tab.Content>
-              {notes.map((note,index) => (
+              {crawlerList.map((note,index) => (
                 <Tab.Pane eventKey={index} key = {index}>
-                  <CrawlerDetail  data = {note} item = {refreshData}/>
+                  <CrawlerDetail  data = {note} idx = {index} item = {refreshData}/>
                 </Tab.Pane>
               ))}
               </Tab.Content>

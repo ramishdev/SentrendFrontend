@@ -9,6 +9,7 @@ const PostCrawler = () => {
   let {authTokens} = useContext(AuthContext)
 
   const [show, setShow] = useState(false);
+  const [loading, setloading] = useState(false);
   const [alertVariant, setAlertVariant] = useState("success");
   const [validated, setValidated] = useState(false);
 
@@ -18,24 +19,24 @@ const PostCrawler = () => {
     //getNotes()
   }, [])
 
-  let postNotes = async (e) => {
+  let postCrawlerInfo = async (e) => {
 
     const form = e.currentTarget;
-
+    setloading(true);
     e.preventDefault()
-
+    const data = e.target
     let response = await fetch('http://127.0.0.1:8000/crawler/crawlers/',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + String(authTokens.access)
-      },
-      body : JSON.stringify({'consumer_key':e.target.consumer_key.value,
-       'consumer_secret':e.target.consumer_secret.value,
-       'access_token': e.target.access_key.value,
-       'access_token_secret': e.target.access_secret.value,
-       'bearer_token':e.target.bearer_key.value
-    })
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + String(authTokens.access)
+        },
+        body : JSON.stringify({'consumer_key':data['consumer_key'].value,
+        'consumer_secret':data['consumer_secret'].value,
+        'access_token': data['access_key'].value,
+        'access_token_secret': data['access_secret'].value,
+        'bearer_token':data['bearer_key'].value
+        })
     })
 
     if (form.checkValidity() === false) {
@@ -45,11 +46,17 @@ const PostCrawler = () => {
     
     }
     setValidated(true)
-
+    setloading(false);
 
     if(response.status === 201){
         setShow(true)
         setAlertVariant("success")
+        data['consumer_key'].value = ""
+        data['consumer_secret'].value = ""
+        data['access_key'].value = ""
+        data['access_secret'].value = ""
+        data['bearer_key'].value = ""
+        setValidated(false)
     }
     else {
         setShow(true)
@@ -70,8 +77,11 @@ const PostCrawler = () => {
     )
   }
 
-  return (
-
+  return(loading)?(
+    <div className="d-flex justify-content-center">
+        <h2>Loading...</h2>
+    </div>
+  ):(
     <div className="container flex min-h-screen flex-col justify-center">
 
         <div className="flex justify-center">
@@ -80,7 +90,7 @@ const PostCrawler = () => {
 
         <ShowAlert show = {show} alertVariant = {alertVariant} />
         
-        <Form noValidate validated={validated} onSubmit = {postNotes}>
+        <Form noValidate validated={validated} onSubmit = {postCrawlerInfo}>
 
             <Form.Group className="mb-3"  controlId="formConsumerKey">
                 <Form.Label>Consumer key</Form.Label>
