@@ -11,7 +11,16 @@ import '../../css/listcrawler.css';
 
 const ListCrawlers = () => {
 
-  let [notes, setNotes] = useState([]) 
+  let [notes, setNotes] = useState([])
+  const [refresh,setRefresh] = useState(false)
+  
+  const refreshData = {
+    refresh:refresh,
+    setRefresh:setRefresh
+  }
+
+  console.log(refreshData)
+ 
 
   let {authTokens, logoutUser} = useContext(AuthContext)
 
@@ -44,7 +53,7 @@ const ListCrawlers = () => {
     
         <Tab.Container  id="left-tabs-example" defaultActiveKey="first">
           <Row>
-            <Col className="ml-10 border-solid border-r-2">
+            <Col className="ml-10 border-solid border-r-4 border-indigo-500 ">
               <Nav variant="pills" className="flex-column">
               {notes.map((note,index) => (
                 <Nav.Item key = {index}>
@@ -57,7 +66,7 @@ const ListCrawlers = () => {
               <Tab.Content>
               {notes.map((note,index) => (
                 <Tab.Pane eventKey={index} key = {index}>
-                  <CrawlerDetail  data = {note}/>
+                  <CrawlerDetail  data = {note} item = {refreshData}/>
                 </Tab.Pane>
               ))}
               </Tab.Content>

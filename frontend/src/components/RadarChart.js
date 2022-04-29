@@ -116,12 +116,17 @@ function RadarChart() {
   return(results && Object.keys(results).length > 0)?
   (
 
-        <div style={{ width: '30rem' }}>
-            <Radar data={data} options={{
-                responsive: true,
-                maintainAspectRatio: false,
-            }}/>
+        <div>
+            <h1>Trend Sources</h1>
+            <div className="border border-sky-500 inline-block " style={{ width: '25rem'}}>
+                <Radar data={data} options={{
+                    responsive: true,
+                    maintainAspectRatio: true,
+                }}/>
+            </div>
+
         </div>
+        
 
   ):
   (
