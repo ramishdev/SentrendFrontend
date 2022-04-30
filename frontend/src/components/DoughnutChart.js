@@ -20,15 +20,15 @@ function DrawDoughnut() {
         const fetchdata = async () => {
             setloading(true)
             try{
-                console.log(trendinfo?.trend_name)
-                let newState = {"trend_name":trendinfo?.trend_name,"count":1};
-                await axios.post('http://localhost:8000/api/sentiments/update_sentiment/', {
-                    "query":[newState],
-                    headers:{
-                        'Content-Type': 'application/json'
-                    },
-                    signal: controller.signal
-                });
+                // console.log(trendinfo?.trend_name)
+                // let newState = {"trend_name":trendinfo?.trend_name,"count":1};
+                // await axios.post('http://localhost:8000/api/sentiments/update_sentiment/', {
+                //     "query":[newState],
+                //     headers:{
+                //         'Content-Type': 'application/json'
+                //     },
+                //     signal: controller.signal
+                // });
 
                 const response = await axios.get(trendinfo?.url + 'sentiment/', {
                     headers: {

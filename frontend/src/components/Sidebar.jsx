@@ -32,7 +32,7 @@ const Sidebar = ({setdata}) => {
         const data = await axios.get('http://localhost:8000/api/trends/', {
           params: {
             limit: 10,
-            location: 'Winnipeg'
+            location: 'Worldwide'
           },
           signal: controller.signal
         });
