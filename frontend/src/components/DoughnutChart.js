@@ -5,7 +5,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
 import { useOutletContext } from "react-router-dom";
-const axios = require('axios').default;
+import axios from '../hooks/axios.js'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

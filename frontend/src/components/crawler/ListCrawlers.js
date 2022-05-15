@@ -8,6 +8,7 @@ import { Col, Row} from "react-bootstrap";
 import CrawlerDetail from "./CrawlerDetail";
 
 import '../../css/listcrawler.css';
+import axios from '../../hooks/axios.js'
 
 const ListCrawlers = () => {
 
@@ -25,20 +26,25 @@ const ListCrawlers = () => {
   }, [])
 
   let getcrawlerList = async () => {
-    let response = await fetch('http://127.0.0.1:8000/crawler/crawlers',{
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + String(authTokens.access)
+    try{
+      let response = await axios('/crawler/crawlers',{
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + String(authTokens.access)
+        }
+      })
+      let data = await response.data
+
+      if(response.status === 200){
+        setcrawlerList(data) 
       }
-    })
-
-    let data = await response.json()
-
-    if(response.status === 200){
-      setcrawlerList(data) 
+      else if(response.statusText === 'Unauthorized'){
+        setcrawlerList([])
+      }
     }
-    else if(response.statusText === 'Unauthorized'){
+    catch(err){
+      console.log(err.message)
       setcrawlerList([])
     }
   }

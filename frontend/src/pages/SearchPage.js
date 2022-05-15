@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import useAuth from "../hooks/useAuth"
 import Feedback from 'react-bootstrap/Feedback'
 
-const axios = require('axios').default;
+import axios from '../hooks/axios.js'
 
 const SearchPage = () => {
   const [inputList, setInputList] = useState([{trend_name: "",limit:"",count:""}]);
@@ -17,7 +17,7 @@ const SearchPage = () => {
     const controller = new AbortController();
     const fetchcrawlers = async () => {
       try {
-        let response = await axios.get('http://localhost:8000/crawler/crawlers/',{
+        let response = await axios.get('/crawler/crawlers/',{
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + String(authTokens?.access)
@@ -25,7 +25,7 @@ const SearchPage = () => {
           signal: controller.signal
 
         })
-        let data = await response.json()
+        let data = await response.data
         if(response.status === 200){
           setcrawlList(data) 
         }
@@ -46,7 +46,7 @@ const SearchPage = () => {
       if(crawlInfo[0]['type'] === "Stream"){
         type = 'stream_'
       }
-      let response = await axios.post('http://localhost:8000/api/trends/'+ type +'update_tweets/',{
+      let response = await axios.post('/api/trends/'+ type +'update_tweets/',{
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + String(authTokens?.access)

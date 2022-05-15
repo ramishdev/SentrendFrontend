@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 import { useOutletContext } from "react-router-dom";
-const axios = require('axios').default;
+import axios from '../hooks/axios.js'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

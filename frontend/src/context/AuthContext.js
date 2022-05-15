@@ -3,6 +3,7 @@ import jwt_decode from "jwt-decode";
 
 import { useNavigate,useLocation } from 'react-router-dom'
 
+import axios from '../hooks/axios.js'
 
 const AuthContext = createContext()
 
@@ -26,16 +27,16 @@ export const AuthProvider = ({children}) => {
 
         e.preventDefault()
         try{
-            let response = await fetch('http://127.0.0.1:8000/api/users/', {
+            let response = await axios('/api/users/', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body : JSON.stringify({
+                data : JSON.stringify({
                     'username' : e.target.username.value,
                     'email':e.target.email.value,
                     'password': e.target.password.value})
             })
 
-            let data = await response.json()
+            let data = await response.data
 
             if(response.status === 201){
                 alert('user created, you can now login')
@@ -57,13 +58,13 @@ export const AuthProvider = ({children}) => {
 
         e.preventDefault()
         try {
-            let response = await fetch('http://127.0.0.1:8000/api/token/' , {
+            let response = await axios('/api/token/' , {
                 method: 'POST',
                 headers : {'Content-Type': 'application/json'},
-                body : JSON.stringify({'username':e.target.username.value, 'password':e.target.password.value})
+                data : JSON.stringify({'username':e.target.username.value, 'password':e.target.password.value})
             })
 
-            let data = await response.json()
+            let data = await response.data
             console.log('data: ', data)
 
             if (response.status === 200){
@@ -97,13 +98,13 @@ export const AuthProvider = ({children}) => {
 
         console.log("updated token called")
         try{
-            let response = await fetch('http://127.0.0.1:8000/api/token/refresh/' , {
+            let response = await axios('/api/token/refresh/' , {
                 method: 'POST',
                 headers : {'Content-Type': 'application/json'},
-                body : JSON.stringify({'refresh': authTokens?.refresh})
+                data : JSON.stringify({'refresh': authTokens?.refresh})
             })
             
-            let data = await response.json()
+            let data = await response.data
             if(response.status === 200){
 
                 setAuthTokens(data)

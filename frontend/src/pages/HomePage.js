@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import AuthContext from '../context/AuthContext'
  
+import axios from '../hooks/axios.js'
 
 const HomePage = () => {
 
@@ -13,7 +14,7 @@ const HomePage = () => {
   }, [])
 
   let getNotes = async () => {
-    let response = await fetch('http://127.0.0.1:8000/crawler/crawlers',{
+    let response = await axios('/crawler/crawlers',{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -21,7 +22,7 @@ const HomePage = () => {
       }
     })
 
-    let data = await response.json()
+    let data = await response.data
 
     if(response.status === 200){
       setNotes(data) 

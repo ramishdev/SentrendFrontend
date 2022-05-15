@@ -10,7 +10,9 @@ import {
 } from 'cdbreact';
 //import useAuth from "../hooks/useAuth"
 
-const axios = require('axios').default;
+//const axios = require('axios').default;
+import axios from '../hooks/axios.js'
+
 
 
 const Sidebar = ({setdata}) => {
@@ -28,7 +30,7 @@ const Sidebar = ({setdata}) => {
       setloading(true);
       try{
 
-        const data = await axios.get('http://localhost:8000/api/trends', {
+        const data = await axios.get('/api/trends', {
           params: {
             limit: 10,
             location:"Worldwide"

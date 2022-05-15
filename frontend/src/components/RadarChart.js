@@ -16,7 +16,7 @@ import {
 import { Radar } from 'react-chartjs-2';
 
 
-const axios = require('axios').default;
+import axios from '../hooks/axios.js'
 
 ChartJS.register(
   RadialLinearScale,

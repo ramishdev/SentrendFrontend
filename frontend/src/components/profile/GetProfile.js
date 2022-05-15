@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import AuthContext from '../../context/AuthContext'
 import ListGroup from 'react-bootstrap/ListGroup'
+import axios from '../../hooks/axios.js'
 
 const GetProfile = () => {
 
@@ -13,7 +14,7 @@ const GetProfile = () => {
   }, [])
 
   let getNotes = async () => {
-    let response = await fetch('http://127.0.0.1:8000/api/users/' + user.user_id,{
+    let response = await axios('/api/users/' + user.user_id,{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -21,7 +22,7 @@ const GetProfile = () => {
       }
     })
 
-    let data = await response.json()
+    let data = await response.data
     console.log(data)
     if(response.status === 200){
       setNotes(data) 

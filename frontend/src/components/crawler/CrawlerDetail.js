@@ -2,6 +2,7 @@ import {useState, useEffect, useContext} from 'react'
 import AuthContext from '../../context/AuthContext'
 import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
+import axios from '../../hooks/axios.js'
 
 
 const CrawlerDetail = ({data,idx,item}) => {
@@ -18,25 +19,30 @@ const CrawlerDetail = ({data,idx,item}) => {
     
 
     let getDetails =  async () => {
+      try{
+        let response = await axios(data?.url ,{
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + String(authTokens.access)
+          }
 
-      let response = await fetch(data?.url ,{
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + String(authTokens.access)
+        })
+        let limitData = await response.data
+        if(response.status === 200){
+          setResults(limitData) 
         }
+        else if(response.statusText === 'Unauthorized'){
 
-      })
-      let limitData = await response.json()
-      if(response.status === 200){
-        setResults(limitData) 
+          setResults({})
+          // setResults([])
+        }
+        else{
+          setResults({})
+        }
       }
-      else if(response.statusText === 'Unauthorized'){
-
-        setResults({})
-        // setResults([])
-      }
-      else{
+      catch (err) {
+        console.error(err.message)
         setResults({})
       }
         // console.log("data",limitData)
@@ -44,28 +50,32 @@ const CrawlerDetail = ({data,idx,item}) => {
 
 
     let DeleteCrawler = async () => {
+      try{
+        let response = await axios(data?.url,{
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + String(authTokens.access)
+          }
+        })
+        console.log(response.status)
+        if(response.status === 204){
 
-      let response = await fetch(data?.url,{
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + String(authTokens.access)
+          //setRefresh((refresh) => (! refresh))
+
+          console.log("delete data" , data)
+          const list = [...item?.crawlerList]
+          list.splice(idx, 1);
+          console.log(idx)
+          item?.setcrawlerList(list);
+
         }
-      })
-      console.log(response.status)
-      if(response.status === 204){
-
-        //setRefresh((refresh) => (! refresh))
-
-        console.log("delete data" , data)
-        const list = [...item?.crawlerList]
-        list.splice(idx, 1);
-        console.log(idx)
-        item?.setcrawlerList(list);
-
+        else if(response.statusText === 'Unauthorized'){
+          console.log("Error");
+        }
       }
-      else if(response.statusText === 'Unauthorized'){
-     
+      catch(err){
+        console.log(err.message)
       }
     }
 

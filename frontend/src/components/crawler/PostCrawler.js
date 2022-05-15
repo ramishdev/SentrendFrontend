@@ -3,6 +3,7 @@ import AuthContext from '../../context/AuthContext'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
+import axios from '../../hooks/axios.js'
 
 const PostCrawler = () => {
 
@@ -25,43 +26,51 @@ const PostCrawler = () => {
     setloading(true);
     e.preventDefault()
     const data = e.target
-    let response = await fetch('http://127.0.0.1:8000/crawler/crawlers/',{
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + String(authTokens.access)
-        },
-        body : JSON.stringify({'consumer_key':data['consumer_key'].value,
-        'consumer_secret':data['consumer_secret'].value,
-        'access_token': data['access_key'].value,
-        'access_token_secret': data['access_secret'].value,
-        'bearer_token':data['bearer_key'].value
-        })
-    })
 
     if (form.checkValidity() === false) {
         e.preventDefault();
         e.stopPropagation();
         console.log("Error")
-    
-    }
-    setValidated(true)
-    setloading(false);
 
-    if(response.status === 201){
-        setShow(true)
-        setAlertVariant("success")
-        data['consumer_key'].value = ""
-        data['consumer_secret'].value = ""
-        data['access_key'].value = ""
-        data['access_secret'].value = ""
-        data['bearer_key'].value = ""
-        setValidated(false)
     }
-    else {
+    
+    try {
+        let response = await axios('/crawler/crawlers/',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + String(authTokens.access)
+            },
+            data : JSON.stringify({'consumer_key':data['consumer_key'].value,
+            'consumer_secret':data['consumer_secret'].value,
+            'access_token': data['access_key'].value,
+            'access_token_secret': data['access_secret'].value,
+            'bearer_token':data['bearer_key'].value
+            })
+        })
+        if(response.status === 201){
+            setShow(true)
+            setAlertVariant("success")
+            data['consumer_key'].value = ""
+            data['consumer_secret'].value = ""
+            data['access_key'].value = ""
+            data['access_secret'].value = ""
+            data['bearer_key'].value = ""
+            setValidated(false)
+        }
+        else {
+            setShow(true)
+            setAlertVariant("danger")
+            setValidated(true)
+        }
+    }
+    catch (err) {
+        console.error(err.message)
+        setValidated(true)
         setShow(true)
         setAlertVariant("danger")
     }
+    setloading(false);
   }
 
   const ShowAlert = ({show,alertVariant}) => {
