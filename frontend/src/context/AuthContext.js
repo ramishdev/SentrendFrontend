@@ -47,6 +47,7 @@ export const AuthProvider = ({children}) => {
             }
         }
         catch(err){
+            console.log(e.target.username.value)
             console.error(err.message);
             logoutUser()
         }

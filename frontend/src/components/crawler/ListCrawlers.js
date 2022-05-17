@@ -49,33 +49,31 @@ const ListCrawlers = () => {
     }
   }
 
-
   return (
     <div>
-    
-        <Tab.Container  id="left-tabs-example" defaultActiveKey="first">
-          <Row>
-            <Col className="ml-10 border-solid border-r-4 border-indigo-500 ">
-              <Nav variant="pills" className="flex-column">
-              {crawlerList.map((note,index) => (
-                <Nav.Item key = {index}>
-                  <Nav.Link className = "text-black	text-lg	hover:text-2xl" eventKey={index}>Crawler {index} </Nav.Link>
-                </Nav.Item>
-              ))}
-              </Nav>
-            </Col>
-            <Col sm={9}>
-              <Tab.Content>
-              {crawlerList.map((note,index) => (
-                <Tab.Pane eventKey={index} key = {index}>
-                  <CrawlerDetail  data = {note} idx = {index} item = {refreshData}/>
-                </Tab.Pane>
-              ))}
-              </Tab.Content>
-            </Col>
-          </Row>
-          
-        </Tab.Container>
+      <Tab.Container  id="left-tabs-example" defaultActiveKey="first">
+        <Row>
+          <Col className="ml-10 border-solid border-r-4 border-indigo-500 ">
+            <Nav variant="pills" className="flex-column">
+            {crawlerList.map((note,index) => (
+              <Nav.Item key = {index}>
+                <Nav.Link className = "text-black	text-lg	hover:text-2xl" eventKey={index}>Crawler {index} </Nav.Link>
+              </Nav.Item>
+            ))}
+            </Nav>
+          </Col>
+          <Col sm={9}>
+            <Tab.Content>
+            {crawlerList.map((note,index) => (
+              <Tab.Pane eventKey={index} key = {index}>
+                <CrawlerDetail  data = {note} idx = {index} item = {refreshData}/>
+              </Tab.Pane>
+            ))}
+            </Tab.Content>
+          </Col>
+        </Row>
+        
+      </Tab.Container>
 
     </div>
   )

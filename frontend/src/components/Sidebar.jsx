@@ -21,7 +21,13 @@ const Sidebar = ({setdata}) => {
     open:open,
     setOpen:setOpen
   }
-
+  const usertrenddata={
+    Name:"User Trends",
+    trends:trends,
+    passTrends:passTrends,
+    open:open,
+    setOpen:setOpen
+  }
   useEffect(() => {
     
     const controller = new AbortController();
@@ -37,9 +43,7 @@ const Sidebar = ({setdata}) => {
           signal: controller.signal
         });
 
-        //let newState = data.data.map((trend) => ({"trend_name":trend.trend_name,"max_results":10,"count":1}));
-
-        
+        //let newState = data.data.map((trend) => ({"trend_name":trend.trend_name,"max_results":10,"count":1}));  
         console.log(data?.data)
         setTrends(data?.data);
         console.log(data);
@@ -85,7 +89,7 @@ const Sidebar = ({setdata}) => {
         </div>
         <div className={`pl-0 pt-4`}>
           <SubMenu item={trenddata}/>
-          <SubMenu item={trenddata}/>
+          { user && <SubMenu item={usertrenddata}/>}
         </div>
         {/*<ul className="pl-0 pt-6">
           {trends && trends.map((trend)  => (

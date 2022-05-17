@@ -7,9 +7,9 @@ import Feedback from 'react-bootstrap/Feedback'
 import axios from '../hooks/axios.js'
 
 const SearchPage = () => {
-  const [inputList, setInputList] = useState([{trend_name: "",limit:"",count:""}]);
+  const [inputList, setInputList] = useState([{trend_name: "",max_results:"",count:""}]);
   const [crawlList, setcrawlList] = useState([{id:1},{id:2}]);              //Dummy data
-  const [crawlInfo, setcrawlinfo] = useState([{id: "",type:""}]);
+  const [crawlInfo, setcrawlinfo] = useState([{id: "",type:[""],duration:""}]);
   const [validated, setValidated] = useState(false);
   const {authTokens} = useAuth()
 
@@ -41,19 +41,32 @@ const SearchPage = () => {
 
   const updateTweets = async () => {
     const controller = new AbortController();
+    console.log(inputList)
     try{
+      let rp1 = await axios.post('/api/trends/update_user_trends/',{ 
+        query: inputList,
+        crawler: crawlInfo[0],
+        signal: controller.signal
+      },{
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + String(authTokens?.access)
+        }
+      })
+      console.log(rp1)
       let type = ''
       if(crawlInfo[0]['type'] === "Stream"){
         type = 'stream_'
       }
-      let response = await axios.post('/api/trends/'+ type +'update_tweets/',{
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + String(authTokens?.access)
-          },
+      let response = await axios.post('/api/tweets/'+ type +'update_tweets/',{
           query: inputList,
-          crawler: crawlInfo,
+          crawler: crawlInfo[0],
           signal: controller.signal
+      },{
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + String(authTokens?.access)
+        }
       })
       if(response.status === 200){
           console.log("Success!!"); 
@@ -75,7 +88,7 @@ const SearchPage = () => {
     if (form.checkValidity() === true) {
       event.preventDefault();
       //setValidated(false);
-      //updateTweets();
+      updateTweets();
       console.log("Nice")
     }
     
@@ -85,7 +98,7 @@ const SearchPage = () => {
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
-    if(name === "limit" && value > 100){
+    if(name === "max_results" && value > 100){
       let digit = value / 100;
       if(Number.isInteger(digit)){
         list[index]['count'] = 1 + digit;
@@ -94,7 +107,7 @@ const SearchPage = () => {
         list[index]['count'] = Math.trunc(digit) + 2;
       }
     }
-    if(name === "limit" && value <= 100){
+    if(name === "max_results" && value <= 100){
       list[index]['count'] = 1;
     }
     list[index][name] = value;
@@ -104,6 +117,9 @@ const SearchPage = () => {
     const { name, value } = e.target;
     const list = [...crawlInfo];
     list[0][name] = value;
+    if(name === "type")
+      list[0][name] = [value];
+    
     setcrawlinfo(list);
   };
 
@@ -116,7 +132,7 @@ const SearchPage = () => {
 
   // handle click event of the Add button
   const handleAddClick = () => {
-    setInputList((inputList) => [...inputList, {trend_name: "",limit: "",count: ""}]);
+    setInputList((inputList) => [...inputList, {trend_name: "",max_results: "",count: ""}]);
   };
 
   return (
@@ -140,17 +156,16 @@ const SearchPage = () => {
               </Form.Group>
               <Form.Group className='w-36 ml-1'>
                 <Form.Control
-                  
                   type="number"
-                  name="limit"
-                  placeholder="Enter limit"
-                  value={x.limit}
+                  name="max_results"
+                  placeholder="Enter max_results"
+                  value={x.max_results}
                   size="sm"
-                  min="1" 
+                  min="10" 
                   max="200"
                   onChange={e => handleInputChange(e, i)} required
                 />
-                <Feedback type="invalid">Range (1-200)</Feedback>
+                <Feedback type="invalid">Range (10-200)</Feedback>
               </Form.Group>
               
               <div className="">
@@ -176,11 +191,25 @@ const SearchPage = () => {
             {/* <Feedback>Looks good!</Feedback> */}
           </Form.Group>
           <Form.Group>
-            <Form.Select className="w-auto ml-1" size="sm" name="type" value={crawlInfo[0]['type']} onChange={e => handlecrawlerInputChange(e)} aria-label="Crawling Type" required>
+            <Form.Select className="w-auto ml-1" size="sm" name="type" value={crawlInfo[0]['type'][0]} onChange={e => handlecrawlerInputChange(e)} aria-label="Crawling Type" required>
               <option value="" disabled>Choose crawler type</option>
-              <option value="Batch">Batch</option>
-              <option value="Stream">Stream</option>
+              <option value="batch">Batch</option>
+              <option value="stream">Stream</option>
             </Form.Select>
+            {/* <Feedback>Looks good!</Feedback> */}
+          </Form.Group>
+          <Form.Group className='w-36 ml-1'>
+            <Form.Control
+              type="number"
+              name="duration"
+              placeholder="Enter duration"
+              value={crawlInfo[0]['duration']}
+              size="sm"
+              min="1" 
+              max="200"
+              onChange={e => handlecrawlerInputChange(e)} required
+            /> 
+            <Feedback type="invalid">Range (1-200)</Feedback>
             {/* <Feedback>Looks good!</Feedback> */}
           </Form.Group>
         </div>
