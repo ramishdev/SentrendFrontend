@@ -55,6 +55,9 @@ function DrawDoughnut() {
         if(trendinfo){
             fetchdata();
         }
+        else{
+            setResults({})
+        }
         return () => controller?.abort();
     }, [trendinfo])
 

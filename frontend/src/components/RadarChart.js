@@ -67,10 +67,11 @@ function RadarChart() {
         if(trendinfo){
             fetchdata();
         }
+        else{
+            setResults({})
+        }
         return () => controller?.abort();
     }, [trendinfo])
-
-    console.log(results)
 
     if(results.source){
 
@@ -113,8 +114,8 @@ function RadarChart() {
         );
     }
 
-  return(results && Object.keys(results).length > 0)?
-  (
+    return(results && Object.keys(results).length > 0)?
+    (
 
         <div>
             <h1>Trend Sources</h1>
@@ -126,13 +127,12 @@ function RadarChart() {
             </div>
 
         </div>
-        
+            
+    ):
+    (
+        <div>
 
-  ):
-  (
-      <div>
-
-      </div>
-  )
+        </div>
+    )
 }
 export default RadarChart

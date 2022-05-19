@@ -20,7 +20,7 @@ const CrawlerDetail = ({data,idx,item}) => {
 
     let getDetails =  async () => {
       try{
-        let response = await axios(data?.url ,{
+        let response = await axios(data?.url + 'rate_limit/',{
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -48,7 +48,6 @@ const CrawlerDetail = ({data,idx,item}) => {
         // console.log("data",limitData)
     }
 
-
     let DeleteCrawler = async () => {
       try{
         let response = await axios(data?.url,{
@@ -62,7 +61,6 @@ const CrawlerDetail = ({data,idx,item}) => {
         if(response.status === 204){
 
           //setRefresh((refresh) => (! refresh))
-
           console.log("delete data" , data)
           const list = [...item?.crawlerList]
           list.splice(idx, 1);
@@ -76,9 +74,10 @@ const CrawlerDetail = ({data,idx,item}) => {
       }
       catch(err){
         console.log(err.message)
+        console.log("Error");
       }
     }
-
+    console.log(results)
     return (
 
         <div>

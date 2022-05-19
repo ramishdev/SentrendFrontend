@@ -11,13 +11,13 @@ const SearchPage = () => {
   const [crawlList, setcrawlList] = useState([{id:1},{id:2}]);              //Dummy data
   const [crawlInfo, setcrawlinfo] = useState([{id: "",type:[""],duration:""}]);
   const [validated, setValidated] = useState(false);
+  const [usertier, settier] = useState();
   const {authTokens} = useAuth()
-
   useEffect(() => {
     const controller = new AbortController();
-    const fetchcrawlers = async () => {
+    const fetchdata = async () => {
       try {
-        let response = await axios.get('/crawler/crawlers/',{
+        let response1 = await axios.get('/crawler/crawlers/',{
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + String(authTokens?.access)
@@ -25,21 +25,32 @@ const SearchPage = () => {
           signal: controller.signal
 
         })
-        let data = await response.data
-        if(response.status === 200){
+        let data = await response1.data
+        if(response1.status === 200){
           setcrawlList(data) 
         }
+        let response2 = await axios.get('/api/user_tiers/get_teir_info/',{
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + String(authTokens?.access)
+          },
+          signal: controller.signal
+
+        })
+        let data2 = await response2.data
+        data2['current_keywords'] -= 1;
+        settier(data2)
       }
       catch (err) {
         console.error(err.message);
       }
     }
     if(authTokens){
-      fetchcrawlers()
+      fetchdata()
     }
   }, [])
 
-  const updateTweets = async () => {
+  const postuserdata = async () => {
     const controller = new AbortController();
     console.log(inputList)
     try{
@@ -88,10 +99,15 @@ const SearchPage = () => {
     if (form.checkValidity() === true) {
       event.preventDefault();
       //setValidated(false);
-      updateTweets();
-      console.log("Nice")
+      if(usertier && (usertier?.current_keywords < usertier?.max_keywords)){
+        postuserdata();
+        console.log("Nice")
+        alert("Done")
+      }
+      else{
+        alert("Limit Reached")
+      }
     }
-    
   };
 
   // handle input change
@@ -132,7 +148,13 @@ const SearchPage = () => {
 
   // handle click event of the Add button
   const handleAddClick = () => {
-    setInputList((inputList) => [...inputList, {trend_name: "",max_results: "",count: ""}]);
+    if(usertier && (usertier?.current_keywords > 0 && usertier?.current_keywords < usertier?.max_keywords)){
+      setInputList((inputList) => [...inputList, {trend_name: "",max_results: "",count: ""}]);
+      settier((usertier)=>({...usertier,current_keywords:usertier?.current_keywords - 1}))
+    }
+    else{
+      alert("Limit Reached")
+    }
   };
 
   return (
@@ -219,6 +241,7 @@ const SearchPage = () => {
       </Form>
       <div className="flex justify-center" style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
       <div className="flex justify-center" style={{ marginTop: 20 }}>{JSON.stringify(crawlInfo)}</div>
+      <div className="flex justify-center" style={{ marginTop: 20 }}>{JSON.stringify(usertier)}</div>
 
     </div>
   );

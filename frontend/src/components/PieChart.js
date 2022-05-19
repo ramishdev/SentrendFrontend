@@ -50,9 +50,12 @@ function PieChart() {
         if(trendinfo){
             fetchdata();
         }
+        else{
+            setResults({})
+        }
         return () => controller?.abort();
     }, [trendinfo])
-
+    
     const data1 = {
         labels: ['Positive','Negative','Neutral'],
         datasets: [

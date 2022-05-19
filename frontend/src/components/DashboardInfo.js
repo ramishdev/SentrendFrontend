@@ -11,7 +11,6 @@ const DashboardInfo = () => {
             <div>
                 <TabsInterface/>
             </div>
-          
         </div>
     );
 }

@@ -35,8 +35,7 @@ export const AuthProvider = ({children}) => {
                     'email':e.target.email.value,
                     'password': e.target.password.value})
             })
-
-            let data = await response.data
+            const data = await response.data
 
             if(response.status === 201){
                 alert('user created, you can now login')
@@ -50,8 +49,9 @@ export const AuthProvider = ({children}) => {
             console.log(e.target.username.value)
             console.error(err.message);
             logoutUser()
-        }
+            alert(JSON.stringify(err.response.data))
 
+        }
 
     }
 
@@ -82,6 +82,7 @@ export const AuthProvider = ({children}) => {
         }
         catch(err){
             console.error(err.message);
+            alert('Something went wrong')
         }
     }
 
@@ -98,6 +99,7 @@ export const AuthProvider = ({children}) => {
     let updateToken = async ()=> {
 
         console.log("updated token called")
+        console.log(authTokens)
         try{
             let response = await axios('/api/token/refresh/' , {
                 method: 'POST',

@@ -8,8 +8,10 @@ const Sidebar = ({setdata}) => {
   let {user} = useAuth()
   const [open, setOpen] = useState(true);
   const [trends,setTrends] = useState([])
+  const [usertrends,setuserTrends] = useState([])
+
   const [isloading,setloading] = useState(false);
-  //let {authTokens} = useAuth()
+  const {authTokens} = useAuth()
 
   const passTrends = (trend) =>{
     setdata(trend)
@@ -23,7 +25,7 @@ const Sidebar = ({setdata}) => {
   }
   const usertrenddata={
     Name:"User Trends",
-    trends:trends,
+    trends:usertrends,
     passTrends:passTrends,
     open:open,
     setOpen:setOpen
@@ -33,6 +35,7 @@ const Sidebar = ({setdata}) => {
     const controller = new AbortController();
     const fetchTrends = async () => {
       setloading(true);
+      setdata()
       try{
 
         const data = await axios.get('/api/trends/', {
@@ -47,6 +50,18 @@ const Sidebar = ({setdata}) => {
         console.log(data?.data)
         setTrends(data?.data);
         console.log(data);
+        if(user){
+          const data = await axios.get('/api/users/get_user_trends/', {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + String(authTokens?.access)
+            },
+            signal: controller.signal
+          });
+          console.log(data?.data)
+          setuserTrends(data?.data);
+          console.log(data);
+        }
       }
       catch(err){
         console.error(err.message);
@@ -56,7 +71,7 @@ const Sidebar = ({setdata}) => {
     fetchTrends();
     return () => controller?.abort();
 
-  }, [user] );
+  }, [user,authTokens] );
   return (isloading)?(
 
     <div><h1>Loading...</h1></div>
