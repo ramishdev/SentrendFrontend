@@ -23,7 +23,7 @@ const LoginPage = () => {
                 </div>
                 <button type="submit" className="btn mt-2 btn-primary btn-block">Submit</button>
                 <p className="forgot-password text-right">
-                    Want to register <button className="btn btn-primary btn-block" onClick={() => navigate('/register')}>Sign up?</button>
+                    Want to register <button className="btn btn-primary btn-block" onClick={() => navigate('/register',{replace : true})}>Sign up?</button>
                 </p>
             </form>
             {/*<form onSubmit = {loginUser}>
