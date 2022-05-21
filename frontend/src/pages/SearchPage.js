@@ -12,10 +12,15 @@ const SearchPage = () => {
   const [crawlInfo, setcrawlinfo] = useState([{id: "",type:[""],duration:""}]);
   const [validated, setValidated] = useState(false);
   const [usertier, settier] = useState();
+  const [loading, setloading] = useState(false);
   const {authTokens} = useAuth()
+  let reach = 1
   useEffect(() => {
     const controller = new AbortController();
     const fetchdata = async () => {
+      setloading(true)
+      setInputList([{trend_name: "",max_results:"",count:""}])
+
       try {
         let response1 = await axios.get('/crawler/crawlers/',{
           headers: {
@@ -38,20 +43,26 @@ const SearchPage = () => {
 
         })
         let data2 = await response2.data
+        data2['remaining'] = data2['current_keywords']
         settier(data2)
       }
       catch (err) {
         console.error(err.message);
       }
+      setloading(false)
     }
     if(authTokens){
       fetchdata()
     }
   }, [])
-
+  if (usertier?.current_keywords === usertier?.max_keywords){
+    reach = 0
+  } 
+  let current = usertier?.current_keywords
   const postuserdata = async () => {
     const controller = new AbortController();
     console.log(inputList)
+    setloading(true)
     try{
       let rp1 = await axios.post('/api/trends/update_user_trends/',{ 
         query: inputList,
@@ -85,6 +96,8 @@ const SearchPage = () => {
     catch (err) {
       console.error(err.message);
     }
+    setloading(false)
+
   }
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
@@ -98,7 +111,7 @@ const SearchPage = () => {
     if (form.checkValidity() === true) {
       event.preventDefault();
       //setValidated(false);
-      if(usertier && ( usertier?.current_keywords >= 0 && usertier?.current_keywords <= usertier?.max_keywords)){
+      if(usertier && ( usertier?.current_keywords >= 0 && usertier?.current_keywords < usertier?.max_keywords)){
         postuserdata();
         console.log("Nice")
         alert("Done")
@@ -143,20 +156,24 @@ const SearchPage = () => {
     const list = [...inputList];
     list.splice(index, 1);
     setInputList(list);
+    settier((usertier)=>({...usertier,remaining:usertier?.remaining - 1}))
+
   };
 
   // handle click event of the Add button
   const handleAddClick = () => {
-    if(usertier && (usertier?.current_keywords >= 0 && usertier?.current_keywords < usertier?.max_keywords - 1)){
+    if(usertier && (usertier?.current_keywords >= 0 && usertier?.remaining < usertier?.max_keywords - 1)){
       setInputList((inputList) => [...inputList, {trend_name: "",max_results: "",count: ""}]);
-      settier((usertier)=>({...usertier,current_keywords:usertier?.current_keywords + 1}))
+      settier((usertier)=>({...usertier,remaining:usertier?.remaining + 1}))
     }
     else{
       alert("Limit Reached")
     }
   };
 
-  return (
+  return (loading)? (
+    <div className="d-flex justify-content-center">Loading</div>
+  ):(
     <div className="container flex min-h-screen flex-col justify-center">
       <div className="flex justify-center">
         <h3 className={"text-md"}>Search</h3>
@@ -240,7 +257,7 @@ const SearchPage = () => {
       </Form>
       <div className="flex justify-center" style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
       <div className="flex justify-center" style={{ marginTop: 20 }}>{JSON.stringify(crawlInfo)}</div>
-      <div className="flex justify-center" style={{ marginTop: 20 }}>{JSON.stringify(usertier)}</div>
+      <div className="flex justify-center" style={{ marginTop: 20 }}>{"tier_name : " + usertier?.tier_name + ", max_keywords : " + usertier?.max_keywords + ", Current : " + current + ", Can Add More : " + (usertier?.max_keywords - usertier?.remaining - reach)}</div>
 
     </div>
   );
