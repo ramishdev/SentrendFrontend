@@ -38,7 +38,6 @@ const SearchPage = () => {
 
         })
         let data2 = await response2.data
-        data2['current_keywords'] -= 1;
         settier(data2)
       }
       catch (err) {
@@ -99,7 +98,7 @@ const SearchPage = () => {
     if (form.checkValidity() === true) {
       event.preventDefault();
       //setValidated(false);
-      if(usertier && (usertier?.current_keywords < usertier?.max_keywords)){
+      if(usertier && ( usertier?.current_keywords >= 0 && usertier?.current_keywords <= usertier?.max_keywords)){
         postuserdata();
         console.log("Nice")
         alert("Done")
@@ -148,9 +147,9 @@ const SearchPage = () => {
 
   // handle click event of the Add button
   const handleAddClick = () => {
-    if(usertier && (usertier?.current_keywords > 0 && usertier?.current_keywords < usertier?.max_keywords)){
+    if(usertier && (usertier?.current_keywords >= 0 && usertier?.current_keywords < usertier?.max_keywords - 1)){
       setInputList((inputList) => [...inputList, {trend_name: "",max_results: "",count: ""}]);
-      settier((usertier)=>({...usertier,current_keywords:usertier?.current_keywords - 1}))
+      settier((usertier)=>({...usertier,current_keywords:usertier?.current_keywords + 1}))
     }
     else{
       alert("Limit Reached")
