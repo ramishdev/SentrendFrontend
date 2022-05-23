@@ -91,7 +91,7 @@ const Sidebar = ({setdata}) => {
               !open && "scale-0"
             }`}
           >
-            Designer
+            Trends
           </h1>
           <div className="pt-4">
           <img
