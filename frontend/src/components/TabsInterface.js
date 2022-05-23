@@ -1,29 +1,21 @@
 import React from 'react'
 //import { useNavigate } from 'react-router-dom'
-
 import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
-
 import DoughnutChart from "./DoughnutChart"
 import RadarChart from "./RadarChart"
 import PieChart from './PieChart'
-
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 const TabsInterface = () => {
-
-
-    //const navigate = useNavigate()
-    
+    //const navigate = useNavigate()    
     return (
-        <div >
+        <div>
             <Tabs defaultActiveKey="sentiment" id="uncontrolled-tab-example" className="mb-3" >
-                <Tab eventKey="sentiment" title="Sentiment">
-                    
+                <Tab eventKey="sentiment" title="Sentiment">         
                     <div>
-
                         <Container className="p-10">
                             <Row>
                                 <Col className="d-flex justify-content-center">

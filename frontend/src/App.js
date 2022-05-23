@@ -15,6 +15,14 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <AuthProvider>
+          <Header/>
+          <Routes>
+            <Route element={<PrivateRoute> <HomePage/> </PrivateRoute>} path = "/" exact />
+            <Route element={<LoginPage/>} path = "/login"/>
+            <Route element={<RegisterPage/>} path = "/register"/>
+          </Routes>
+        </AuthProvider>
         <Dashboard />
 
       </Router>

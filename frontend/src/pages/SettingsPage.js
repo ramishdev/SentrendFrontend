@@ -11,12 +11,9 @@ const SettingsPage = () => {
 
     
     return (
-        <div >
+        <>
             <Button variant="outline-primary"><NavLink to={'/'} style={{  textDecoration: 'none'}}>Back</NavLink></Button>
-            
             <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3" >
-
-            
                 <Tab eventKey="profile" title="Profile">
                     <Profile/>
                 </Tab>
@@ -26,10 +23,8 @@ const SettingsPage = () => {
                 <Tab eventKey="privacy" title="Privacy" >
                     <p> Privacy </p>
                 </Tab>
-                
             </Tabs>  
-                 
-        </div>
+        </>
     )
 
 }

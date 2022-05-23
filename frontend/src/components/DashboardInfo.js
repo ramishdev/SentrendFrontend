@@ -7,11 +7,9 @@ const DashboardInfo = () => {
     //const trendinfo = useOutletContext()
 
     return (
-        <div>
-            <div>
-                <TabsInterface/>
-            </div>
-        </div>
+        <>
+            <TabsInterface/>
+        </>
     );
 }
 

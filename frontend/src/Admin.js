@@ -25,9 +25,9 @@ function Admin(){
                         <Route path="/" element={<Dashboard/>}>
                             <Route path="/" element={<DashboardInfo/>}/>
                         </Route>
-                        <Route element={<LoginPage/>} path = "/login"/>
-                        <Route element={<RegisterPage/>} path = "/register"/>
-                        <Route element={<SettingsPage/>} path = "/settings"/>
+                        <Route path = "/login" element={<LoginPage/>}/>
+                        <Route path = "/register" element={<RegisterPage/>}/>
+                        <Route path = "/settings" element={<SettingsPage/>}/>
                         <Route path="/settings/new-crawler" element={<NewCrawlerPage/>}/>
                         <Route path="/search" element={<SearchPage/>}/>
                     </Routes>

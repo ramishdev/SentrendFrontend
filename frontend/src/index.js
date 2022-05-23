@@ -6,7 +6,7 @@ import './index.css';
 import Admin from './Admin';
 import reportWebVitals from './reportWebVitals';
 
-import App from './App';
+// import App from './App';
 
 //const container = document.getElementById('root');
 
@@ -21,9 +21,7 @@ import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    
     <Admin />
-
   </React.StrictMode>,
   document.getElementById('root')
 );
