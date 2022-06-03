@@ -49,7 +49,7 @@ export const AuthProvider = ({children}) => {
             console.log(e.target.username.value)
             console.error(err.message);
             logoutUser()
-            alert(JSON.stringify(err.response.data))
+            alert(JSON.stringify(err.response?.data))
 
         }
 

@@ -1,35 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 
-
 import {
-  Chart as ChartJS,
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend,
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
 } from 'chart.js';
 
-
-import { Radar } from 'react-chartjs-2';
-
+import { Bar } from 'react-chartjs-2';
 
 import axios from '../hooks/axios.js'
 
 ChartJS.register(
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend
-);
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+  );
 
 
 
-function RadarChart() {
+function BarChart() {
 
     let data = {}
     const trendinfo = useOutletContext()
@@ -118,8 +115,8 @@ function RadarChart() {
 
         <div>
             <h1>Trend Sources</h1>
-            <div className="border border-sky-500 inline-block " style={{ width: '25rem'}}>
-                <Radar data={data} options={{
+            <div className="border border-sky-500 w-fit">
+                <Bar data={data} options={{
                     responsive: true,
                     maintainAspectRatio: true,
                 }}/>
@@ -129,9 +126,9 @@ function RadarChart() {
             
     ):
     (
-        <div>
+        <>
 
-        </div>
+        </>
     )
 }
-export default RadarChart
+export default BarChart

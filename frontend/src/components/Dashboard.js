@@ -10,6 +10,7 @@ import {Outlet} from 'react-router-dom'
 
 const Dashboard = () => {
     const [data,setdata] = useState();
+    const [pad,setpad] = useState(true);
     /*if(isloading) {
         return <h1>Loading</h1>;
     }*/
@@ -18,15 +19,11 @@ const Dashboard = () => {
         setdata: setdata,npm
     }*/
     return (
-            <div className="d-flex" >
-                <div className="h-100 d-flex">
-                    <Sidebar setdata={setdata}/>
-                </div>
-                <div style={{height:'100%',width:'100vw'}}>
+            <div className="flex" >
+                <Sidebar setdata={setdata} setpad={setpad}/>
+                <div style={{height:'100%',width:'100vw'}} className={` ${ pad ? "visible sm:invisible sm:pl-72" : "pl-20 "} `}>
                     <MyNavbar/>
-                    <div>
-                        <Outlet context={data}/>
-                    </div>
+                    <Outlet context={data}/>
                 </div>
             </div>
     );

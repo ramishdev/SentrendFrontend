@@ -110,7 +110,7 @@ function PieChart() {
                     </Col>
                     <Col>
                         <h1>Trend Subjectivity</h1>
-                        <div className="border border-sky-500 inline-block ..." style={{ width: '15rem' }}>
+                        <div className="border border-sky-500 w-60">
                             <Pie data={data2} options={{
                                 responsive: true,
                                 maintainAspectRatio: true,

@@ -4,7 +4,7 @@ import useAuth from "../hooks/useAuth"
 
 import axios from '../hooks/axios.js'
 
-const Sidebar = ({setdata}) => {
+const Sidebar = ({setdata,setpad}) => {
   let {user} = useAuth()
   const [open, setOpen] = useState(true);
   const [trends,setTrends] = useState([])
@@ -21,14 +21,16 @@ const Sidebar = ({setdata}) => {
     trends:trends,
     passTrends:passTrends,
     open:open,
-    setOpen:setOpen
+    setOpen:setOpen,
+    setpad:setpad
   }
   const usertrenddata={
     Name:"User Trends",
     trends:usertrends,
     passTrends:passTrends,
     open:open,
-    setOpen:setOpen
+    setOpen:setOpen,
+    setpad:setpad
   }
   useEffect(() => {
     
@@ -77,14 +79,15 @@ const Sidebar = ({setdata}) => {
     <div><h1>Loading...</h1></div>
 
   ):(
-    <div className="flex ">
-      <div className={` ${ open ? "w-72" : "w-20 "} bg-nav-color pl-5 pt-8 relative duration-300 max-h-screen h-screen overflow-x-hidden overflow-y-auto` } >       
+    <div className="fixed top-0 bottom-0">
+      <div className={` ${ open ? "w-screen sm:w-72" : "w-20 "} bg-nav-color pl-5 pt-8 duration-300 h-screen overflow-x-hidden overflow-y-auto` } >       
         <div className="flex gap-x-4 items-center">
           <img
             src={require("../assets/logo.png")} alt="./assets/logo.png"
             className={`cursor-pointer duration-500 ${
               open && "rotate-[360deg]"
             }`}
+            onClick={() => {setOpen(!open); setpad(!open)}}
           />
           <h1
             className={`text-white origin-left font-medium text-xl duration-200 ${
@@ -98,7 +101,7 @@ const Sidebar = ({setdata}) => {
             src={require("../assets/control.png")} alt=""
             className={`absolute cursor-pointer -right-3 w-7 border-dark-purple
             border-2 rounded-full  ${!open && "rotate-180"}`}
-            onClick={() => setOpen(!open)}
+            onClick={() => {setOpen(!open); setpad(!open)}}
           />
           </div>
         </div>

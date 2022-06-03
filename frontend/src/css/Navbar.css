@@ -1,4 +1,3 @@
-
 .navbar-collapse {
     flex-basis: 100%;
     flex-grow: 0;
@@ -8,5 +7,17 @@
 
     background-color: #006B38FF;
     background-size: medium;
-    
+}
+.navbar{
+    position:static;
+}
+.navbar-theme {
+    background-color: #006B38FF;
+    background-size: medium;
+}
+.my-invisible {
+    visibility: hidden;
+}
+.my-visible {
+    visibility: visible;
 }

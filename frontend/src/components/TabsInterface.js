@@ -4,6 +4,8 @@ import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import DoughnutChart from "./DoughnutChart"
 import RadarChart from "./RadarChart"
+import BarChart from "./BarChart"
+
 import PieChart from './PieChart'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -12,17 +14,17 @@ import Col from 'react-bootstrap/Col'
 const TabsInterface = () => {
     //const navigate = useNavigate()    
     return (
-        <div>
+        <>
             <Tabs defaultActiveKey="sentiment" id="uncontrolled-tab-example" className="mb-3" >
                 <Tab eventKey="sentiment" title="Sentiment">         
                     <div>
-                        <Container className="p-10">
-                            <Row>
-                                <Col className="d-flex justify-content-center">
+                        <Container className="p-10 d-flex justify-center">
+                            <Row xs="auto">
+                                <Col>
                                     <PieChart/>
                                 </Col>
-                                <Col className="d-flex justify-content-center">
-                                    <RadarChart/>
+                                <Col>
+                                    <BarChart/>
                                 </Col>
                             </Row>
                             <Row>
@@ -37,7 +39,7 @@ const TabsInterface = () => {
                 <Tab eventKey="topic analysis" title="Topic Analysis">
                 </Tab>
             </Tabs>  
-        </div>
+        </>
     )
 
 }

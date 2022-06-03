@@ -14,6 +14,10 @@ import RegisterPage from './pages/RegisterPage'
 import SettingsPage from './pages/SettingsPage'
 import NewCrawlerPage from './pages/NewCrawlerPage'
 import SearchPage from './pages/SearchPage'
+import PrivateRoute from './utils/PrivateRoute'
+import Error from './pages/NotFound'
+import Unauthorized from './pages/Unauth'
+
 
 
 function Admin(){
@@ -27,9 +31,11 @@ function Admin(){
                         </Route>
                         <Route path = "/login" element={<LoginPage/>}/>
                         <Route path = "/register" element={<RegisterPage/>}/>
-                        <Route path = "/settings" element={<SettingsPage/>}/>
-                        <Route path="/settings/new-crawler" element={<NewCrawlerPage/>}/>
-                        <Route path="/search" element={<SearchPage/>}/>
+                        <Route path = "/settings" element={<PrivateRoute><SettingsPage/></PrivateRoute>}/>
+                        <Route path = "/settings/new-crawler" element={<PrivateRoute><NewCrawlerPage/></PrivateRoute>}/>
+                        <Route path = "/search" element={<PrivateRoute><SearchPage/></PrivateRoute>}/>
+                        <Route path = "/Unauthorized" element={<Unauthorized/>}/>
+                        <Route path = "*" element={<Error/>}/>
                     </Routes>
                 </AuthProvider>
             </BrowserRouter>

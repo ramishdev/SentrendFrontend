@@ -2,10 +2,10 @@ import React from 'react';
 import {Nav,NavDropdown,Container,Navbar} from 'react-bootstrap'
 import {Button} from 'react-bootstrap/'
 import useAuth from "../hooks/useAuth"
-import '../css/Navbar.css'
 //import {useNavigate} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom'
+import '../css/Navbar.css'
 
 const MyNavbar = () => {
     //const navigate = useNavigate()

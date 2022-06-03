@@ -53,9 +53,9 @@ const SubMenu = ({ item }) => {
     <div>
       <SidebarLink className="rounded-md p-2 cursor-pointer" to={'/'} onClick={item.trends && showSubnav}>
         <div className="d-flex">
-          <IconContext.Provider value={{className: "shared-class", size: 30 }}>
+          <IconContext.Provider value={{size: 30 }}>
             <div className="pr-2">
-              <RiIcons.RiBarChartBoxFill onClick={() => {item?.setOpen(!item?.open); setSubnav(!subnav);}}/>
+              <RiIcons.RiBarChartBoxFill onClick={() => {item?.setOpen(!(item?.open)); setSubnav(!subnav); item?.setpad(!(item?.open))}}/>
             </div>
           </IconContext.Provider>
           <SidebarLabel className={`${!item.open && "hidden"} duration-200 text-sm` }>{item.Name}</SidebarLabel>

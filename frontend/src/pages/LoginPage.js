@@ -9,6 +9,7 @@ const LoginPage = () => {
   const navigate = useNavigate()
 
   return (
+    <div className="container-fluid">
     <div className="auth-wrapper">
         <div className="auth-inner">
             <form onSubmit = {loginUser}>
@@ -32,6 +33,7 @@ const LoginPage = () => {
                 <input type="submit" />   
             </form>*/}
         </div>
+    </div>
     </div>
   )
 }
