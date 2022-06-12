@@ -236,6 +236,7 @@ const SearchPage = () => {
             </Form.Select>
             {/* <Feedback>Looks good!</Feedback> */}
           </Form.Group>
+          { (crawlInfo[0]['type'] === 'stream') ? (
           <Form.Group className='w-36 ml-1'>
             <Form.Control
               type="number"
@@ -250,6 +251,8 @@ const SearchPage = () => {
             <Feedback type="invalid">Range (1-200)</Feedback>
             {/* <Feedback>Looks good!</Feedback> */}
           </Form.Group>
+          ):(<></>)
+          }
         </div>
         <div className="flex justify-center">
           <Button className="mt-2" variant="outline-primary" size="sm" type="submit">Submit form</Button>
