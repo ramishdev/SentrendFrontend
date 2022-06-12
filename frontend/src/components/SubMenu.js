@@ -77,7 +77,7 @@ const SubMenu = ({ item }) => {
                   {<BsIcons.BsGraphUp />}
                 </div>
               </IconContext.Provider>
-              <SidebarLabel className="text-xs">{trend.trend_name}</SidebarLabel>
+              <SidebarLabel className="text-xs">{trend.name}</SidebarLabel>
             </DropdownLink>
           );
         })}

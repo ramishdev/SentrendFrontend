@@ -47,7 +47,6 @@ const Sidebar = ({setdata,setpad}) => {
           },
           signal: controller.signal
         });
-
         //let newState = data.data.map((trend) => ({"trend_name":trend.trend_name,"max_results":10,"count":1}));  
         console.log(data?.data)
         setTrends(data?.data);
@@ -74,6 +73,7 @@ const Sidebar = ({setdata,setpad}) => {
     return () => controller?.abort();
 
   }, [user,authTokens] );
+  
   return (isloading)?(
 
     <div><h1>Loading...</h1></div>
