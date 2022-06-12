@@ -34,7 +34,7 @@ const SearchPage = () => {
         if(response1.status === 200){
           setcrawlList(data) 
         }
-        let response2 = await axios.get('/api/user_tiers/get_teir_info/',{
+        let response2 = await axios.get('/core/user_tiers/get_teir_info/',{
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + String(authTokens?.access)
@@ -64,7 +64,7 @@ const SearchPage = () => {
     console.log(inputList)
     setloading(true)
     try{
-      let rp1 = await axios.post('/api/trends/update_user_trends/',{ 
+      let rp1 = await axios.post('/core/trends/update_user_trends/',{ 
         query: inputList,
         crawler: crawlInfo[0],
         signal: controller.signal
@@ -79,7 +79,7 @@ const SearchPage = () => {
       if(crawlInfo[0]['type'] === "Stream"){
         type = 'stream_'
       }
-      let response = await axios.post('/api/tweets/'+ type +'update_tweets/',{
+      let response = await axios.post('/core/tweets/'+ type +'create_tweets/',{
           query: inputList,
           crawler: crawlInfo[0],
           signal: controller.signal

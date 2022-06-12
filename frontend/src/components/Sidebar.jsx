@@ -40,7 +40,7 @@ const Sidebar = ({setdata,setpad}) => {
       setdata()
       try{
 
-        const data = await axios.get('/api/trends/', {
+        const data = await axios.get('/core/trends/', {
           params: {
             limit: 10,
             location: 'Worldwide'
@@ -53,7 +53,7 @@ const Sidebar = ({setdata,setpad}) => {
         setTrends(data?.data);
         console.log(data);
         if(user){
-          const data = await axios.get('/api/users/get_user_trends/', {
+          const data = await axios.get('/core/get_user_trends/', {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': 'Bearer ' + String(authTokens?.access)

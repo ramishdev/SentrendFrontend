@@ -27,7 +27,7 @@ export const AuthProvider = ({children}) => {
 
         e.preventDefault()
         try{
-            let response = await axios('/api/users/', {
+            let response = await axios('/user/users/', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 data : JSON.stringify({
@@ -59,7 +59,7 @@ export const AuthProvider = ({children}) => {
 
         e.preventDefault()
         try {
-            let response = await axios('/api/token/' , {
+            let response = await axios('/user/token/' , {
                 method: 'POST',
                 headers : {'Content-Type': 'application/json'},
                 data : JSON.stringify({'username':e.target.username.value, 'password':e.target.password.value})
@@ -101,7 +101,7 @@ export const AuthProvider = ({children}) => {
         console.log("updated token called")
         console.log(authTokens)
         try{
-            let response = await axios('/api/token/refresh/' , {
+            let response = await axios('/user/token/refresh/' , {
                 method: 'POST',
                 headers : {'Content-Type': 'application/json'},
                 data : JSON.stringify({'refresh': authTokens?.refresh})
