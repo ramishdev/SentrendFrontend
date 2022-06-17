@@ -66,7 +66,7 @@ function BarChart({source}) {
 
         <>
             <h1>Trend Sources</h1>
-            <div className="border border-sky-500 w-fit">
+            <div className="border border-sky-500 w-fit"  style={{ height: '30rem'}}>
                 <Bar data={data} options={{
                     responsive: true,
                     maintainAspectRatio: true,

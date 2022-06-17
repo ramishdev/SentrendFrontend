@@ -65,17 +65,14 @@ function InfoCharts() {
     (
 
         <div>
-             <Container>
-                <Row>
-                    <Col>
-                        <RadarChart info={results?.public}/>
-                    </Col>
-                    <Col>
-                        <BarChart source={results?.source}/>
-                    </Col>
-                </Row>
-            </Container>
-
+            <Row>
+                <Col>
+                    <RadarChart info={results?.public}/>
+                </Col>
+                <Col>
+                    <BarChart source={results?.source}/>
+                </Col>
+            </Row>
         </div>
             
     ):

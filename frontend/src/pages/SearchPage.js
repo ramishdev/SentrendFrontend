@@ -106,7 +106,7 @@ const SearchPage = () => {
         setloading(true)
         await postuserdata();
         console.log("Nice")
-        alert("Done")
+        alert(loading)
       }
       else{
         alert("Limit Reached")
