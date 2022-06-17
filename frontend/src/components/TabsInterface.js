@@ -10,15 +10,24 @@ import PieChart from './PieChart'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { useOutletContext } from "react-router-dom";
 
 const TabsInterface = () => {
-    //const navigate = useNavigate()    
+    //const navigate = useNavigate()
+    const trendinfo = useOutletContext()    
     return (
         <>
             <Tabs defaultActiveKey="sentiment" id="uncontrolled-tab-example" className="mb-3" >
                 <Tab eventKey="sentiment" title="Sentiment">         
                     <div>
                         <Container className="p-10 d-flex justify-center">
+                            <Row>
+                                <Col>
+                                    <h1>
+                                        {trendinfo?.name}
+                                    </h1>
+                                </Col>
+                            </Row>
                             <Row xs="auto">
                                 <Col>
                                     <PieChart/>
