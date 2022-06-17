@@ -52,7 +52,7 @@ const Sidebar = ({setdata,setpad}) => {
         setTrends(data?.data);
         console.log(data);
         if(user){
-          const data = await axios.get('/core/get_user_trends/', {
+          const data = await axios.get('/core/trends/get_user_trends/', {
             headers: {
               'Content-Type': 'application/json',
               'Authorization': 'Bearer ' + String(authTokens?.access)
