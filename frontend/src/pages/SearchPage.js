@@ -34,7 +34,7 @@ const SearchPage = () => {
         if(response1.status === 200){
           setcrawlList(data) 
         }
-        let response2 = await axios.get('/core/user_tiers/get_teir_info/',{
+        let response2 = await axios.get('/user/user_tiers/get_teir_info/',{
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + String(authTokens?.access)
