@@ -20,24 +20,21 @@ const TabsInterface = () => {
             <Tabs defaultActiveKey="sentiment" id="uncontrolled-tab-example" className="mb-3" >
                 <Tab eventKey="sentiment" title="Sentiment">         
                     <div>
-                        <Container className="p-10 d-flex justify-center">
-                            <Row>
+                        <Container>
+                            <Row className="p-10 d-flex justify-center">
                                 <Col>
-                                    <h1>
+                                    <h1 className = "text-5xl">
                                         {trendinfo?.name}
                                     </h1>
                                 </Col>
                             </Row>
-                            <Row xs="auto">
-                                <Col>
-                                    <PieChart/>
-                                </Col>
-                                <Col>
-                                    <InfoCharts/>
-                                </Col>
+                            <Row className="p-10 d-flex justify-center">
+
+                                <PieChart/>
                             </Row>
-                            <Row>
-                                
+
+                            <Row className="p-10 d-flex justify-center">
+                                <InfoCharts/>
                             </Row>
                         </Container>
                     </div>

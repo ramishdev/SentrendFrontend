@@ -106,7 +106,7 @@ const SearchPage = () => {
       if(usertier && ( usertier?.current_keywords >= 0 && usertier?.current_keywords < usertier?.max_keywords)){
         postuserdata();
         console.log("Nice")
-        alert("Done")
+        alert(loading)
       }
       else{
         alert("Limit Reached")

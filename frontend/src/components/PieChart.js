@@ -97,28 +97,26 @@ function PieChart() {
     return (results && Object.keys(results).length > 0)?
     ( 
         <div>
-            <Container>
-                <Row>
-                    <Col>
-                        <h1>Trend Polarity</h1>
-                        <div className="border border-sky-500 inline-block ..." style={{ width: '15rem' }}>
-                            <Pie data={data1} options={{
-                                responsive: true,
-                                maintainAspectRatio: true,
-                            }}/>
-                        </div>
-                    </Col>
-                    <Col>
-                        <h1>Trend Subjectivity</h1>
-                        <div className="border border-sky-500 w-60">
-                            <Pie data={data2} options={{
-                                responsive: true,
-                                maintainAspectRatio: true,
-                            }}/>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+            <Row>
+                <Col >
+                    <h1 >Trend Polarity</h1>
+                    <div className="border border-sky-500 inline-block ..." style={{ width: '15rem' }}>
+                        <Pie data={data1} options={{
+                            responsive: true,
+                            maintainAspectRatio: true,
+                        }}/>
+                    </div>
+                </Col>
+                <Col>
+                    <h1>Trend Subjectivity</h1>
+                    <div className="border border-sky-500 w-60">
+                        <Pie data={data2} options={{
+                            responsive: true,
+                            maintainAspectRatio: true,
+                        }}/>
+                    </div>
+                </Col>
+            </Row>
         </div>
     ):
     (
