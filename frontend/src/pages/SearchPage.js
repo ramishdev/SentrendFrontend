@@ -64,7 +64,7 @@ const SearchPage = () => {
     console.log(inputList)
     setloading(true)
     try{
-      let rp1 = await axios.post('/core/trends/update_user_trends/',{ 
+      let rp1 = await axios.post('/core/trends/create_user_trends/',{ 
         query: inputList,
         crawler: crawlInfo[0],
         signal: controller.signal
