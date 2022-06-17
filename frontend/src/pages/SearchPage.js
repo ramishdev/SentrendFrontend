@@ -59,17 +59,17 @@ const SearchPage = () => {
     reach = 0
   } 
   let current = usertier?.current_keywords
+
   const postuserdata = async () => {
     const controller = new AbortController();
     console.log(inputList)
-    setloading(true)
     try{
       let type = 'batch'
       let response = ''
       if(crawlInfo[0]['type'] === "stream"){
         type = 'stream'
       }
-      if(type === "batch"){
+      
         response = await axios.post('/core/user_search/',{
           query: inputList,
           crawler: crawlInfo[0],
@@ -80,7 +80,7 @@ const SearchPage = () => {
             'Authorization': 'Bearer ' + String(authTokens?.access)
           }
         })
-      }
+      
       if(response?.status === 200){
           console.log("Success!!"); 
       }
@@ -89,7 +89,6 @@ const SearchPage = () => {
       console.error(err.message);
     }
     setloading(false)
-
   }
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
@@ -104,7 +103,8 @@ const SearchPage = () => {
       event.preventDefault();
       //setValidated(false);
       if(usertier && ( usertier?.current_keywords >= 0 && usertier?.current_keywords < usertier?.max_keywords)){
-        postuserdata();
+        setloading(true)
+        await postuserdata();
         console.log("Nice")
         alert("Done")
       }
