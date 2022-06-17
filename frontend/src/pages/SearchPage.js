@@ -64,32 +64,24 @@ const SearchPage = () => {
     console.log(inputList)
     setloading(true)
     try{
-      let rp1 = await axios.post('/core/trends/update_user_trends/',{ 
-        query: inputList,
-        crawler: crawlInfo[0],
-        signal: controller.signal
-      },{
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + String(authTokens?.access)
-        }
-      })
-      console.log(rp1)
-      let type = ''
-      if(crawlInfo[0]['type'] === "Stream"){
-        type = 'stream_'
+      let type = 'batch'
+      let response = ''
+      if(crawlInfo[0]['type'] === "stream"){
+        type = 'stream'
       }
-      let response = await axios.post('/core/tweets/'+ type +'create_tweets/',{
+      if(type === "batch"){
+        response = await axios.post('/core/user_search',{
           query: inputList,
           crawler: crawlInfo[0],
           signal: controller.signal
-      },{
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + String(authTokens?.access)
-        }
-      })
-      if(response.status === 200){
+        },{
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + String(authTokens?.access)
+          }
+        })
+      }
+      if(response?.status === 200){
           console.log("Success!!"); 
       }
     }
