@@ -26,58 +26,17 @@ ChartJS.register(
 
 
 
-function BarChart() {
+function BarChart({source}) {
 
-    let data = {}
-    const trendinfo = useOutletContext()
-    const [results, setResults] = useState({});
-    const [loading, setloading] = useState(false);
-
-    useEffect(() => {
-        const controller = new AbortController();
-        const fetchdata = async () => {
-            setloading(true)
-            try{
-                console.log(trendinfo?.trend_name)
-                const response = await axios.get(trendinfo?.url + 'get_stats/', {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    signal: controller.signal
-                });
-                if(response?.status === 200){
-                    setResults(response?.data)
-                }
-            }
-            catch(err){
-                console.error(err.message);
-                if(err.response.status === 400){
-                    setResults({})
-                }
-                if(err.response.status === 404){
-                    setResults({})
-                }
-            }
-            setloading(false)
-
-        }
-        if(trendinfo){
-            fetchdata();
-        }
-        else{
-            setResults({})
-        }
-        return () => controller?.abort();
-    }, [trendinfo])
-
-    if(results.source){
+    let data= {}
+    if(source){
 
         data = {
-            labels: Object.keys(results.source),
+            labels: Object.keys(source),
             datasets: [
               {
                 label: 'No of tweets',
-                data: Object.values(results.source) ,
+                data: Object.values(source) ,
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1,
@@ -102,18 +61,10 @@ function BarChart() {
     // };
 
 
-    if(loading){
-        return (
-            <div >
-                <h2>Loading</h2>
-            </div>
-        );
-    }
-
-    return(results && Object.keys(results).length > 0)?
+    return(source)?
     (
 
-        <div>
+        <>
             <h1>Trend Sources</h1>
             <div className="border border-sky-500 w-fit">
                 <Bar data={data} options={{
@@ -121,8 +72,7 @@ function BarChart() {
                     maintainAspectRatio: true,
                 }}/>
             </div>
-
-        </div>
+        </>
             
     ):
     (

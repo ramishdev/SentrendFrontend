@@ -4,7 +4,7 @@ import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 import DoughnutChart from "./DoughnutChart"
 import RadarChart from "./RadarChart"
-import BarChart from "./BarChart"
+import InfoCharts from "./InfoCharts"
 
 import PieChart from './PieChart'
 import Container from 'react-bootstrap/Container'
@@ -24,14 +24,13 @@ const TabsInterface = () => {
                                     <PieChart/>
                                 </Col>
                                 <Col>
-                                    <BarChart/>
+                                    <InfoCharts/>
                                 </Col>
                             </Row>
                             <Row>
                                 
                             </Row>
                         </Container>
-                       
                     </div>
                 </Tab>
                 <Tab eventKey="rankings" title="Rankings">

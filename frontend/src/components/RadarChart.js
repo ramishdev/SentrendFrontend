@@ -29,65 +29,22 @@ ChartJS.register(
 
 
 
-function RadarChart() {
+function RadarChart({info}) {
 
     let data = {}
-    const trendinfo = useOutletContext()
-    const [results, setResults] = useState({});
-    const [loading, setloading] = useState(false);
-
-    useEffect(() => {
-        const controller = new AbortController();
-        const fetchdata = async () => {
-            setloading(true)
-            try{
-                console.log(trendinfo?.trend_name)
-                const response = await axios.get(trendinfo?.url + 'get_stats/', {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    signal: controller.signal
-                });
-                if(response?.status === 200){
-                    setResults(response?.data)
-                }
-            }
-            catch(err){
-                console.error(err.message);
-                if(err.response.status === 400){
-                    setResults({})
-                }
-                if(err.response.status === 404){
-                    setResults({})
-                }
-            }
-            setloading(false)
-
-        }
-        if(trendinfo){
-            fetchdata();
-        }
-        else{
-            setResults({})
-        }
-        return () => controller?.abort();
-    }, [trendinfo])
-
-    if(results.source){
-
+    if(info){
         data = {
-            labels: Object.keys(results.source),
+            labels: Object.keys(info),
             datasets: [
               {
                 label: 'No of tweets',
-                data: Object.values(results.source) ,
+                data: Object.values(info) ,
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1,
               },
             ],
         };
-
     }
 
     // const data = {
@@ -104,28 +61,17 @@ function RadarChart() {
     //     ],
     // };
 
-
-    if(loading){
-        return (
-            <div >
-                <h2>Loading</h2>
-            </div>
-        );
-    }
-
-    return(results && Object.keys(results).length > 0)?
+    return(info)?
     (
-
-        <div>
-            <h1>Trend Sources</h1>
+        <>
+            <h1>Trend Info</h1>
             <div className="border border-sky-500 inline-block " style={{ width: '25rem'}}>
                 <Radar data={data} options={{
                     responsive: true,
                     maintainAspectRatio: true,
                 }}/>
             </div>
-
-        </div>
+        </>
             
     ):
     (
