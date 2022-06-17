@@ -7,7 +7,7 @@ import Feedback from 'react-bootstrap/Feedback'
 import axios from '../hooks/axios.js'
 
 const SearchPage = () => {
-  const [inputList, setInputList] = useState([{trend_name: "",max_results:"",count:""}]);
+  const [inputList, setInputList] = useState([{key: "",max_results:"",count:""}]);
   const [crawlList, setcrawlList] = useState([{id:1},{id:2}]);              //Dummy data
   const [crawlInfo, setcrawlinfo] = useState([{id: "",type:[""],duration:""}]);
   const [validated, setValidated] = useState(false);
@@ -19,7 +19,7 @@ const SearchPage = () => {
     const controller = new AbortController();
     const fetchdata = async () => {
       setloading(true)
-      setInputList([{trend_name: "",max_results:"",count:""}])
+      setInputList([{key: "",max_results:"",count:""}])
 
       try {
         let response1 = await axios.get('/crawler/crawlers/',{
@@ -155,7 +155,7 @@ const SearchPage = () => {
   // handle click event of the Add button
   const handleAddClick = () => {
     if(usertier && (usertier?.current_keywords >= 0 && usertier?.remaining < usertier?.max_keywords - 1)){
-      setInputList((inputList) => [...inputList, {trend_name: "",max_results: "",count: ""}]);
+      setInputList((inputList) => [...inputList, {key: "",max_results: "",count: ""}]);
       settier((usertier)=>({...usertier,remaining:usertier?.remaining + 1}))
     }
     else{
@@ -177,9 +177,9 @@ const SearchPage = () => {
               <Form.Group>
                 <Form.Control
                   type="text"
-                  name="trend_name"
+                  name="key"
                   placeholder="Enter Trend Name"
-                  value={x.trend_name}
+                  value={x.key}
                   size="sm"
                   onChange={e => handleInputChange(e, i)} required
                 />
