@@ -105,7 +105,7 @@ const SearchPage = () => {
       if(usertier && ( usertier?.current_keywords >= 0 && usertier?.current_keywords < usertier?.max_keywords)){
         setloading(true)
         await postuserdata();
-        console.log("Nice")
+        console.log("Done")
         alert(loading)
       }
       else{
