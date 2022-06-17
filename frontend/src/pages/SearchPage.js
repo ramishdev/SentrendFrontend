@@ -70,7 +70,7 @@ const SearchPage = () => {
         type = 'stream'
       }
       if(type === "batch"){
-        response = await axios.post('/core/user_search',{
+        response = await axios.post('/core/user_search/',{
           query: inputList,
           crawler: crawlInfo[0],
           signal: controller.signal
