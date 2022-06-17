@@ -69,7 +69,7 @@ const SearchPage = () => {
       if(crawlInfo[0]['type'] === "stream"){
         type = 'stream'
       }
-      
+      if(type === "batch"){
         response = await axios.post('/core/user_search/',{
           query: inputList,
           crawler: crawlInfo[0],
@@ -80,7 +80,7 @@ const SearchPage = () => {
             'Authorization': 'Bearer ' + String(authTokens?.access)
           }
         })
-      
+      }
       if(response?.status === 200){
           console.log("Success!!"); 
       }
