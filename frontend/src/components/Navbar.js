@@ -15,7 +15,7 @@ const MyNavbar = () => {
 
     function handleSubmit(e) {
         e.preventDefault();    
-        navigate("search")
+        navigate("/search")
         console.log('You clicked submit.');
         //navigate('/products')
       }
