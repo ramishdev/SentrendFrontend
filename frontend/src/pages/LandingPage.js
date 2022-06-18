@@ -1,13 +1,21 @@
 
 
+import MainComponent from "../components/landing/Main"
 
+import NavComponent from "../components/landing/NavComponent"
 
 const LandingPage = () => {
 
     
     return (
         <div>
-            <p>LANDING PAGE</p>
+            <div>
+                <NavComponent/>
+            </div>
+            <div>
+                <MainComponent/>
+            </div>
+
         </div>
       )
 
