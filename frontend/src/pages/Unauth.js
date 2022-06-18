@@ -12,7 +12,7 @@ const Unauthorized = () => {
             </div>
             <h1 className="text-center text-2xl">Unauthorized Access</h1>
             <p className="forgot-password text-center  mt-2">
-                <button className="btn btn-primary btn-block" onClick={() => navigate('/',{replace : true})}>Go to Home</button>
+                <button className="btn btn-primary btn-block" onClick={() => navigate('/dashboard',{replace : true})}>Go to Home</button>
             </p>
         </>
     );

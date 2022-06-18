@@ -1,17 +1,16 @@
 import React, {useState, useEffect, useContext} from 'react'
 import Button from 'react-bootstrap/Button'
-import useAuth from "../hooks/useAuth"
-
+import {Initws,getws} from '../hooks/socket'
 
 
 const Testing = () => {
-    const [loading,setloading] = useState(false)
-    const {authTokens} = useAuth()
-    const url = 'ws://127.0.0.1:8000/ws/socket-server/?token=' + authTokens.access
-    const [ws,setWS] = useState(new WebSocket(url))
-
+    console.log(getws())
+    if (getws() === 0 || getws()?.readyState === 3){
+        Initws()
+        console.log("First Time")
+    }
+    const [ws,setws] = useState(getws())
     useEffect(() => {
-        setloading(true)
         ws.onopen = () => {
             console.log('WebSocket Connected');
         }
@@ -21,14 +20,13 @@ const Testing = () => {
         ws.onclose = () => {
             console.log("WebSocket disconnect")
         }
-        setloading(false)
-        return () => ws.close();
+        // return () => ws.close();
     }, [])
 
     const senddata = () => {
         ws.close();
     }
-    return (!ws || loading)?(
+    return (!ws)?(
         <><h1>Loading</h1></>
     )
     : (

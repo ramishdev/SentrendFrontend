@@ -51,7 +51,7 @@ const SubMenu = ({ item }) => {
   const showSubnav = () => setSubnav(!subnav);
   return (
     <div>
-      <SidebarLink className="rounded-md p-2 cursor-pointer" to={'/'} onClick={item.trends && showSubnav}>
+      <SidebarLink className="rounded-md p-2 cursor-pointer" to={'/dashboard'} onClick={item.trends && showSubnav}>
         <div className="d-flex">
           <IconContext.Provider value={{size: 30 }}>
             <div className="pr-2">
