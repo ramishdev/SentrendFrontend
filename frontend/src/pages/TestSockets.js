@@ -1,12 +1,14 @@
 import React, {useState, useEffect, useContext} from 'react'
 import Button from 'react-bootstrap/Button'
+import useAuth from "../hooks/useAuth"
 
 
 
 const Testing = () => {
-    const url = 'wss://demo.piesocket.com/v3/channel_1?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self'
-    const [ws,setWS] = useState(new WebSocket(url))
     const [loading,setloading] = useState(false)
+    const {authTokens} = useAuth()
+    const url = 'ws://127.0.0.1:8000/ws/socket-server/?token=' + authTokens
+    const [ws,setWS] = useState(new WebSocket(url))
 
     useEffect(() => {
         setloading(true)
@@ -22,6 +24,7 @@ const Testing = () => {
         setloading(false)
         return () => ws.close();
     }, [])
+
     const senddata = () => {
         ws.close();
     }
