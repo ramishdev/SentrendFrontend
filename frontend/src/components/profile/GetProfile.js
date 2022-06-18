@@ -14,7 +14,7 @@ const GetProfile = () => {
   }, [])
 
   let getNotes = async () => {
-    let response = await axios('/api/users/' + user.user_id,{
+    let response = await axios('/user/users/' + user.user_id,{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
