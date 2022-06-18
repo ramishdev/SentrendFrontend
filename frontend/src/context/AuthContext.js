@@ -19,7 +19,7 @@ export const AuthProvider = ({children}) => {
 
     const navigate = useNavigate()
     const location = useLocation()
-    const from = location?.pathname || "/";
+    const from = location?.pathname || "/dashboard";
 
 
 
@@ -74,7 +74,7 @@ export const AuthProvider = ({children}) => {
                 setUser(jwt_decode(data.access))
                 localStorage.setItem('authTokens', JSON.stringify(data))
                 
-                navigate('/',{replace : true})
+                navigate('/dashboard',{replace : true})
             }
             else{
                 alert('Something went wrong')

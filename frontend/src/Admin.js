@@ -18,6 +18,7 @@ import PrivateRoute from './utils/PrivateRoute'
 import Error from './pages/NotFound'
 import Unauthorized from './pages/Unauth'
 
+import LandingPage from './pages/LandingPage'
 import Testing from './pages/TestSockets'
 
 function Admin(){
@@ -26,8 +27,9 @@ function Admin(){
             <BrowserRouter>
                 <AuthProvider>
                     <Routes>
-                        <Route path="/" element={<Dashboard/>}>
-                            <Route path="/" element={<DashboardInfo/>}/>
+                        <Route path="/" element={<LandingPage/>}/>
+                        <Route path="/dashboard" element={<Dashboard/>}>
+                            <Route path="/dashboard" element={<DashboardInfo/>}/>
                         </Route>
                         <Route path = "/login" element={<LoginPage/>}/>
                         <Route path = "/register" element={<RegisterPage/>}/>
