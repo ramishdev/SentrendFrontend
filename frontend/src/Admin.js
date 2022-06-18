@@ -18,7 +18,7 @@ import PrivateRoute from './utils/PrivateRoute'
 import Error from './pages/NotFound'
 import Unauthorized from './pages/Unauth'
 
-
+import Testing from './pages/TestSockets'
 
 function Admin(){
     return(
@@ -35,6 +35,7 @@ function Admin(){
                         <Route path = "/settings/new-crawler" element={<PrivateRoute><NewCrawlerPage/></PrivateRoute>}/>
                         <Route path = "/search" element={<PrivateRoute><SearchPage/></PrivateRoute>}/>
                         <Route path = "/Unauthorized" element={<Unauthorized/>}/>
+                        <Route path = "/Testing" element={<Testing/>}/>
                         <Route path = "*" element={<Error/>}/>
                     </Routes>
                 </AuthProvider>

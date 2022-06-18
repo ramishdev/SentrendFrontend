@@ -30,7 +30,7 @@ const MyNavbar = () => {
                     <Button onClick={(e) => handleSubmit(e)} variant="outline-success" >Search</Button>
                     <Nav >
                         <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
-                            <NavDropdown.Item onClick={()=> navigate("/profile")}>Profile</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=> navigate("/testing")}>Profile</NavDropdown.Item>
                             <NavDropdown.Item onClick={()=> navigate("/settings")}>Settings</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={logoutUser}>Logout</NavDropdown.Item>
@@ -52,7 +52,7 @@ const MyNavbar = () => {
                                 <NavDropdown.Item onClick={() => navigate("/login")}>
                                     Login
                                 </NavDropdown.Item>
-                                <NavDropdown.Item onClick={() => navigate("/register")}>
+                                <NavDropdown.Item onClick={() => navigate("/testing")}>
                                     Register
                                 </NavDropdown.Item>
                             </NavDropdown>
