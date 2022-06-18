@@ -5,15 +5,15 @@ import axios from '../../hooks/axios.js'
 
 const GetProfile = () => {
 
-  let [notes, setNotes] = useState([]) 
+  let [profiles, setprofiles] = useState([]) 
 
   let {authTokens , user} = useContext(AuthContext)
 
   useEffect(() => {
-    getNotes()
+    getprofiles()
   }, [])
 
-  let getNotes = async () => {
+  let getprofiles = async () => {
     let response = await axios('/user/users/' + user.user_id,{
       method: 'GET',
       headers: {
@@ -25,7 +25,7 @@ const GetProfile = () => {
     let data = await response.data
     console.log(data)
     if(response.status === 200){
-      setNotes(data) 
+      setprofiles(data) 
     }
     else{
         
@@ -37,10 +37,10 @@ const GetProfile = () => {
     return (
         <div>
             <h1>USER</h1>
-            <p>ID: {notes.id}</p>
-            <p>USERNAME: {notes.username}</p>
-            <p>EMAIL: {notes.email}</p>
-            <p>TRENDS: {notes.trend}</p>
+            <p>ID: {profiles.id}</p>
+            <p>USERNAME: {profiles.username}</p>
+            <p>EMAIL: {profiles.email}</p>
+            <p>TRENDS: {profiles.trend}</p>
         </div>
     )
  
