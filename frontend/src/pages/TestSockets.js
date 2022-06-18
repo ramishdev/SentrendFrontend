@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 
 
 const Testing = () => {
-    const url = 'wss://demo.piesocket.com/v3/channel_1?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self'
+    const url = 'ws://127.0.0.1:8000/ws/socket-server/'
     const [ws,setWS] = useState(new WebSocket(url))
     const [loading,setloading] = useState(false)
 
