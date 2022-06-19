@@ -24,11 +24,11 @@ const MyNavbar = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg = 'dark' variant = 'dark'>
                 <Container fluid>
-                <Navbar.Brand href="/">Sentrend</Navbar.Brand>
+                <Navbar.Brand href="/dashboard">Sentrend</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse className="justify-end">
                     <Button onClick={(e) => handleSubmit(e)} variant="outline-success" >Search</Button>
-                    <Nav >
+                    <Nav>
                         <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
                             <NavDropdown.Item onClick={()=> navigate("/testing")}>Profile</NavDropdown.Item>
                             <NavDropdown.Item onClick={()=> navigate("/settings")}>Settings</NavDropdown.Item>

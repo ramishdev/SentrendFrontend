@@ -2,8 +2,10 @@ import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import Nav from 'react-bootstrap/Nav'
 import Container from 'react-bootstrap/Container'
+import { useNavigate } from 'react-router-dom'
 
 const NavComponent = () => {
+    const navigate = useNavigate()
 
     return (
         <Navbar bg="dark" variant="dark" expand="md">
@@ -21,8 +23,8 @@ const NavComponent = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-                <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-                <Nav.Link href="/login">Login</Nav.Link>
+                <Nav.Link onClick={()=> navigate("/dashboard")}>Dashboard</Nav.Link>
+                <Nav.Link onClick={()=> navigate("/login")}>Login</Nav.Link>
                 <NavDropdown title="More" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>

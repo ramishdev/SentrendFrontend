@@ -6,7 +6,7 @@ import DoughnutChart from "./DoughnutChart"
 import RadarChart from "./RadarChart"
 import InfoCharts from "./InfoCharts"
 
-import PieChart from './PieChart'
+import Sentiment from './sentiment/Sentiment'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -29,8 +29,7 @@ const TabsInterface = () => {
                                 </Col>
                             </Row>
                             <Row className="p-10 d-flex justify-center">
-
-                                <PieChart/>
+                                <Sentiment/>
                             </Row>
 
                             <Row className="p-10 d-flex justify-center">

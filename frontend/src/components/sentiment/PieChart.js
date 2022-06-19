@@ -3,59 +3,16 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 //import { Doughnut } from 'react-chartjs-2';
 //import {Card} from 'react-bootstrap'
 import { Pie } from 'react-chartjs-2';
-import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-
-import { useOutletContext } from "react-router-dom";
-import axios from '../hooks/axios.js'
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 
 
-function PieChart() {
-    const trendinfo = useOutletContext()
-    const [results, setResults] = useState({});
-    const [loading, setloading] = useState(false);
-
-    useEffect(() => {
-        const controller = new AbortController();
-        const fetchdata = async () => {
-            setloading(true)
-            try{
-                const response = await axios.get(trendinfo?.url + 'sentiment/', {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    signal: controller.signal
-                });
-                if(response?.status === 200){
-                    setResults(response?.data)
-                }
-            }
-            catch(err){
-                console.error(err.message);
-                if(err.response.status === 400){
-                    setResults({})
-                }
-                if(err.response.status === 404){
-                    setResults({})
-                }
-            }
-            setloading(false)
-
-        }
-        if(trendinfo){
-            fetchdata();
-        }
-        else{
-            setResults({})
-        }
-        return () => controller?.abort();
-    }, [trendinfo])
-    
+function PieChart({results}) {
+   
     const data1 = {
         labels: ['Positive','Negative','Neutral'],
         datasets: [
@@ -87,13 +44,7 @@ function PieChart() {
         ]
     };
 
-    if(loading){
-        return (
-            <div >
-                <h2>Loading</h2>
-            </div>
-        );
-    }
+    
     return (results && Object.keys(results).length > 0)?
     ( 
         <div>
@@ -120,9 +71,9 @@ function PieChart() {
         </div>
     ):
     (
-        <div>
+        <>
             
-        </div>
+        </>
     )
 }
 export default PieChart;
