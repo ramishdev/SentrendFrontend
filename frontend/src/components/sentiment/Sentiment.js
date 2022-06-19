@@ -11,6 +11,7 @@ function Sentiment() {
     const [loading, setloading] = useState(false);
 
     useEffect(() => {
+        setResults({})
         const controller = new AbortController();
         const fetchdata = async () => {
             setloading(true)

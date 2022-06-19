@@ -73,9 +73,9 @@ const SubMenu = ({ item }) => {
           return (
             <DropdownLink className="rounded-md cursor-pointer" key={index} onClick={() => item.passTrends(trend)}>
               <IconContext.Provider value={{ }}>
-                <React.Fragment className="pr-2">
+                <div className="pr-2">
                   {<BsIcons.BsGraphUp />}
-                </React.Fragment>
+                </div>
               </IconContext.Provider>
               <SidebarLabel className="text-xs">{trend.name}</SidebarLabel>
             </DropdownLink>
