@@ -20,7 +20,7 @@ function InfoCharts() {
         const fetchdata = async () => {
             setloading(true)
             try{
-                console.log(trendinfo?.trend_name)
+                console.log(trendinfo?.name)
                 const response = await axios.get(trendinfo?.url + 'get_stats/', {
                     headers: {
                         'Content-Type': 'application/json'
