@@ -1,5 +1,8 @@
 import React from "react";
 import {TwitterTweetEmbed } from 'react-twitter-embed';
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 function TopTweets({results}){
 
@@ -23,26 +26,37 @@ function TopTweets({results}){
 
   
 
-    return(1)?(
+    return(results)?(
         <>
-            {posList.map((item) => {
-                return(
-                    <TwitterTweetEmbed tweetId={item} placeholder={'loading'} options={{theme: 'light', width: '251'}}/>
-                )
-
-            })}
-            {negList.map((item) => {
-                return(
-                    <TwitterTweetEmbed tweetId={item} placeholder={'loading'} options={{theme: 'light', width: '251'}}/>
-                )
-
-            })}
-            {neuList.map((item) => {
-                return(
-                    <TwitterTweetEmbed tweetId={item} placeholder={'loading'} options={{theme: 'light', width: '251'}}/>
-                )
-
-            })}
+            <Container>    
+                <Row className="p-10 d-flex justify-center">        
+                    {posList.map((item) => {
+                        return(
+                            <Col>
+                                <TwitterTweetEmbed tweetId={item} placeholder={'loading'} options={{theme: 'light', width: '251'}}/>
+                            </Col>
+                        )
+                    })}
+                </Row>
+                <Row className="p-10 d-flex justify-center">        
+                    {negList.map((item) => {
+                        return(
+                            <Col>
+                                <TwitterTweetEmbed tweetId={item} placeholder={'loading'} options={{theme: 'light', width: '251'}}/>
+                            </Col>
+                        )
+                    })}
+                </Row>
+                <Row className="p-10 d-flex justify-center">        
+                    {neuList.map((item) => {
+                        return(
+                            <Col>
+                                <TwitterTweetEmbed tweetId={item} placeholder={'loading'} options={{theme: 'light', width: '251'}}/>
+                            </Col>
+                        )
+                    })}
+                </Row>
+            </Container>
         </>
     ):(
         <>
