@@ -17,7 +17,7 @@ const MainComponent = () => {
                         {/* <h1 className = "text-7xl text-sky-800">
                             Monitor your business on real-time dashboard
                         </h1> */}
-                        <TypeIt className = "text-7xl text-sky-800"> Monitor your business on real-time dashboard</TypeIt>
+                        <TypeIt className = "text-7xl text-sky-800">Monitor your business on real-time dashboard</TypeIt>
                         <p className = "text-3xl">
                             Boost your Twitter performance by monitoring key engagement metrics in a dashboard
                         </p>

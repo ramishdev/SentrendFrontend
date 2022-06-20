@@ -1,27 +1,34 @@
 import React, {useState, useEffect, useContext} from 'react'
 import Button from 'react-bootstrap/Button'
-import {Initws,getws} from '../hooks/socket'
 
+import useSock from '../hooks/useSock'
 
 const Testing = () => {
-    console.log(getws())
-    if (getws() === 0 || getws()?.readyState === 3){
-        Initws()
-        console.log("First Time")
-    }
-    const [ws,setws] = useState(getws())
+    const {ws,Initws} = useSock();
+    console.log(ws)
+    
+
     useEffect(() => {
+        if (ws === -1 || ws?.readyState === 3){
+            Initws()
+            console.log("First Time")
+        }
+        console.log(ws)
+        if(ws === -1){
+            return 
+        }
         ws.onopen = () => {
             console.log('WebSocket Connected');
         }
         ws.onmessage = (event) => {
-            console.log("WebSocket send the data",event.data.message)
+            
+            console.log("WebSocket send the data",event.data)
         }
         ws.onclose = () => {
             console.log("WebSocket disconnect")
         }
-        // return () => ws.close();
-    }, [])
+        //return () => ws.close();
+    }, [ws])
 
     const senddata = () => {
         ws.close();
