@@ -13,40 +13,41 @@ const ListCrawlers = () => {
 
   let [crawlerList, setcrawlerList] = useState([])
   console.log(crawlerList)
-  const refreshData = {
-    crawlerList:crawlerList,
-    setcrawlerList:setcrawlerList
-  } 
 
-  let {authTokens, logoutUser} = useContext(AuthContext)
+  const refreshData = React.useMemo(() => ({
+    crawlerList,setcrawlerList
+  }), [crawlerList]);
+
+  let {authTokens} = useContext(AuthContext)
 
   useEffect(() => {
-    getcrawlerList()
-  }, [])
-
-  let getcrawlerList = async () => {
-    try{
-      let response = await axios('/crawler/crawlers',{
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + String(authTokens.access)
+    let getcrawlerList = async () => {
+      try{
+        let response = await axios('/crawler/crawlers',{
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + String(authTokens.access)
+          }
+        })
+        let data = await response.data
+  
+        if(response.status === 200){
+          setcrawlerList(data) 
         }
-      })
-      let data = await response.data
-
-      if(response.status === 200){
-        setcrawlerList(data) 
+        else if(response.statusText === 'Unauthorized'){
+          setcrawlerList([])
+        }
       }
-      else if(response.statusText === 'Unauthorized'){
+      catch(err){
+        console.log(err.message)
         setcrawlerList([])
       }
     }
-    catch(err){
-      console.log(err.message)
-      setcrawlerList([])
-    }
-  }
+    getcrawlerList()
+  }, [])
+
+
 
   return (
     <div>

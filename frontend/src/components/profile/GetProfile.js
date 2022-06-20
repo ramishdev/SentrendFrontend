@@ -49,4 +49,4 @@ const GetProfile = () => {
 
 
 }
-export default React.memo(GetProfile)
+export default GetProfile

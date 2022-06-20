@@ -122,8 +122,6 @@ export const AuthProvider = ({children}) => {
             console.error(err.message);
             logoutUser()
         }
-
-
         if(loading){
             setLoading(false)
         }
@@ -143,11 +141,9 @@ export const AuthProvider = ({children}) => {
         let fourMinutes = 1000 * 60 * 4
 
         let interval = setInterval(()=>{
-            
             if(authTokens){
                 updateToken()
             }
-
         }, fourMinutes)
 
         return ()=> clearInterval(interval)
