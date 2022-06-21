@@ -4,17 +4,15 @@ import Button from 'react-bootstrap/Button'
 import useSock from '../hooks/useSock'
 
 const Testing = () => {
-    const {ws,Initws} = useSock();
-    console.log(ws)
-    
+    const {ws,Initws} = useSock();    
 
     useEffect(() => {
-        if (ws === -1 || ws?.readyState === 3){
+        if (ws === -1 || ws?.readyState === 3 || ws === 3){
             Initws()
             console.log("First Time")
         }
         console.log(ws)
-        if(ws === -1){
+        if(ws === -1 || ws === 3){
             return 
         }
         ws.onopen = () => {

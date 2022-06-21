@@ -10,8 +10,7 @@ import RadarChart from "./RadarChart"
 
 
 
-function InfoCharts() {
-    const trendinfo = useOutletContext()
+function InfoCharts({trendinfo}) {
     const [results, setResults] = useState({});
     const [loading, setloading] = useState(false);
 
@@ -82,4 +81,4 @@ function InfoCharts() {
         </>
     )
 }
-export default InfoCharts;
+export default InfoCharts

@@ -5,6 +5,7 @@ import useAuth from "../hooks/useAuth"
 import Feedback from 'react-bootstrap/Feedback'
 
 import axios from '../hooks/axios.js'
+import useSock from '../hooks/useSock'
 
 const SearchPage = () => {
   const [inputList, setInputList] = useState([{key: "",max_results:"",count:""}]);
@@ -14,13 +15,15 @@ const SearchPage = () => {
   const [usertier, settier] = useState();
   const [loading, setloading] = useState(false);
   const {authTokens} = useAuth()
+  const {ws,Initws,setws} = useSock();
+  let type = ''
+
   let reach = 1
   useEffect(() => {
     const controller = new AbortController();
     const fetchdata = async () => {
       setloading(true)
       setInputList([{key: "",max_results:"",count:""}])
-
       try {
         let response1 = await axios.get('/crawler/crawlers/',{
           headers: {
@@ -53,7 +56,15 @@ const SearchPage = () => {
     }
     if(authTokens){
       fetchdata()
+      if (type === 'stream' && (ws === -1 || ws?.readyState === 3 || ws === 3)){
+        Initws()
+        console.log("First Time")
+      }
+      else if (type === 'batch'){
+        setws(-1)
+      }
     }
+    // return () => ws.close()
   }, [])
   if (usertier?.current_keywords === usertier?.max_keywords){
     reach = 0
@@ -64,11 +75,10 @@ const SearchPage = () => {
     const controller = new AbortController();
     console.log(inputList)
     try{
-      let type = 'batch'
       let response = ''
-      if(crawlInfo[0]['type'] === "stream"){
+      (crawlInfo[0]['type'] === "stream")?(
         type = 'stream'
-      }
+      ):(type = 'batch')
       if(type === "batch"){
         response = await axios.post('/core/user_search/',{
           query: inputList,

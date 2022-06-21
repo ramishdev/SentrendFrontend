@@ -10,13 +10,10 @@ export default SocketContext;
 export const Socket = ({children}) => {
     const {authTokens} = useAuth()
     let [ws,setws] = useState(-1)
-    const Initws = () => {
+    const Initws = React.useCallback(() => {
         const url = 'wss://demo.piesocket.com/v3/channel_1?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self'
         setws(()=>(new WebSocket(url)))
-    }
-    const getws = () => {
-        return ws
-    }
+    },[])
     const GetHookws = () => {
         const url = 'wss://demo.piesocket.com/v3/channel_1?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self'
         const wshook = useWebSocket(url, {
@@ -34,7 +31,7 @@ export const Socket = ({children}) => {
     }
 
     const contextData = React.useMemo(() => ({
-        ws,getws,Initws
+        ws,setws,Initws
     }), [ws]);
     return (
 

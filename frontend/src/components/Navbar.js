@@ -27,7 +27,7 @@ const MyNavbar = () => {
                 </>
                 ):(
                 <>
-                <Popover.Header as="h3">{(ws.readyState===3)?("Stream Crawler Stopped"):("Stream Crawler Stoping")}</Popover.Header>
+                <Popover.Header as="h3">{(ws.readyState===3 || ws === 3)?("Stream Crawler Stopped"):("Stream Crawler Stoping")}</Popover.Header>
                 <Popover.Body>
                     Done Crawling your data
                 </Popover.Body>
@@ -59,8 +59,9 @@ const MyNavbar = () => {
                     <Button onClick={(e) => handleSubmit(e)} variant="outline-success" >Search</Button>
                     <Nav>
                         <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
-                            <NavDropdown.Item onClick={()=> navigate("/testing")}>Profile</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=> navigate("/profile")}>Profile</NavDropdown.Item>
                             <NavDropdown.Item onClick={()=> navigate("/settings")}>Settings</NavDropdown.Item>
+                            <NavDropdown.Item onClick={()=> navigate("/testing")}>Test Socket</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={logoutUser}>Logout</NavDropdown.Item>
                         </NavDropdown>
@@ -77,8 +78,7 @@ const MyNavbar = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse className="justify-end">
                         {console.log(ws)}
-                        {
-                        (ws!==-1)?(
+                        {(ws!==-1)?(
                             <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
                                 <Button variant="success">Status</Button>
                             </OverlayTrigger>
@@ -88,8 +88,11 @@ const MyNavbar = () => {
                                 <NavDropdown.Item onClick={() => navigate("/login")}>
                                     Login
                                 </NavDropdown.Item>
-                                <NavDropdown.Item onClick={() => navigate("/testing")}>
+                                <NavDropdown.Item onClick={() => navigate("/register")}>
                                     Register
+                                </NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => navigate("/testing")}>
+                                    Test Socket
                                 </NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
