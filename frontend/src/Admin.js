@@ -9,6 +9,8 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Dashboard from "./components/Dashboard"
 import DashboardInfo from "./components/DashboardInfo"
 import {AuthProvider} from "./context/AuthContext"
+import {Socket} from "./context/socket"
+
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import SettingsPage from './pages/SettingsPage'
@@ -26,6 +28,7 @@ function Admin(){
         <div className="" >
             <BrowserRouter>
                 <AuthProvider>
+                <Socket>
                     <Routes>
                         <Route path="/" element={<LandingPage/>}/>
                         <Route path="/dashboard" element={<Dashboard/>}>
@@ -40,6 +43,7 @@ function Admin(){
                         <Route path = "/Testing" element={<Testing/>}/>
                         <Route path = "*" element={<Error/>}/>
                     </Routes>
+                </Socket>
                 </AuthProvider>
             </BrowserRouter>
         </div>

@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,useCallback} from 'react';
 import SubMenu from './SubMenu'
 import useAuth from "../hooks/useAuth"
 
@@ -9,29 +9,21 @@ const Sidebar = ({setdata,setpad}) => {
   const [open, setOpen] = useState(true);
   const [trends,setTrends] = useState([])
   const [usertrends,setuserTrends] = useState([])
-
   const [isloading,setloading] = useState(false);
   const {authTokens} = useAuth()
 
-  const passTrends = (trend) =>{
+  const passTrends = useCallback((trend) =>{
     setdata(trend)
-  }
-  const trenddata={
-    Name:"Top Trends",
-    trends:trends,
-    passTrends:passTrends,
-    open:open,
-    setOpen:setOpen,
-    setpad:setpad
-  }
-  const usertrenddata={
-    Name:"User Trends",
-    trends:usertrends,
-    passTrends:passTrends,
-    open:open,
-    setOpen:setOpen,
-    setpad:setpad
-  }
+  },[])
+
+  const trenddata = React.useMemo(() => ({
+    Name:"Top Trends", trends,passTrends,open,setOpen,setpad
+  }), [trends,open]);
+
+  const usertrenddata = React.useMemo(() => ({
+    Name:"User Trends", usertrends,passTrends,open,setOpen,setpad
+  }), [usertrends,open]);
+
   useEffect(() => {
     
     const controller = new AbortController();
@@ -127,4 +119,4 @@ const Sidebar = ({setdata,setpad}) => {
     </div>
   );
 };
-export default Sidebar;
+export default React.memo(Sidebar);

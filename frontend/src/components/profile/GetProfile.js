@@ -14,24 +14,24 @@ const GetProfile = () => {
   }, [])
 
   let getprofiles = async () => {
-    let response = await axios('/user/users/' + user.user_id,{
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + String(authTokens.access)
-      }
-    })
-
-    let data = await response.data
-    console.log(data)
-    if(response.status === 200){
-      setprofiles(data) 
-    }
-    else{
-        
-    
+    try{
+      let response = await axios('/user/users/' + user.user_id,{
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + String(authTokens.access)
         }
+      })
+      let data = await response.data
+      console.log(data)
+      if(response.status === 200){
+        setprofiles(data) 
+      }
     }
+    catch(err){
+       console.log(err.message)
+    }
+  }
 
    
     return (

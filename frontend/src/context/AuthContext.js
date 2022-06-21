@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react'
+import React,{ createContext, useState, useEffect,useCallback } from 'react'
 import jwt_decode from "jwt-decode";
 
 import { useNavigate,useLocation } from 'react-router-dom'
@@ -86,7 +86,7 @@ export const AuthProvider = ({children}) => {
         }
     }
 
-    let logoutUser = () => {
+    let logoutUser = async() => {
 
         setAuthTokens(null)
         setUser(null)
@@ -94,7 +94,7 @@ export const AuthProvider = ({children}) => {
         localStorage.removeItem('authTokens')
 
         navigate(from,{replace:true})
-    } 
+    }
 
     let updateToken = async ()=> {
 
@@ -122,23 +122,15 @@ export const AuthProvider = ({children}) => {
             console.error(err.message);
             logoutUser()
         }
-
-
         if(loading){
             setLoading(false)
         }
     }
 
 
-    let contextData = {
-
-        user : user,
-        authTokens: authTokens,
-        loginUser:loginUser,
-        logoutUser:logoutUser,
-        registerUser:registerUser
-    }
-
+    const contextData = React.useMemo(() => ({
+        user, authTokens,loginUser,logoutUser,registerUser
+    }), [user,authTokens]);
 
     useEffect(()=> {
 
@@ -149,11 +141,9 @@ export const AuthProvider = ({children}) => {
         let fourMinutes = 1000 * 60 * 4
 
         let interval = setInterval(()=>{
-            
             if(authTokens){
                 updateToken()
             }
-
         }, fourMinutes)
 
         return ()=> clearInterval(interval)

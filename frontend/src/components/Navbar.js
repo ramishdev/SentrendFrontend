@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useCallback} from 'react';
 import {Nav,NavDropdown,Container,Navbar} from 'react-bootstrap'
 import {Button} from 'react-bootstrap/'
 import useAuth from "../hooks/useAuth"
@@ -6,13 +6,37 @@ import useAuth from "../hooks/useAuth"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from 'react-router-dom'
 import '../css/Navbar.css'
-
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
+import useSock from '../hooks/useSock'
 const MyNavbar = () => {
     //const navigate = useNavigate()
+    const {ws} = useSock()
     let {user} = useAuth()
     let {logoutUser} = useAuth()
     const navigate = useNavigate()
 
+    const popover = (
+        <Popover id="popover-basic">
+            {(ws?.readyState === 1)?(
+                <>
+                <Popover.Header as="h3">Stream Crawler is Running</Popover.Header>
+                <Popover.Body>
+                    Your data is being crawled
+                </Popover.Body>
+                </>
+                ):(
+                <>
+                <Popover.Header as="h3">{(ws.readyState===3)?("Stream Crawler Stopped"):("Stream Crawler Stoping")}</Popover.Header>
+                <Popover.Body>
+                    Done Crawling your data
+                </Popover.Body>
+                </>
+                )
+            }
+            
+        </Popover>
+    );
     function handleSubmit(e) {
         e.preventDefault();    
         navigate("/search")
@@ -21,12 +45,17 @@ const MyNavbar = () => {
       }
 
     return (user)?(
-        <div>
+        <>
             <Navbar collapseOnSelect expand="lg" bg = 'dark' variant = 'dark'>
                 <Container fluid>
                 <Navbar.Brand href="/dashboard">Sentrend</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse className="justify-end">
+                    {(ws!== -1)?(
+                        <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+                            <Button variant="success">Status</Button>
+                        </OverlayTrigger>
+                    ):(<></>)}
                     <Button onClick={(e) => handleSubmit(e)} variant="outline-success" >Search</Button>
                     <Nav>
                         <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
@@ -39,14 +68,21 @@ const MyNavbar = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        </div>
+        </>
     ):(
-        <div>
+        <>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container fluid>
                     <Navbar.Brand href="/">Sentrend</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse className="justify-end">
+                        {console.log(ws)}
+                        {
+                        (ws!==-1)?(
+                            <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+                                <Button variant="success">Status</Button>
+                            </OverlayTrigger>
+                        ):(<></>)}
                         <Nav>
                             <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
                                 <NavDropdown.Item onClick={() => navigate("/login")}>
@@ -60,7 +96,7 @@ const MyNavbar = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        </div>
+        </>
     );
 }
-export default MyNavbar;
+export default React.memo(MyNavbar);
