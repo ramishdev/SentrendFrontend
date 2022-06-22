@@ -23,7 +23,7 @@ const Sidebar = ({setdata,setpad}) => {
   }), [trends,open]);
 
   const usertrenddata = React.useMemo(() => ({
-    Name:"User Trends", usertrends,passTrends,open,setOpen,setpad
+    Name:"User Trends", trends:usertrends,passTrends,open,setOpen,setpad
   }), [usertrends,open]);
 
   useEffect(() => {
