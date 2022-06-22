@@ -11,7 +11,8 @@ export const Socket = ({children}) => {
     const {authTokens} = useAuth()
     let [ws,setws] = useState(-1)
     const Initws = React.useCallback(() => {
-        const url = 'ws://127.0.0.1:8000/ws/socket-server/?token=' + authTokens?.access_token
+        console.log(authTokens)
+        const url = 'ws://127.0.0.1:8000/ws/socket-server/?token=' + authTokens?.access
         setws(()=>(new WebSocket(url)))
     },[])
     const GetHookws = () => {

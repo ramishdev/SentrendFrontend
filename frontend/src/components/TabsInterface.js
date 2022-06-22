@@ -38,7 +38,7 @@ const TabsInterface = () => {
         if(refresh === 0 && ws.readyState === 1){
             ws.send("trendinfo?.id")
         }
-        return () => ws.close()
+        // return () => ws.close()
     }, [ws,refresh])
 
     console.log("WebSocket "+ refresh)
