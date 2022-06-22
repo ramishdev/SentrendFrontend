@@ -48,7 +48,7 @@ const DropdownLink = React.memo(styled.span`
 const SubMenu = ({ item }) => {
   const [subnav, setSubnav] = useState(false);
 
-  const showSubnav = () => setSubnav(!subnav);
+  const showSubnav = () => {setSubnav(!subnav);item?.setsubopen(!subnav)};
   return (
     <>
       <SidebarLink className="rounded-md p-2 cursor-pointer" to={'/dashboard'} onClick={item.trends && showSubnav}>

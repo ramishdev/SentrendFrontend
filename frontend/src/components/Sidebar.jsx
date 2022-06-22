@@ -13,18 +13,19 @@ const Sidebar = ({setdata,setpad}) => {
   const [usertrends,setuserTrends] = useState([])
   const [isloading,setloading] = useState(false);
   const {authTokens} = useAuth()
+  const [subopen, setsubopen] = useState(false);
 
   const passTrends = useCallback((trend) =>{
     setdata(trend)
   },[])
 
   const trenddata = React.useMemo(() => ({
-    Name:"Top Trends", trends,passTrends,open,setOpen,setpad
-  }), [trends,open]);
+    Name:"Top Trends", trends,passTrends,open,setOpen,setpad,subopen,setsubopen
+  }), [trends]);
 
   const usertrenddata = React.useMemo(() => ({
-    Name:"User Trends", trends:usertrends,passTrends,open,setOpen,setpad
-  }), [usertrends,open]);
+    Name:"User Trends", trends:usertrends,passTrends,open,setOpen,setpad,subopen,setsubopen
+  }), [usertrends]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -104,7 +105,7 @@ const Sidebar = ({setdata,setpad}) => {
         </div>
         <div className={`pl-0 pt-4`}>
           <SubMenu item={trenddata}/>
-          { user && <SubMenu item={usertrenddata}/>}
+          {  <SubMenu item={usertrenddata}/>}
         </div>
         {/*<ul className="pl-0 pt-6">
           {trends && trends.map((trend)  => (
@@ -120,7 +121,7 @@ const Sidebar = ({setdata,setpad}) => {
           ))}
         </ul>*/}
         <div>
-        {(open === true)?(
+        {(open && subopen === false)?(
           <Form className="absolute bottom-2">
             <Form.Group>
               <Form.Select className="w-auto ml-10" size="sm" name="location" value={trendlocation} onChange={e => handlelocationChange(e)} aria-label="location" required>
