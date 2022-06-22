@@ -88,7 +88,7 @@ const SearchPage = () => {
         })
       }
       else{
-        response = await axios.post('/core/tweets/stream_create_tweets/',{
+        response = await axios.post('/core/user_stream_search/',{
           query: inputList,
           crawler: crawlInfo[0],
           signal: controller.signal
@@ -124,7 +124,7 @@ const SearchPage = () => {
         setloading(true)
         await postuserdata();
         console.log("Done")
-        alert(loading)
+        alert("Done")
       }
       else{
         alert("Limit Reached")
