@@ -1,6 +1,7 @@
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import TypeIt from "typeit-react";
 import Typewriter from "typewriter-effect";
 
 const MainComponent = () => {
