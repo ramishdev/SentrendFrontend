@@ -11,7 +11,7 @@ export const Socket = ({children}) => {
     const {authTokens} = useAuth()
     let [ws,setws] = useState(-1)
     const Initws = React.useCallback(() => {
-        const url = 'wss://demo.piesocket.com/v3/channel_1?api_key=VCXCEuvhGcBDP7XhiJJUDvR1e1D3eiVjgZ9VRiaV&notify_self'
+        const url = 'ws://127.0.0.1:8000/ws/socket-server/?token=' + authTokens?.access_token
         setws(()=>(new WebSocket(url)))
     },[])
     const GetHookws = () => {

@@ -88,7 +88,7 @@ const SearchPage = () => {
         })
       }
       else{
-        response = await axios.post('/core/tweets/stream_create_tweets/',{
+        response = await axios.post('/core/user_stream_search/',{
           query: inputList,
           crawler: crawlInfo[0],
           signal: controller.signal
