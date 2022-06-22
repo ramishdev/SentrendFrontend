@@ -5,8 +5,7 @@ import axios from '../../hooks/axios'
 import PieChart from "./PieChart.js";
 import TopTweets from "./TopTweets.js";
 
-function Sentiment() {
-    const trendinfo = useOutletContext()
+function Sentiment({trendinfo}) {
     const [results, setResults] = useState({});
     const [loading, setloading] = useState(false);
 
@@ -36,7 +35,6 @@ function Sentiment() {
                 }
             }
             setloading(false)
-
         }
         if(trendinfo){
             fetchdata();
@@ -67,4 +65,4 @@ function Sentiment() {
     )
 
 }   
-export default Sentiment;
+export default Sentiment
