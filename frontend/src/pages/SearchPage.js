@@ -87,6 +87,18 @@ const SearchPage = () => {
           }
         })
       }
+      else{
+        response = await axios.post('/core/tweets/stream_create_tweets/',{
+          query: inputList,
+          crawler: crawlInfo[0],
+          signal: controller.signal
+        },{
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + String(authTokens?.access)
+          }
+        })
+      }
       if(response?.status === 200){
           console.log("Success!!"); 
       }
