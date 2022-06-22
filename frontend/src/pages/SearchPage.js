@@ -9,14 +9,13 @@ import useSock from '../hooks/useSock'
 
 const SearchPage = () => {
   const [inputList, setInputList] = useState([{key: "",max_results:"",count:""}]);
-  const [crawlList, setcrawlList] = useState([{id:1},{id:2}]);              //Dummy data
-  const [crawlInfo, setcrawlinfo] = useState([{id: "",type:[""],duration:""}]);
+  const [crawlList, setcrawlList] = useState();              //Dummy data
+  const [crawlInfo, setcrawlinfo] = useState([{id: "",type:"",duration:"",TotalCount:""}]);
   const [validated, setValidated] = useState(false);
-  const [usertier, settier] = useState();
+  const [usertier, settier] = useState({current_keywords:0,max_keywords:10,remaining:0});
   const [loading, setloading] = useState(false);
   const {authTokens} = useAuth()
   const {ws,Initws,setws} = useSock();
-  let type = ''
 
   let reach = 1
   useEffect(() => {
@@ -56,11 +55,11 @@ const SearchPage = () => {
     }
     if(authTokens){
       fetchdata()
-      if (type === 'stream' && (ws === -1 || ws?.readyState === 3 || ws === 3)){
+      if (crawlInfo[0]['type'] === 'stream' && (ws === -1 || ws?.readyState === 3 || ws === 3)){
         Initws()
         console.log("First Time")
       }
-      else if (type === 'batch'){
+      else if (crawlInfo[0]['type'] === 'batch'){
         setws(-1)
       }
     }
@@ -76,10 +75,7 @@ const SearchPage = () => {
     console.log(inputList)
     try{
       let response = ''
-      (crawlInfo[0]['type'] === "stream")?(
-        type = 'stream'
-      ):(type = 'batch')
-      if(type === "batch"){
+      if(crawlInfo[0]['type'] === "batch"){
         response = await axios.post('/core/user_search/',{
           query: inputList,
           crawler: crawlInfo[0],
@@ -147,9 +143,7 @@ const SearchPage = () => {
     const { name, value } = e.target;
     const list = [...crawlInfo];
     list[0][name] = value;
-    if(name === "type")
-      list[0][name] = [value];
-    
+
     setcrawlinfo(list);
   };
 
@@ -194,6 +188,8 @@ const SearchPage = () => {
                   onChange={e => handleInputChange(e, i)} required
                 />
               </Form.Group>
+              {console.log(crawlInfo[0])}
+              { (crawlInfo[0]['type'] === 'batch' || crawlInfo[0]['type'] === '') ? (
               <Form.Group className='w-36 ml-1'>
                 <Form.Control
                   type="number"
@@ -202,11 +198,12 @@ const SearchPage = () => {
                   value={x.max_results}
                   size="sm"
                   min="10" 
-                  max="200"
+                  max="1000"
                   onChange={e => handleInputChange(e, i)} required
                 />
-                <Feedback type="invalid">Range (10-200)</Feedback>
+                <Feedback type="invalid">Range (10-1000)</Feedback>
               </Form.Group>
+              ):(<></>)}
               
               <div className="">
                 {inputList.length !== 1 && <Button className="ml-1" variant="outline-primary" size="sm" onClick={() => handleRemoveClick(i)}>Remove</Button>}
@@ -239,20 +236,37 @@ const SearchPage = () => {
             {/* <Feedback>Looks good!</Feedback> */}
           </Form.Group>
           { (crawlInfo[0]['type'] === 'stream') ? (
+          <>
           <Form.Group className='w-36 ml-1'>
             <Form.Control
               type="number"
               name="duration"
-              placeholder="Enter duration"
+              placeholder="Duration(in min)"
               value={crawlInfo[0]['duration']}
               size="sm"
               min="1" 
               max="200"
               onChange={e => handlecrawlerInputChange(e)} required
             /> 
-            <Feedback type="invalid">Range (1-200)</Feedback>
+            <Feedback type="invalid">Range (1-200) in Min</Feedback>
             {/* <Feedback>Looks good!</Feedback> */}
           </Form.Group>
+          <Form.Group className='w-36 ml-1'>
+            <Form.Control
+              type="number"
+              name="TotalCount"
+              placeholder="Enter Max Count"
+              value={crawlInfo[0]['TotalCount']}
+              size="sm"
+              min="1" 
+              max="10000"
+              onChange={e => handlecrawlerInputChange(e)} required
+            /> 
+            <Feedback type="invalid">Range (1-10000)</Feedback>
+            {/* <Feedback>Looks good!</Feedback> */}
+          </Form.Group>
+          </>
+          
           ):(<></>)
           }
         </div>

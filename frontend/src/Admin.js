@@ -38,7 +38,7 @@ function Admin(){
                         <Route path = "/register" element={<RegisterPage/>}/>
                         <Route path = "/settings" element={<PrivateRoute><SettingsPage/></PrivateRoute>}/>
                         <Route path = "/settings/new-crawler" element={<PrivateRoute><NewCrawlerPage/></PrivateRoute>}/>
-                        <Route path = "/search" element={<PrivateRoute><SearchPage/></PrivateRoute>}/>
+                        <Route path = "/search" element={<SearchPage/>}/>
                         <Route path = "/Unauthorized" element={<Unauthorized/>}/>
                         <Route path = "/Testing" element={<Testing/>}/>
                         <Route path = "*" element={<Error/>}/>
