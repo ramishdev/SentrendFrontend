@@ -12,7 +12,7 @@ const SearchPage = () => {
   const [crawlList, setcrawlList] = useState();              //Dummy data
   const [crawlInfo, setcrawlinfo] = useState([{id: "",type:"",duration:"",TotalCount:""}]);
   const [validated, setValidated] = useState(false);
-  const [usertier, settier] = useState({current_keywords:0,max_keywords:10,remaining:0});
+  const [usertier, settier] = useState();
   const [loading, setloading] = useState(false);
   const {authTokens} = useAuth()
   const {ws,Initws,setws} = useSock();
@@ -240,7 +240,7 @@ const SearchPage = () => {
             {/* <Feedback>Looks good!</Feedback> */}
           </Form.Group>
           <Form.Group>
-            <Form.Select className="w-auto ml-1" size="sm" name="type" value={crawlInfo[0]['type'][0]} onChange={e => handlecrawlerInputChange(e)} aria-label="Crawling Type" required>
+            <Form.Select className="w-auto ml-1" size="sm" name="type" value={crawlInfo[0]['type']} onChange={e => handlecrawlerInputChange(e)} aria-label="Crawling Type" required>
               <option value="" disabled>Choose crawler type</option>
               <option value="batch">Batch</option>
               <option value="stream">Stream</option>

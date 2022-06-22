@@ -1,6 +1,7 @@
 import React,{useState,useEffect,useCallback} from 'react';
 import SubMenu from './SubMenu'
 import useAuth from "../hooks/useAuth"
+import Form from 'react-bootstrap/Form';
 
 import axios from '../hooks/axios.js'
 
@@ -8,6 +9,7 @@ const Sidebar = ({setdata,setpad}) => {
   let {user} = useAuth()
   const [open, setOpen] = useState(true);
   const [trends,setTrends] = useState([])
+  const [trendlocation,setlocation] = useState()
   const [usertrends,setuserTrends] = useState([])
   const [isloading,setloading] = useState(false);
   const {authTokens} = useAuth()
@@ -25,17 +27,15 @@ const Sidebar = ({setdata,setpad}) => {
   }), [usertrends,open]);
 
   useEffect(() => {
-    
     const controller = new AbortController();
     const fetchTrends = async () => {
       setloading(true);
       setdata()
       try{
-
         const data = await axios.get('/core/trends/', {
           params: {
             limit: 10,
-            location: 'Worldwide'
+            location: trendlocation
           },
           signal: controller.signal
         });
@@ -64,8 +64,13 @@ const Sidebar = ({setdata,setpad}) => {
     fetchTrends();
     return () => controller?.abort();
 
-  }, [user,authTokens] );
+  }, [user,authTokens,trendlocation] );
   
+  const handlelocationChange = (e) => {
+    const { name, value } = e.target;
+    setlocation(value)
+  };
+
   return (isloading)?(
 
     <div><h1>Loading...</h1></div>
@@ -114,8 +119,22 @@ const Sidebar = ({setdata,setpad}) => {
             </li>
           ))}
         </ul>*/}
+        <div>
+        {(open === true)?(
+          <Form className="absolute bottom-2">
+            <Form.Group>
+              <Form.Select className="w-auto ml-10" size="sm" name="location" value={trendlocation} onChange={e => handlelocationChange(e)} aria-label="location" required>
+                <option value="" disabled>Choose Location</option>
+                <option value="Worldwide">Worldwide</option>
+                <option value="Lahore">Lahore</option>
+                <option value="Winnipeg">Winnipeg</option>
+              </Form.Select>
+              {/* <Feedback>Looks good!</Feedback> */}
+            </Form.Group>
+          </Form>
+        ):(<></>)}
+        </div>
       </div>
-      
     </div>
   );
 };
