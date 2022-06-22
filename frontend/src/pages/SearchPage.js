@@ -55,13 +55,6 @@ const SearchPage = () => {
     }
     if(authTokens){
       fetchdata()
-      if (crawlInfo[0]['type'] === 'stream' && (ws === -1 || ws?.readyState === 3 || ws === 3)){
-        Initws()
-        console.log("First Time")
-      }
-      else if (crawlInfo[0]['type'] === 'batch'){
-        setws(-1)
-      }
     }
     // return () => ws.close()
   }, [])
@@ -74,6 +67,7 @@ const SearchPage = () => {
     const controller = new AbortController();
     console.log(inputList)
     try{
+      setws(-1)
       let response = ''
       if(crawlInfo[0]['type'] === "batch"){
         response = await axios.post('/core/user_search/',{
@@ -88,6 +82,10 @@ const SearchPage = () => {
         })
       }
       else{
+        if (crawlInfo[0]['type'] === 'stream' && (ws === -1 || ws?.readyState === 3 || ws === 3)){
+          Initws()
+          console.log("First Time")
+        }
         response = await axios.post('/core/user_stream_search/',{
           query: inputList,
           crawler: crawlInfo[0],
@@ -97,7 +95,7 @@ const SearchPage = () => {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + String(authTokens?.access)
           }
-        })
+        }) 
       }
       if(response?.status === 200){
           console.log("Success!!"); 
@@ -124,7 +122,7 @@ const SearchPage = () => {
         setloading(true)
         await postuserdata();
         console.log("Done")
-        alert(loading)
+        alert("Done")
       }
       else{
         alert("Limit Reached")
