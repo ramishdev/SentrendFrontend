@@ -10,11 +10,38 @@ const MainComponent = () => {
             <Row>
                 <Col>
                     <div className="pt-20 px-10">
-                        {/* <h1 className = "text-7xl text-sky-800">
-                            Monitor your business on real-time dashboard
-                        </h1> */}
-                        <TypeIt className = "text-7xl text-sky-800">Monitor your business on real-time dashboard</TypeIt>
-                        <p className = "text-3xl">
+
+                        <h1 className = "text-7xl text-sky-800">
+                            Monitor your business and brand by analyzing 
+                        </h1>
+                        <Typewriter
+                                options={{
+                                    // strings: ['Hello', 'World'],
+                                    delay:75,
+                                    autoStart: true,
+                                    loop: true,
+                                    wrapperClassName: "text-7xl text-green-400",
+                                    cursorClassName:"text-7xl"
+                                }}
+                                onInit={(typewriter) => {
+                                    typewriter.typeString('<strong>metrics</strong>')
+                                    .callFunction(() => {
+                                        console.log('String typed out!');
+                                    })
+                                    .pauseFor(2000)
+                                    .deleteChars(7)
+                                    .typeString('<strong >sentiment</strong>')
+                                    .pauseFor(2000)
+                                    .deleteChars(9)
+                                    .typeString('<strong>topics</strong>')
+                                    .pauseFor(2000)
+                                    .callFunction(() => {
+                                        console.log('All strings were deleted');
+                                    })
+                                    .start();
+                                }}
+                            />
+                        <p className = "text-2xl">
                             Boost your Twitter performance by monitoring key engagement metrics in a dashboard
                         </p>
                     </div>
