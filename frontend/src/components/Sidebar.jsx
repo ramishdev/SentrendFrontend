@@ -71,6 +71,8 @@ const Sidebar = ({setdata,setpad}) => {
     setlocation(value)
   };
 
+  console.log(usertrends)
+
   return (isloading)?(
 
     <div><h1>Loading...</h1></div>
