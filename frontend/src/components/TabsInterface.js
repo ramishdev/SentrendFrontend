@@ -28,8 +28,6 @@ const TabsInterface = () => {
         }
         ws.onmessage = (event) => {            
             console.log("WebSocket send the data",event.data)
-            console.log(ws)
-
             dorefresh(event.data)
         }
         ws.onclose = () => {
@@ -42,7 +40,6 @@ const TabsInterface = () => {
         // return () => ws.close()
     }, [ws,refresh])
 
-    console.log("WebSocket "+ refresh)
     return (
         <>
             <Tabs defaultActiveKey="sentiment" id="uncontrolled-tab-example" className="mb-3" >
