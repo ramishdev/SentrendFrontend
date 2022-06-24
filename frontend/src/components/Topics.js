@@ -33,10 +33,11 @@ function TopicsCloud({trend}){
           }
           setloading(false);
         }
-        fetchTopics();
-
+        if(trend){
+             fetchTopics();
+        }
         return () => controller?.abort();
-    },[])
+    },[trend])
     const newData = (data) => { 
         return(
             data.map((item) => ({

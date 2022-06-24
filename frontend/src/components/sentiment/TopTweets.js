@@ -30,27 +30,27 @@ function TopTweets({results}){
         <>
             <Container>    
                 <Row className="p-10 d-flex justify-center">        
-                    {posList.map((item) => {
+                    {posList.map((item,idx) => {
                         return(
-                            <Col>
+                            <Col key={idx}>
                                 <TwitterTweetEmbed tweetId={item} placeholder={'loading'} options={{theme: 'light', width: '251'}}/>
                             </Col>
                         )
                     })}
                 </Row>
                 <Row className="p-10 d-flex justify-center">        
-                    {negList.map((item) => {
+                    {negList.map((item,idx) => {
                         return(
-                            <Col>
+                            <Col key={idx}>
                                 <TwitterTweetEmbed tweetId={item} placeholder={'loading'} options={{theme: 'light', width: '251'}}/>
                             </Col>
                         )
                     })}
                 </Row>
                 <Row className="p-10 d-flex justify-center">        
-                    {neuList.map((item) => {
+                    {neuList.map((item,idx) => {
                         return(
-                            <Col>
+                            <Col key={idx}>
                                 <TwitterTweetEmbed tweetId={item} placeholder={'loading'} options={{theme: 'light', width: '251'}}/>
                             </Col>
                         )

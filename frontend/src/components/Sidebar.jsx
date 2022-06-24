@@ -7,7 +7,7 @@ import axios from '../hooks/axios.js'
 const Sidebar = ({setdata,setpad}) => {
   let {user} = useAuth()
   const [open, setOpen] = useState(true);
-  const [trends,setTrends] = useState([])
+  const [trends,setTrends] = useState([{name:'trend'}])
   const [trendlocation,setlocation] = useState()
   const [usertrends,setuserTrends] = useState([])
   const [isloading,setloading] = useState(false);
@@ -70,8 +70,6 @@ const Sidebar = ({setdata,setpad}) => {
     const { name, value } = e.target;
     setlocation(value)
   };
-
-  console.log(usertrends)
 
   return (isloading)?(
 
