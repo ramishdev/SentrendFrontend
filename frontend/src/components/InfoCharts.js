@@ -32,12 +32,7 @@ function InfoCharts({trendinfo}) {
             }
             catch(err){
                 console.error(err.message);
-                if(err.response.status === 400){
-                    setResults({})
-                }
-                if(err.response.status === 404){
-                    setResults({})
-                }
+                setResults({})
             }
             setloading(false)
 

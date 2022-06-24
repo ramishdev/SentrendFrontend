@@ -26,7 +26,7 @@ function TopTweets({results}){
 
   
 
-    return(results)?(
+    return(results && Object.keys(results).length > 0)?(
         <>
             <Container>    
                 <Row className="p-10 d-flex justify-center">        

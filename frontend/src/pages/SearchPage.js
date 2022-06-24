@@ -134,18 +134,18 @@ const SearchPage = () => {
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     const list = [...inputList];
-    if(name === "max_results" && value > 100){
-      let digit = value / 100;
-      if(Number.isInteger(digit)){
-        list[index]['count'] = 1 + digit;
-      }
-      else{
-        list[index]['count'] = Math.trunc(digit) + 2;
-      }
-    }
-    if(name === "max_results" && value <= 100){
-      list[index]['count'] = 1;
-    }
+    // if(name === "max_results" && value > 100){
+    //   let digit = value / 100;
+    //   if(Number.isInteger(digit)){
+    //     list[index]['count'] = 1 + digit;
+    //   }
+    //   else{
+    //     list[index]['count'] = Math.trunc(digit) + 2;
+    //   }
+    // }
+    // if(name === "max_results" && value <= 100){
+    //   list[index]['count'] = 1;
+    // }
     list[index][name] = value;
     setInputList(list);
   };
@@ -200,6 +200,7 @@ const SearchPage = () => {
               </Form.Group>
               {console.log(crawlInfo[0])}
               { (crawlInfo[0]['type'] === 'batch' || crawlInfo[0]['type'] === '') ? (
+              <>
               <Form.Group className='w-36 ml-1'>
                 <Form.Control
                   type="number"
@@ -211,8 +212,22 @@ const SearchPage = () => {
                   max="1000"
                   onChange={e => handleInputChange(e, i)} required
                 />
-                <Feedback type="invalid">Range (10-1000)</Feedback>
+                <Feedback type="invalid">Range (10-100)</Feedback>
               </Form.Group>
+              <Form.Group className='w-36 ml-1'>
+                <Form.Control
+                  type="number"
+                  name="count"
+                  placeholder="Enter count"
+                  value={x.count}
+                  size="sm"
+                  min="1" 
+                  max="10"
+                  onChange={e => handleInputChange(e, i)} required
+                />
+                <Feedback type="invalid">Range (1-10)</Feedback>
+              </Form.Group>
+              </>
               ):(<></>)}
               
               <div className="">

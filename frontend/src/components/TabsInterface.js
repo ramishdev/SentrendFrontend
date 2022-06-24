@@ -12,6 +12,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { useOutletContext } from "react-router-dom";
 import useSock from '../hooks/useSock'
+import TopicsCloud from './Topics'
 
 const TabsInterface = () => {
     //const navigate = useNavigate()
@@ -27,8 +28,6 @@ const TabsInterface = () => {
         }
         ws.onmessage = (event) => {            
             console.log("WebSocket send the data",event.data)
-            console.log(ws)
-
             dorefresh(event.data)
         }
         ws.onclose = () => {
@@ -41,7 +40,6 @@ const TabsInterface = () => {
         // return () => ws.close()
     }, [ws,refresh])
 
-    console.log("WebSocket "+ refresh)
     return (
         <>
             <Tabs defaultActiveKey="sentiment" id="uncontrolled-tab-example" className="mb-3" >
@@ -68,6 +66,11 @@ const TabsInterface = () => {
                 <Tab eventKey="rankings" title="Rankings">
                 </Tab>
                 <Tab eventKey="topic analysis" title="Topic Analysis">
+                    <Container>
+                        <Row className="p-10 d-flex justify-center">
+                            <TopicsCloud trendinfo={trendinfo}/>
+                        </Row>
+                    </Container>
                 </Tab>
             </Tabs>  
         </>
