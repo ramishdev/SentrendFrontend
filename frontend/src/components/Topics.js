@@ -13,7 +13,32 @@ function TopicsCloud({trend}){
     const [results, setResults] = useState()
     const [isloading,setloading] = useState(false);
     console.log(trend)
- 
+    useEffect(() => {
+        const controller = new AbortController();
+        const fetchTopics = async () => {
+          setloading(true);
+          setResults()
+          try{
+            const data = await axios.get(trend?.url +"/topics/", {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                signal: controller.signal
+            });
+            console.log(data?.data)
+            setResults(data?.data)            
+          }
+          catch(err){
+            console.error(err.message);
+            setResults({})
+          }
+          setloading(false);
+        }
+        if(trend){
+             fetchTopics();
+        }
+        return () => controller?.abort();
+    },[trend])
     const newData = (data) => { 
         return(
             data.map((item) => ({
@@ -45,7 +70,9 @@ function TopicsCloud({trend}){
     const fetch = async () => {
         await fetchTopics()
     }
-
+    if(isloading){
+        <><h1>Loading</h1></>
+    }
     return (trend)?(
         <> 
             <Button variant="outline-primary" onClick={fetch}>Get Topics</Button>
