@@ -105,7 +105,7 @@ const Sidebar = ({setdata,setpad}) => {
         </div>
         <div className={`pl-0 pt-4`}>
           <SubMenu item={trenddata}/>
-          {  <SubMenu item={usertrenddata}/>}
+          { user && <SubMenu item={usertrenddata}/>}
         </div>
         {/*<ul className="pl-0 pt-6">
           {trends && trends.map((trend)  => (

@@ -12,6 +12,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { useOutletContext } from "react-router-dom";
 import useSock from '../hooks/useSock'
+import TopicsCloud from './Topics'
 
 const TabsInterface = () => {
     //const navigate = useNavigate()
@@ -68,6 +69,7 @@ const TabsInterface = () => {
                 <Tab eventKey="rankings" title="Rankings">
                 </Tab>
                 <Tab eventKey="topic analysis" title="Topic Analysis">
+                    <TopicsCloud trendinfo={trendinfo}/>
                 </Tab>
             </Tabs>  
         </>
