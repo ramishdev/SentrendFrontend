@@ -65,4 +65,4 @@ function TopicsCloud({trendinfo}){
         </>
     )
 }
-export default TopicsCloud
+export default React.memo(TopicsCloud)

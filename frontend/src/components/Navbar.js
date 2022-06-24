@@ -41,8 +41,7 @@ const MyNavbar = () => {
         e.preventDefault();    
         navigate("/search")
         console.log('You clicked submit.');
-        //navigate('/products')
-      }
+    }
 
     return (user)?(
         <>

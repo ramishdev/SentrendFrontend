@@ -67,9 +67,9 @@ const SearchPage = () => {
     const controller = new AbortController();
     console.log(inputList)
     try{
-      setws(-1)
       let response = ''
       if(crawlInfo[0]['type'] === "batch"){
+        setws(-1)
         response = await axios.post('/core/user_search/',{
           query: inputList,
           crawler: crawlInfo[0],
