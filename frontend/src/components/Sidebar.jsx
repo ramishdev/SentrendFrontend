@@ -72,6 +72,8 @@ const Sidebar = ({setdata,setpad}) => {
     setlocation(value)
   };
 
+  console.log(usertrends)
+
   return (isloading)?(
 
     <div><h1>Loading...</h1></div>
@@ -105,7 +107,7 @@ const Sidebar = ({setdata,setpad}) => {
         </div>
         <div className={`pl-0 pt-4`}>
           <SubMenu item={trenddata}/>
-          {  <SubMenu item={usertrenddata}/>}
+          {user &&  <SubMenu item={usertrenddata}/>}
         </div>
         {/*<ul className="pl-0 pt-6">
           {trends && trends.map((trend)  => (
