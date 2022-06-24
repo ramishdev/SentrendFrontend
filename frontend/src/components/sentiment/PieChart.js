@@ -3,6 +3,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 //import { Doughnut } from 'react-chartjs-2';
 //import {Card} from 'react-bootstrap'
 import { Pie } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
@@ -29,22 +30,20 @@ function PieChart({results}) {
         ]
     };
     const data2 = {
-        labels: ['Positive','Negative','Neutral'],
+        labels: ['Subjective','Objective'],
         datasets: [
             {
                 label: '# of Votes',
-                data: [results?.pos_sub_count, results?.neg_sub_count, results?.neu_sub_count],
+                data: [results?.sub_count, results?.obj_count],
                 backgroundColor: [
-                    'rgba(255, 214, 98, 1.00)',
-                    'rgba(233, 75, 60, 1.00)',
-                    'rgba(0, 83, 156, 1.00)'
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)'
                 ],
                 borderWidth: 2,
             }
         ]
     };
 
-    
     return (results && Object.keys(results).length > 0)?
     ( 
         <div>
@@ -61,7 +60,7 @@ function PieChart({results}) {
                 <Col>
                     <h1>Trend Subjectivity</h1>
                     <div className="border border-sky-500 w-60">
-                        <Pie data={data2} options={{
+                        <Doughnut data={data2} options={{
                             responsive: true,
                             maintainAspectRatio: true,
                         }}/>
