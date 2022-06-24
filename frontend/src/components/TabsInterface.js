@@ -66,7 +66,11 @@ const TabsInterface = () => {
                 <Tab eventKey="rankings" title="Rankings">
                 </Tab>
                 <Tab eventKey="topic analysis" title="Topic Analysis">
-                    <TopicsCloud trendinfo={trendinfo}/>
+                    <Container>
+                        <Row className="p-10 d-flex justify-center">
+                            <TopicsCloud trendinfo={trendinfo}/>
+                        </Row>
+                    </Container>
                 </Tab>
             </Tabs>  
         </>

@@ -1,22 +1,18 @@
 import React,{useState, useEffect} from 'react';
-import { render } from 'react-dom';
 import WordCloud from 'react-d3-cloud';
 import axios from '../hooks/axios.js'
 
 
-const fontSize = (word) => word.value / 20;
+const fontSize = (word) => word.value / 50;
 const rotate = (word) => (word.value % 90) - 45;
-
-
 
 
 function TopicsCloud({trendinfo}){
     const [results, setResults] = useState()
     const [isloading,setloading] = useState(false);
-
     useEffect(() => {
         const controller = new AbortController();
-        const fetchTrends = async () => {
+        const fetchTopics = async () => {
           setloading(true);
           setResults()
           try{
@@ -26,7 +22,6 @@ function TopicsCloud({trendinfo}){
                 },
                 signal: controller.signal
             });
-            //let newState = data.data.map((trend) => ({"trend_name":trend.trend_name,"max_results":10,"count":1}));  
             console.log(data?.data)
             setResults(data?.data)            
           }
@@ -36,25 +31,32 @@ function TopicsCloud({trendinfo}){
           }
           setloading(false);
         }
-        fetchTrends();
+        fetchTopics();
+
         return () => controller?.abort();
     },[])
-
-    const newData = (data) => { data.map((item) => ({
-        text: item.text,
-        value: Math.random() * 100
-    }))};
+    const newData = (data) => { 
+        return(
+            data.map((item) => ({
+            text: item.text,
+            value: item.value
+            }))
+        )
+    };
+    if(isloading){
+        <>Loading</>
+    }
 
     return (results && Object.keys(results).length > 0)?(
         <> 
+            <div className="border border-sky-500 " style={{width:'40rem'}}>
             <WordCloud
-                width={1000}
-                height={750}
                 data={newData(results)}
                 fontSize={fontSize}
                 rotate={0}
                 padding={2}
             />
+            </div>
         </>
     ):
     (
