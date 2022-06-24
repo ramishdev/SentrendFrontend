@@ -19,7 +19,7 @@ function TopicsCloud({trend}){
           setloading(true);
           setResults()
           try{
-            const data = await axios.get(trend?.url +"/topics/", {
+            const data = await axios.get(trend?.url +"topics/", {
                 headers: {
                     'Content-Type': 'application/json'
                 },
