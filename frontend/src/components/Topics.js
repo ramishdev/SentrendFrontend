@@ -1,22 +1,24 @@
 import React,{useState, useEffect} from 'react';
 import WordCloud from 'react-d3-cloud';
 import axios from '../hooks/axios.js'
+import { useOutletContext } from "react-router-dom";
 
 
 const fontSize = (word) => word.value / 50;
 const rotate = (word) => (word.value % 90) - 45;
 
 
-function TopicsCloud({trendinfo}){
+function TopicsCloud({trend}){
     const [results, setResults] = useState()
     const [isloading,setloading] = useState(false);
+    console.log(trend)
     useEffect(() => {
         const controller = new AbortController();
         const fetchTopics = async () => {
           setloading(true);
           setResults()
           try{
-            const data = await axios.get(trendinfo?.url+"/topics/", {
+            const data = await axios.get(trend?.url +"/topics/", {
                 headers: {
                     'Content-Type': 'application/json'
                 },
