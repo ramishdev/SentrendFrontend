@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
-
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -32,7 +34,7 @@ function BarChart({source}) {
     let data= {}    
     let options = {}
 
-    
+    console.log(source)
     let numOfSources =  Object.keys(source).length
     if(source){
 
@@ -96,10 +98,24 @@ function BarChart({source}) {
     (
 
         <>
-            <h1>Trend Sources</h1>
-            <div className="border border-sky-500 w-fit"  style={{ width:'60rem'}}>
-                <Bar data={data} options={options}/>
-            </div>
+            <h1 className = "text-2xl text-sky-600">Trend Sources</h1>
+            <Container>
+              <Row className="shadow-2xl rounded-lg ..." > 
+                <Col xs={10}>
+                  <div  style={{ width:'60rem'}}>
+                    <Bar data={data} options={options}/>
+                  </div>
+                </Col>
+                <Col>
+                    <div>
+                          <h1 className = "text-2xl text-sky-600 pt-20">
+                              Tweet Sources
+                          </h1>
+                          <p>Tweet source labels. Tweet source labels help you better understand how a Tweet was posted. This additional information provides context about the Tweet and its author</p>
+                    </div>
+                </Col>
+              </Row>
+            </Container>
         </>
             
     ):

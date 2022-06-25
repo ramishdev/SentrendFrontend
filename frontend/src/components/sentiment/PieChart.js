@@ -21,9 +21,9 @@ function PieChart({results}) {
                 label: '# of Votes',
                 data: [results?.pos_pol_count, results?.neg_pol_count, results?.neu_pol_count],
                 backgroundColor: [
-                    'rgba(255, 214, 98, 1.00)',
+                    'rgba(0, 200, 0, 0.5)',
                     'rgba(233, 75, 60, 1.00)',
-                    'rgba(0, 83, 156, 1.00)'
+                    'rgba(54, 162, 235, 1)',
                 ],
                 borderWidth: 2,
             }
@@ -49,22 +49,46 @@ function PieChart({results}) {
         <div>
             <Row>
                 <Col >
-                    <h1 >Trend Polarity</h1>
-                    <div className="border border-sky-500 inline-block ..." style={{ width: '15rem' }}>
-                        <Pie data={data1} options={{
-                            responsive: true,
-                            maintainAspectRatio: true,
-                        }}/>
+                    <h1 className = "text-2xl text-sky-600" >Trend Polarity</h1>
+                    <div className="shadow-2xl rounded-lg ...">
+                        <div className="d-flex">
+                            <div style={{ width: '20rem' }}>
+                                <Pie data={data1} options={{
+                                    responsive: true,
+                                    maintainAspectRatio: true,
+                                }}/>
+                            </div>
+                            <div >
+                                <h1 className = "text-2xl text-sky-600">
+                                    Sentiment
+                                </h1>
+                                <p>Tweet source labels.
+                                    Tweet source labels help you better understand how a Tweet was posted.
+                                    This additional information provides context about the Tweet and its author</p>
+                            </div>
+                        </div>
                     </div>
                 </Col>
                 <Col>
-                    <h1>Trend Subjectivity</h1>
-                    <div className="border border-sky-500 w-60">
-                        <Doughnut data={data2} options={{
-                            responsive: true,
-                            maintainAspectRatio: true,
-                        }}/>
+                    <h1 className = "text-2xl text-pink-600">Trend Subjectivity</h1>
+                    <div className="shadow-2xl rounded-lg ...">
+                        <div className="d-flex">
+                            <div  style={{ width: '20rem' }}>
+                                <Doughnut data={data2} options={{
+                                    responsive: true,
+                                    maintainAspectRatio: true,
+                                }}/>
+                            </div>
+                            <div >
+                                <h1 className = "text-2xl text-pink-600">
+                                    Subjectivity
+                                </h1>
+                                <p>An objective tweet conveys factual information, whereas a subjective tweet relays an opinion or belief</p>
+                            </div>
+                        </div>
                     </div>
+                
+            
                 </Col>
             </Row>
         </div>

@@ -8,7 +8,7 @@ import axios from '../hooks/axios.js'
 import BarChart from "./BarChart"
 import RadarChart from "./RadarChart"
 
-
+import PlaceHolder from "./PlaceHolder";
 
 function InfoCharts({trendinfo}) {
     const [results, setResults] = useState({});
@@ -49,9 +49,7 @@ function InfoCharts({trendinfo}) {
 
     if(loading){
         return (
-            <div >
-                <h2>Loading</h2>
-            </div>
+            <PlaceHolder/>
         );
     }
 
@@ -60,12 +58,11 @@ function InfoCharts({trendinfo}) {
 
         <div>
             <Row>
-                <Col>
-                    <RadarChart info={results?.public}/>
-                </Col>
-                <Col>
-                    <BarChart source={results?.source}/>
-                </Col>
+                <RadarChart info={results?.public}/>
+
+            </Row>
+            <Row className="pt-20 mt-20 ">
+                <BarChart source={results?.source}/>
             </Row>
         </div>
             

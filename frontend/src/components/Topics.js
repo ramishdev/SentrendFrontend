@@ -5,6 +5,9 @@ import { useOutletContext } from "react-router-dom";
 
 import {Button} from 'react-bootstrap/'
 
+
+import PlaceHolder from "./PlaceHolder";
+
 const fontSize = (word) => word.value / 10;
 const rotate = (word) => (word.value % 90) - 45;
 
@@ -71,13 +74,16 @@ function TopicsCloud({trend}){
         await fetchTopics()
     }
     if(isloading){
-        <><h1>Loading</h1></>
+        <>
+            <PlaceHolder/>
+        </>
     }
     return (trend)?(
         <> 
+        
             <Button variant="outline-primary" onClick={fetch}>Get Topics</Button>
             {(results && Object.keys(results).length > 0)?(
-            <div className="border border-sky-500 " style={{width:'60rem'}}>
+            <div className="shadow-2xl rounded-lg ... " style={{width:'60rem'}}>
                 <WordCloud
                     data={newData(results)}
                     fontSize={fontSize}

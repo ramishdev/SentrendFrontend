@@ -14,6 +14,8 @@ import { useOutletContext } from "react-router-dom";
 import useSock from '../hooks/useSock'
 import TopicsCloud from './Topics'
 
+import PlaceHolder from './PlaceHolder'
+
 const TabsInterface = () => {
     //const navigate = useNavigate()
     const trendinfo = useOutletContext()   
@@ -56,14 +58,13 @@ const TabsInterface = () => {
                             <Row className="p-10 d-flex justify-center">
                                 <Sentiment trendinfo={trendinfo}/>
                             </Row>
-
-                            <Row className="p-10 d-flex justify-center">
-                                <InfoCharts trendinfo={trendinfo}/>
-                            </Row>
                         </Container>
                     </div>
                 </Tab>
                 <Tab eventKey="rankings" title="Rankings">
+                    <Row className="p-10 d-flex justify-center">
+                        <InfoCharts trendinfo={trendinfo}/>
+                    </Row>
                 </Tab>
                 <Tab eventKey="topic analysis" title="Topic Analysis">
                     <Container>

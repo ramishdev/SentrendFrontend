@@ -5,6 +5,8 @@ import axios from '../../hooks/axios'
 import PieChart from "./PieChart.js";
 import TopTweets from "./TopTweets.js";
 
+import PlaceHolder from "../PlaceHolder";
+
 function Sentiment({trendinfo}) {
     const [results, setResults] = useState({});
     const [loading, setloading] = useState(false);
@@ -48,15 +50,19 @@ function Sentiment({trendinfo}) {
     if(loading){
         return (
             <>
-                <h2>Loading</h2>
+                <PlaceHolder/>
             </>
         );
     }
     return (results && Object.keys(results).length > 0)?(
-        <> 
-            <PieChart results={results}/>
-            <TopTweets results={results}/>
-        </>
+        <div> 
+            <div>
+                <PieChart results={results}/>
+            </div>
+            <div className="pt-20 mt-20">
+                <TopTweets results={results}/>
+            </div>
+        </div>
     ):
     (
         <>

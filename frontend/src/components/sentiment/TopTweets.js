@@ -43,13 +43,13 @@ function TopTweets({results}){
 
     return(results && Object.keys(results).length > 0)?(
         <>
-        <h1 className = "text-5xl">
+        <h1 className = "text-4xl">
             Top Tweets
         </h1>
             <Container>    
                 <Row className="p-10 d-flex justify-center">
                     {posList.length > 0 &&
-                        <h1 className = "text-2xl">
+                        <h1 className = "text-2xl text-emerald-400">
                             Positive Tweets
                         </h1>  
                     }
@@ -68,7 +68,7 @@ function TopTweets({results}){
                 </Row>
                 <Row className="p-10 d-flex justify-center">
                     {negList.length > 0 &&
-                        <h1 className = "text-2xl">
+                        <h1 className = "text-2xl text-rose-400	">
                             Negative Tweets
                         </h1>
                     }     
@@ -87,7 +87,7 @@ function TopTweets({results}){
                 </Row>
                 <Row className="p-10 d-flex justify-center">
                     {neuList.length > 0 &&
-                        <h1 className = "text-2xl">
+                        <h1 className = "text-2xl text-sky-500	">
                         Neutral Tweets
                         </h1>  
                     }        
