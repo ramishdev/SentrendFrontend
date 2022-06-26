@@ -3,11 +3,11 @@ import SubMenu from './SubMenu'
 import useAuth from "../hooks/useAuth"
 import Form from 'react-bootstrap/Form';
 import axios from '../hooks/axios.js'
-
+import Placeholder from './PlaceHolder'
 const Sidebar = ({setdata,setpad}) => {
   let {user} = useAuth()
   const [open, setOpen] = useState(true);
-  const [trends,setTrends] = useState([{name:'trend'}])
+  const [trends,setTrends] = useState([])
   const [trendlocation,setlocation] = useState()
   const [usertrends,setuserTrends] = useState([])
   const [isloading,setloading] = useState(false);
@@ -20,11 +20,11 @@ const Sidebar = ({setdata,setpad}) => {
 
   const trenddata = React.useMemo(() => ({
     Name:"Top Trends", trends,passTrends,open,setOpen,setpad,subopen,setsubopen
-  }), [trends]);
+  }), [trends,open]);
 
   const usertrenddata = React.useMemo(() => ({
     Name:"User Trends", trends:usertrends,passTrends,open,setOpen,setpad,subopen,setsubopen
-  }), [usertrends]);
+  }), [usertrends,open]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -60,6 +60,7 @@ const Sidebar = ({setdata,setpad}) => {
         console.error(err.message);
       }
       setloading(false);
+      setpad(true)
     }
     fetchTrends();
     return () => controller?.abort();
@@ -68,12 +69,13 @@ const Sidebar = ({setdata,setpad}) => {
   
   const handlelocationChange = (e) => {
     const { name, value } = e.target;
+    setpad(-1)
     setlocation(value)
   };
 
   return (isloading)?(
 
-    <div><h1>Loading...</h1></div>
+    <><Placeholder/></>
 
   ):(
     <div className="fixed top-0 bottom-0">

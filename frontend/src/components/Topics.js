@@ -71,12 +71,15 @@ function TopicsCloud({trend}){
         setloading(false);
     }
     const fetch = async () => {
+
         await fetchTopics()
     }
     if(isloading){
-        <>
-            <PlaceHolder/>
-        </>
+        return(
+            <div className="d-flex justify-center">
+                <PlaceHolder/>
+            </div>
+        )
     }
     return (trend)?(
         <> 

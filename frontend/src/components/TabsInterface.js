@@ -40,8 +40,8 @@ const TabsInterface = () => {
             ws.send("trendinfo?.id")
         }
         // return () => ws.close()
-    }, [ws,refresh])
-
+    }, [ws])
+    console.log(refresh)
     return (
         <>
             <Tabs defaultActiveKey="sentiment" id="uncontrolled-tab-example" className="mb-3" >
@@ -56,14 +56,14 @@ const TabsInterface = () => {
                                 </Col>
                             </Row>
                             <Row className="p-10 d-flex justify-center">
-                                <Sentiment trendinfo={trendinfo}/>
+                                <Sentiment trendinfo={trendinfo} refresh={refresh}/>
                             </Row>
                         </Container>
                     </div>
                 </Tab>
                 <Tab eventKey="rankings" title="Rankings">
                     <Row className="p-10 d-flex justify-center">
-                        <InfoCharts trendinfo={trendinfo}/>
+                        <InfoCharts trendinfo={trendinfo} refresh={refresh}/>
                     </Row>
                 </Tab>
                 <Tab eventKey="topic analysis" title="Topic Analysis">
