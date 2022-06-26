@@ -29,7 +29,8 @@ function TrendRanking({results,info}) {
         </Popover>
     );
 
-
+    
+    console.log(results)
     console.log(info)
 
     return(results && Object.keys(results).length > 0)?
@@ -73,11 +74,11 @@ function TrendRanking({results,info}) {
                 <Col>
                     <div className="text-center">
                     <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Average number of followers per user")}>
-                        <i className="bi bi-bar-chart" style={{fontSize: "4rem"}}></i>
+                        <i className="bi bi-bar-chart-fill" style={{fontSize: "4rem"}}></i>
                     </OverlayTrigger>
                     </div>
                     <div className="text-center">
-                        <h1 className = "text-2xl text-emerald-300">{info?.avg_followers}</h1>
+                        <h1 className = "text-2xl text-emerald-300">{info?.user?.avg_followers}</h1>
                         <h1 className = "text-sm">Followers/contributor</h1>
                     </div>
                 </Col>
@@ -90,6 +91,65 @@ function TrendRanking({results,info}) {
                     <div className="text-center">
                         <h1 className = "text-2xl text-emerald-300">{(results?.tweet_count / results?.unique_contributers).toPrecision(3)}</h1>
                         <h1 className = "text-sm">Tweets/contributor</h1>
+                    </div>
+                </Col>
+                <Col>
+                    <div className="text-center">
+                    <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Maximum followers among users")}>
+                        <i className="bi bi-person-hearts" style={{fontSize: "4rem"}}></i>
+                    </OverlayTrigger>
+                    </div>
+                    <div className="text-center">
+                        <h1 className = "text-2xl text-emerald-300">{info?.user?.max_followers}</h1>
+                        <h1 className = "text-sm">Max followers</h1>
+                    </div>
+                </Col>
+            </Row>
+
+
+            <Row  className="p-5 border-b border-cyan-900">
+                <Col>
+                    <div className=" text-center">
+                    <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Total number of like counts")}>
+                        <i className="bi bi-person-heart" style={{fontSize: "4rem"}}></i>
+                    </OverlayTrigger>
+                    </div>
+                    <div className="text-center">
+                        <h1 className = "text-2xl text-emerald-300">{info?.public?.like_count}</h1>
+                        <h1 className = "text-sm">Total Likes</h1>
+                    </div>
+                </Col>
+                <Col>
+                    <div className="text-center">
+                    <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Total number of retweet counts")}>
+                        <i className="bi bi-send" style={{fontSize: "4rem"}}></i>
+                    </OverlayTrigger>
+                    </div>
+                    <div className="text-center">
+                        <h1 className = "text-2xl text-emerald-300">{info?.public?.retweet_count}</h1>
+                        <h1 className = "text-sm">Total Retweets</h1>
+                    </div>
+                </Col>
+                <Col>
+                    <div className="text-center">
+                    <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Total number of reply counts")}>
+                        <i className="bi bi-reply-fill" style={{fontSize: "4rem"}}></i>
+                    </OverlayTrigger>
+                    </div>
+                    <div className="text-center">
+                        <h1 className = "text-2xl text-emerald-300">{info?.public?.reply_count}</h1>
+                        <h1 className = "text-sm">Total Replies</h1>
+                    </div>
+                </Col>
+                <Col>
+                    <div className="text-center">
+                    <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Minimum followers among users")}>
+                        <i className="bi bi-person-dash" style={{fontSize: "4rem"}}></i>
+                    </OverlayTrigger>
+                    </div>
+                    <div className="text-center">
+                        <h1 className = "text-2xl text-emerald-300">{info?.user?.min_followers}</h1>
+                        <h1 className = "text-sm">Min followers</h1>
                     </div>
                 </Col>
             </Row>
