@@ -21,9 +21,9 @@ function TrendRanking({trendinfo,refresh}) {
     const popover = (
         <Popover id="popover-basic">
                 <>
-                <Popover.Header as="h3">Stream Crawler is Running</Popover.Header>
+                {/* <Popover.Header as="h3">Total count of tweets used for results</Popover.Header> */}
                 <Popover.Body>
-                    Your data is being crawled
+                    Total count of tweets used for results
                 </Popover.Body>
                 </>
         </Popover>
@@ -78,34 +78,39 @@ function TrendRanking({trendinfo,refresh}) {
     (
 
         <Container>
-            <Row  className="border-y border-cyan-900">
-                <Col>
-                <div>
-                    <h1 className="text-8xl text-sky-500">
-                        {results?.tweet_count}
-                    </h1>
-                    <div>
-                    <h1 className="text-sm">
-                        TOTAL TWEETS
-                    </h1>
-                        <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover}>
-                            <i className="bi bi-alarm" style={{fontSize: "2rem"}}></i>
-                        </OverlayTrigger>
-                        
+            <Row  className="p-5 border-y border-cyan-900">
+                <Col className = "d-flex justify-center">
+                    <div>   
+                        <h1 className="font-black text-8xl text-emerald-300">
+                            {results?.tweet_count}
+                        </h1>
+                        <div className="d-flex">
+                            <h1 className="text-sm pt-3">
+                                TOTAL TWEETS
+                            </h1>
+                            <div className="pl-1">
+                            <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover}>
+                                <i className="bi bi-question-circle" style={{fontSize: "2rem"}}></i>
+                            </OverlayTrigger>
+                            </div>
+                            
+                        </div>
+
                     </div>
-
-                </div>
-                </Col>
-                <Col>
-                    <h1 className="text-xl">
-
-                        everything goes so fast
-                    </h1>
                 </Col>
 
             </Row>
-            <Row>
-                <h1>sadas</h1>
+            <Row  className="p-5 border-b border-cyan-900">
+                <Col>
+                    <div className="pl-1 text-center">
+                       
+                        <i className="bi bi-people" style={{fontSize: "4rem"}}></i>
+                    </div>
+                    <div className="text-center">
+                        <h1 className = "text-2xl text-emerald-300">{results?.unique_contributers}</h1>
+                        <h1 className = "text-sm">Original Contributers</h1>
+                    </div>
+                </Col>
             </Row>
         </Container>
             
