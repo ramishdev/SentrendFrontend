@@ -18,12 +18,12 @@ import { BsFillAlarmFill} from "react-icons/bs";
 
 function TrendRanking({trendinfo,info,refresh}) {
 
-    const popover = (
+    const popover = (data)=> (
         <Popover id="popover-basic">
                 <>
                 {/* <Popover.Header as="h3">Total count of tweets used for results</Popover.Header> */}
                 <Popover.Body>
-                    Total count of tweets used for results
+                    {data}
                 </Popover.Body>
                 </>
         </Popover>
@@ -71,11 +71,6 @@ function TrendRanking({trendinfo,info,refresh}) {
         );
     }
 
-
-    console.log(results)
-
-    console.log(info)
-
     return(results && Object.keys(results).length > 0)?
     (
 
@@ -91,7 +86,7 @@ function TrendRanking({trendinfo,info,refresh}) {
                                 TOTAL TWEETS
                             </h1>
                             <div className="pl-1">
-                            <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover}>
+                            <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Number of Tweets used for this analysis")}>
                                 <i className="bi bi-question-circle" style={{fontSize: "2rem"}}></i>
                             </OverlayTrigger>
                             </div>
@@ -105,7 +100,7 @@ function TrendRanking({trendinfo,info,refresh}) {
             <Row  className="p-5 border-b border-cyan-900">
                 <Col>
                     <div className=" text-center">
-                    <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover}>
+                    <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Number of unique users who tweeted on this trend")}>
                         <i className="bi bi-people" style={{fontSize: "4rem"}}></i>
                     </OverlayTrigger>
                     </div>
