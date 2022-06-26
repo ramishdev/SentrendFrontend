@@ -3,10 +3,12 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 import useAuth from "../hooks/useAuth"
 import Feedback from 'react-bootstrap/Feedback'
+import { NavLink } from 'react-router-dom'
 
 import axios from '../hooks/axios.js'
 import useSock from '../hooks/useSock'
 import Placeholder from '../components/PlaceHolder'
+
 const SearchPage = () => {
   const [inputList, setInputList] = useState([{key: "",max_results:"",count:""}]);
   const [crawlList, setcrawlList] = useState();              //Dummy data
@@ -181,6 +183,8 @@ const SearchPage = () => {
   return (loading)? (
     <div className="d-flex justify-content-center"><Placeholder/></div>
   ):usertier?(
+    <>
+    <NavLink to={'/dashboard'} style={{  textDecoration: 'none' ,color:'black'}} className="pl-2"><i class="bi bi-arrow-left-circle" style={{fontSize: "2rem"}}></i></NavLink>
     <div className="container flex min-h-screen flex-col justify-center">
       <div className="flex justify-center">
         <h3 className={"text-md"}>Search</h3>
@@ -305,6 +309,8 @@ const SearchPage = () => {
       <div className="flex justify-center" style={{ marginTop: 20 }}>{"Tier : " + usertier?.tier_name + ", Max Keywords in this tier : " + usertier?.max_keywords + ", Current : " + current + ", Can Add More : " + (usertier?.max_keywords - usertier?.remaining - reach)}</div>
 
     </div>
+    </>
+
   ):(<><h1> Error Connecting to Server</h1></>)
 }
 

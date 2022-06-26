@@ -12,7 +12,8 @@ const SettingsPage = () => {
     
     return (
         <>
-            <Button variant="outline-primary"><NavLink to={'/dashboard'} style={{  textDecoration: 'none'}}>Back</NavLink></Button>
+            
+            <NavLink to={'/dashboard'} style={{  textDecoration: 'none' ,color:'black'}} className="pl-2"><i class="bi bi-arrow-left-circle" style={{fontSize: "2rem"}}></i></NavLink>
             <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3" >
                 <Tab eventKey="profile" title="Profile">
                     <Profile/>
