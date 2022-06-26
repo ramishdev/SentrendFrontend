@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 
-import axios from '../hooks/axios.js'
-import BarChart from "./BarChart"
-import RadarChart from "./RadarChart"
 
-import PlaceHolder from "./PlaceHolder";
+import axios from '../../hooks/axios.js'
 
-function InfoCharts({trendinfo,refresh}) {
+import TrendRanking from "./Ranking.js";
+
+import PlaceHolder from "../PlaceHolder";
+import InfoCharts from './InfoCharts'
+
+function TrendInfo({trendinfo,refresh}) {
     const [results, setResults] = useState({});
     const [loading, setloading] = useState(false);
 
@@ -49,22 +47,19 @@ function InfoCharts({trendinfo,refresh}) {
 
     if(loading){
         return (
-            <PlaceHolder/>
+            <div className="d-flex justify-center">
+                <PlaceHolder/>
+            </div>
         );
     }
 
     return(results && Object.keys(results).length > 0)?
     (
+        <>
+            <TrendRanking trendinfo={trendinfo} info={results} results={refresh}/>
+            <InfoCharts results={results}/>
+        </>
 
-        <div>
-            <Row>
-                <RadarChart info={results?.public}/>
-
-            </Row>
-            <Row className="pt-20 mt-20 ">
-                <BarChart source={results?.source}/>
-            </Row>
-        </div>
             
     ):
     (
@@ -73,4 +68,4 @@ function InfoCharts({trendinfo,refresh}) {
         </>
     )
 }
-export default InfoCharts
+export default TrendInfo

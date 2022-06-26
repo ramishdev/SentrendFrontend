@@ -60,7 +60,7 @@ const MyNavbar = () => {
                     <Button onClick={(e) => handleSubmit(e)} variant="outline-success" >Search</Button>
                     <Nav>
                         <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
-                            <NavDropdown.Item onClick={()=> navigate("/profile")}>Profile</NavDropdown.Item>
+                            {/* <NavDropdown.Item onClick={()=> navigate("/profile")}>Profile</NavDropdown.Item> */}
                             <NavDropdown.Item onClick={()=> navigate("/settings")}>Settings</NavDropdown.Item>
                             <NavDropdown.Item onClick={()=> navigate("/testing")}>Test Socket</NavDropdown.Item>
                             <NavDropdown.Divider />

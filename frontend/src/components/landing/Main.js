@@ -49,14 +49,13 @@ const MainComponent = () => {
                 </Col>
                 <Col>
                     <div >
-                        {/* <img
-                        
-                            src={require("../../assets/landing/logo.PNG")}
+                        <img 
+                            src={require("../../assets/landing/main-screen.png")}
                             width="800"
                             height="800"
-                            className="d-inline-block align-top rounded-full"
+                            className="d-inline-block align-top pt-20"
                             alt="logo"
-                        /> */}
+                        />
                     </div>
                 </Col>
             </Row>

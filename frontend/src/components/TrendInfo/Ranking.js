@@ -4,8 +4,8 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-import axios from '../hooks/axios.js'
-import PlaceHolder from "./PlaceHolder";
+import axios from '../../hooks/axios.js'
+import PlaceHolder from "../PlaceHolder";
 import {Button} from 'react-bootstrap/'
 
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
@@ -16,7 +16,7 @@ import { IconContext } from "react-icons";
 import { BsFillAlarmFill} from "react-icons/bs";
 
 
-function TrendRanking({trendinfo,refresh}) {
+function TrendRanking({trendinfo,info,refresh}) {
 
     const popover = (
         <Popover id="popover-basic">

@@ -4,7 +4,6 @@ import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 // import DoughnutChart from "./DoughnutChart"
 // import RadarChart from "./RadarChart"
-import InfoCharts from "./InfoCharts"
 
 import Sentiment from './sentiment/Sentiment'
 import Container from 'react-bootstrap/Container'
@@ -14,8 +13,8 @@ import { useOutletContext } from "react-router-dom";
 import useSock from '../hooks/useSock'
 import TopicsCloud from './Topics'
 
-import PlaceHolder from './PlaceHolder'
-import TrendRanking from './Ranking'
+import TrendInfo from './TrendInfo/TrendInfo'
+
 const TabsInterface = () => {
     //const navigate = useNavigate()
     const trendinfo = useOutletContext()   
@@ -47,7 +46,7 @@ const TabsInterface = () => {
             <Tabs defaultActiveKey="rankings" id="uncontrolled-tab-example" className="mb-3" >
             <Tab eventKey="rankings" title="Rankings">
                     <Row className="p-10 d-flex justify-center">
-                        <TrendRanking trendinfo={trendinfo} refresh={refresh}/>
+                        <TrendInfo trendinfo={trendinfo} refresh={refresh}/>
                     </Row>
                     {/* <Row className="p-10 d-flex justify-center">
                         <InfoCharts trendinfo={trendinfo} refresh={refresh}/>
