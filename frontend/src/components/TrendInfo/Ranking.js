@@ -74,6 +74,8 @@ function TrendRanking({trendinfo,info,refresh}) {
 
     console.log(results)
 
+    console.log(info)
+
     return(results && Object.keys(results).length > 0)?
     (
 
@@ -102,13 +104,34 @@ function TrendRanking({trendinfo,info,refresh}) {
             </Row>
             <Row  className="p-5 border-b border-cyan-900">
                 <Col>
-                    <div className="pl-1 text-center">
-                       
+                    <div className=" text-center">
+                    <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover}>
                         <i className="bi bi-people" style={{fontSize: "4rem"}}></i>
+                    </OverlayTrigger>
                     </div>
                     <div className="text-center">
                         <h1 className = "text-2xl text-emerald-300">{results?.unique_contributers}</h1>
                         <h1 className = "text-sm">Original Contributers</h1>
+                    </div>
+                </Col>
+                <Col>
+                    <div className="text-center">
+                       
+                        <i className="bi bi-bar-chart" style={{fontSize: "4rem"}}></i>
+                    </div>
+                    <div className="text-center">
+                        <h1 className = "text-2xl text-emerald-300">{info?.avg_followers}</h1>
+                        <h1 className = "text-sm">Followers/contributor</h1>
+                    </div>
+                </Col>
+                <Col>
+                    <div className="text-center">
+                       
+                        <i className="bi bi-chat-left-text" style={{fontSize: "4rem"}}></i>
+                    </div>
+                    <div className="text-center">
+                        <h1 className = "text-2xl text-emerald-300">{(results?.tweet_count / results?.unique_contributers).toPrecision(3)}</h1>
+                        <h1 className = "text-sm">Tweets/contributor</h1>
                     </div>
                 </Col>
             </Row>
