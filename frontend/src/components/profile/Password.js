@@ -37,21 +37,16 @@ function ChangePass(){
         console.log(e.target.password.value)
         e.preventDefault()
         try{
-            let response = await axios('/user/users/'  + user.user_id + '/', {
+            let response = await axios('/user/users/'  + user.user_id + '/change_password/', {
                 method: 'PUT',
                 headers: {'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + String(authTokens.access)
                 },
                 data : JSON.stringify({
-                    'username' : profiles.username,
-                    'email':profiles.email,
-                    'password': e.target.password.value,
-                    'tier': profiles.tier}
-                    )
+                    'new_password': e.target.password.value,
+                })
             })
             const data = await response.data
-
-            
             alert('Done................ Logging Out')
             navigate('/login');
             
