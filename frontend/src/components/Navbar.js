@@ -62,7 +62,7 @@ const MyNavbar = () => {
                         <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">
                             {/* <NavDropdown.Item onClick={()=> navigate("/profile")}>Profile</NavDropdown.Item> */}
                             <NavDropdown.Item onClick={()=> navigate("/settings")}>Settings</NavDropdown.Item>
-                            <NavDropdown.Item onClick={()=> navigate("/testing")}>Test Socket</NavDropdown.Item>
+                            {/* <NavDropdown.Item onClick={()=> navigate("/testing")}>Test Socket</NavDropdown.Item> */}
                             <NavDropdown.Divider />
                             <NavDropdown.Item onClick={logoutUser}>Logout</NavDropdown.Item>
                         </NavDropdown>
@@ -94,9 +94,9 @@ const MyNavbar = () => {
                                 <NavDropdown.Item onClick={() => navigate("/register")}>
                                     Register
                                 </NavDropdown.Item>
-                                <NavDropdown.Item onClick={() => navigate("/testing")}>
+                                {/* <NavDropdown.Item onClick={() => navigate("/testing")}>
                                     Test Socket
-                                </NavDropdown.Item>
+                                </NavDropdown.Item> */}
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>
