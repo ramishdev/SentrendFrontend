@@ -4,17 +4,10 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-import axios from '../../hooks/axios.js'
-import PlaceHolder from "../PlaceHolder";
-import {Button} from 'react-bootstrap/'
-
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Popover from 'react-bootstrap/Popover'
 
-import { IconContext } from "react-icons";
-
-import { BsFillAlarmFill} from "react-icons/bs";
-
+import ListGroup from 'react-bootstrap/ListGroup'
 
 function TrendRanking({results,info}) {
 
@@ -151,6 +144,14 @@ function TrendRanking({results,info}) {
                         <h1 className = "text-2xl text-emerald-300">{info?.user?.min_followers}</h1>
                         <h1 className = "text-sm">Min followers</h1>
                     </div>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <ListGroup className="">
+                        <ListGroup.Item>Cras justo odio</ListGroup.Item>
+                        <ListGroup.Item>{results?.top_contributers[0]}</ListGroup.Item>
+                    </ListGroup>
                 </Col>
             </Row>
         </Container>
