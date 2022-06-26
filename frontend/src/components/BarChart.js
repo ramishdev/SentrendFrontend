@@ -52,7 +52,7 @@ function BarChart({source}) {
               },
               title: {
                 display: true,
-                text: 'Chart.js Horizontal Bar Chart',
+                text: 'Trend Sources Horizontal Bar Chart',
               },
             },
           };
