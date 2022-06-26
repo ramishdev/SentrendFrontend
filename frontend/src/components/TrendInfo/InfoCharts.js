@@ -12,11 +12,11 @@ function InfoCharts({results}) {
     (
 
         <div>
-            <Row>
+            <Row className = "p-5 border-b border-cyan-900">
                 <RadarChart info={results?.public}/>
 
             </Row>
-            <Row className="pt-20 mt-20 ">
+            <Row className = "p-5 border-b border-cyan-900">
                 <BarChart source={results?.source}/>
             </Row>
         </div>

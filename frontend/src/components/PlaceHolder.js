@@ -7,9 +7,9 @@ const PlaceHolder = () => {
     return (
       <div>
         <h1>
-            Fetching data from server....
+            
         </h1>
-        <Spinner animation="border" role="status" style={{ width: "4rem", height: "4rem" }}>
+        <Spinner animation="border" role="status" style={{ width: "5rem", height: "5rem" }}>
             <span className="visually-hidden">Loading...</span>
         </Spinner>
       </div>

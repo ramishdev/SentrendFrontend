@@ -45,6 +45,14 @@ const TabsInterface = () => {
         <>
             <Tabs defaultActiveKey="rankings" id="uncontrolled-tab-example" className="mb-3" >
             <Tab eventKey="rankings" title="Rankings">
+
+                    <Row className="p-10 d-flex justify-center">
+                                <Col>
+                                    <h1 className = "text-5xl">
+                                        {trendinfo?.name}
+                                    </h1>
+                                </Col>
+                            </Row>
                     <Row className="p-10 d-flex justify-center">
                         <TrendInfo trendinfo={trendinfo} refresh={refresh}/>
                     </Row>

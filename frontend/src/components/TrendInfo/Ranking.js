@@ -61,7 +61,7 @@ function TrendRanking({results,info}) {
                     </div>
                     <div className="text-center">
                         <h1 className = "text-2xl text-emerald-300">{results?.unique_contributers}</h1>
-                        <h1 className = "text-sm">Original Contributers</h1>
+                        <h1 className = "text-sm">Original Contributors</h1>
                     </div>
                 </Col>
                 <Col>
@@ -146,10 +146,27 @@ function TrendRanking({results,info}) {
                     </div>
                 </Col>
             </Row>
-            <Row>
+            <Row className="p-5 border-b border-cyan-900">
+                
                 <Col>
+                    <h1 className = "text-2xl">Top Contributors</h1>
                     <ListGroup className="">
 
+                        {
+                        Object.keys(results?.top_contributers).map((key,index) => {
+
+                            return(
+                                <ListGroup.Item>
+                                    {key}
+                                </ListGroup.Item>
+                            )
+                        })}
+                        
+                    </ListGroup>
+                </Col>
+                <Col>
+                    <h1 className = "text-2xl">Top Influencers</h1>
+                    <ListGroup className="">
                         {
                         Object.keys(results?.top_contributers).map((key,index) => {
 
