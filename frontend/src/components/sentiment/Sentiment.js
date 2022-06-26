@@ -49,9 +49,9 @@ function Sentiment({trendinfo,refresh}) {
 
     if(loading){
         return (
-            <>
+            <div className="d-flex justify-center">
                 <PlaceHolder/>
-            </>
+            </div>
         );
     }
     return (results && Object.keys(results).length > 0)?(

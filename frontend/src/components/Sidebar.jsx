@@ -31,6 +31,8 @@ const Sidebar = ({setdata,setpad}) => {
     const fetchTrends = async () => {
       setloading(true);
       setdata()
+      setpad(-1)
+
       try{
         const data = await axios.get('/core/trends/', {
           params: {
@@ -61,6 +63,7 @@ const Sidebar = ({setdata,setpad}) => {
       }
       setloading(false);
       setpad(true)
+      
     }
     fetchTrends();
     return () => controller?.abort();
@@ -75,7 +78,7 @@ const Sidebar = ({setdata,setpad}) => {
 
   return (isloading)?(
 
-    <><Placeholder/></>
+    <div className="pl-10"><Placeholder/></div>
 
   ):(
     <div className="fixed top-0 bottom-0">
