@@ -45,6 +45,14 @@ const TabsInterface = () => {
     return (
         <>
             <Tabs defaultActiveKey="sentiment" id="uncontrolled-tab-example" className="mb-3" >
+                <Tab eventKey="rankings" title="Rankings">
+                    <Row>
+                        
+                    </Row>
+                    <Row className="p-10 d-flex justify-center">
+                        <InfoCharts trendinfo={trendinfo} refresh={refresh}/>
+                    </Row>
+                </Tab>
                 <Tab eventKey="sentiment" title="Sentiment">         
                     <div>
                         <Container>
@@ -60,11 +68,6 @@ const TabsInterface = () => {
                             </Row>
                         </Container>
                     </div>
-                </Tab>
-                <Tab eventKey="rankings" title="Rankings">
-                    <Row className="p-10 d-flex justify-center">
-                        <InfoCharts trendinfo={trendinfo} refresh={refresh}/>
-                    </Row>
                 </Tab>
                 <Tab eventKey="topic analysis" title="Topic Analysis">
                     <Container>
