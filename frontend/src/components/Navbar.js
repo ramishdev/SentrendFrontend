@@ -51,9 +51,11 @@ const MyNavbar = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse className="justify-end">
                     {(ws!== -1)?(
+                        <div  className="pr-2">
                         <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
                             <Button variant="success">Status</Button>
                         </OverlayTrigger>
+                        </div>
                     ):(<></>)}
                     <Button onClick={(e) => handleSubmit(e)} variant="outline-success" >Search</Button>
                     <Nav>
@@ -78,9 +80,11 @@ const MyNavbar = () => {
                     <Navbar.Collapse className="justify-end">
                         {console.log(ws)}
                         {(ws!==-1)?(
-                            <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-                                <Button variant="success">Status</Button>
-                            </OverlayTrigger>
+                            <div className="pr-2">
+                                <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
+                                    <Button variant="success">Status</Button>
+                                </OverlayTrigger>
+                            </div>
                         ):(<></>)}
                         <Nav>
                             <NavDropdown title={<i className="bi bi-person-fill" />} id="collasible-nav-dropdown" align="end">

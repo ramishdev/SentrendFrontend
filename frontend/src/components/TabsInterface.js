@@ -15,7 +15,7 @@ import useSock from '../hooks/useSock'
 import TopicsCloud from './Topics'
 
 import PlaceHolder from './PlaceHolder'
-
+import TrendRanking from './Ranking'
 const TabsInterface = () => {
     //const navigate = useNavigate()
     const trendinfo = useOutletContext()   
@@ -62,6 +62,9 @@ const TabsInterface = () => {
                     </div>
                 </Tab>
                 <Tab eventKey="rankings" title="Rankings">
+                    <Row className="p-10 d-flex justify-center">
+                        <TrendRanking trendinfo={trendinfo} refresh={refresh}/>
+                    </Row>
                     <Row className="p-10 d-flex justify-center">
                         <InfoCharts trendinfo={trendinfo} refresh={refresh}/>
                     </Row>

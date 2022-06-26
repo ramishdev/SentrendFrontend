@@ -4,6 +4,7 @@ import { Col, Row} from "react-bootstrap";
 import React, {useState, useEffect, useContext} from 'react'
 import AuthContext from '../../context/AuthContext'
 import GetProfile from './GetProfile'
+import ChangePass from './Password'
 
 const Profile = () => {
 
@@ -29,7 +30,7 @@ const Profile = () => {
                             <GetProfile/>
                         </Tab.Pane>
                         <Tab.Pane eventKey="second">
-                            I am
+                            <ChangePass/>
                         </Tab.Pane>
                        
                     </Tab.Content>

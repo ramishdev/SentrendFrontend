@@ -33,17 +33,17 @@ const GetProfile = () => {
     }
   }
 
-   
-    return (
-        <div>
-            <h1>USER</h1>
-            <p>ID: {profiles.id}</p>
-            <p>USERNAME: {profiles.username}</p>
-            <p>EMAIL: {profiles.email}</p>
-            <p>TRENDS: {profiles.trend}</p>
-        </div>
-    )
- 
+  console.log(profiles)
+  return (
+      <div>
+          <h1>USER</h1>
+          <p>ID: {profiles.id}</p>
+          <p>USERNAME: {profiles.username}</p>
+          <p>EMAIL: {profiles.email}</p>
+          <p>TRENDS: {profiles.trend}</p>
+      </div>
+  )
+
         
   
 
