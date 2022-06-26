@@ -5,12 +5,30 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
 import axios from '../hooks/axios.js'
-import BarChart from "./BarChart"
-import RadarChart from "./RadarChart"
-
 import PlaceHolder from "./PlaceHolder";
+import {Button} from 'react-bootstrap/'
+
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
+
+import { IconContext } from "react-icons";
+
+import { BsFillAlarmFill} from "react-icons/bs";
+
 
 function TrendRanking({trendinfo,refresh}) {
+
+    const popover = (
+        <Popover id="popover-basic">
+                <>
+                <Popover.Header as="h3">Stream Crawler is Running</Popover.Header>
+                <Popover.Body>
+                    Your data is being crawled
+                </Popover.Body>
+                </>
+        </Popover>
+    );
+
     const [results, setResults] = useState({});
     const [loading, setloading] = useState(false);
 
@@ -20,7 +38,7 @@ function TrendRanking({trendinfo,refresh}) {
             setloading(true)
             try{
                 console.log(trendinfo?.name)
-                const response = await axios.get(trendinfo?.url + 'ranking/', {
+                const response = await axios.get(trendinfo?.url + 'rankings/', {
                     headers: {
                         'Content-Type': 'application/json'
                     },
@@ -53,23 +71,52 @@ function TrendRanking({trendinfo,refresh}) {
         );
     }
 
+
+    console.log(results)
+
     return(results && Object.keys(results).length > 0)?
     (
 
-        <div>
-            <Row>
-                <RadarChart info={results?.public}/>
+        <Container>
+            <Row  className="border-y border-cyan-900">
+                <Col>
+                <div>
+                    <h1 className="text-8xl text-sky-500">
+                        {results?.tweet_count}
+                    </h1>
+                    <div>
+                    <h1 className="text-sm">
+                        TOTAL TWEETS
+                    </h1>
+                    <IconContext.Provider value={{size: '4em',className:"pr-2" }}>
+                        <OverlayTrigger trigger="hover" placement="bottom" overlay={popover}>
+                            <Button>
+                                <BsFillAlarmFill/>
+                            </Button>
+                        </OverlayTrigger>
+                        </IconContext.Provider>
+                        
+                    </div>
+
+                </div>
+                </Col>
+                <Col>
+                    <h1 className="text-xl">
+
+                        everything goes so fast
+                    </h1>
+                </Col>
 
             </Row>
-            <Row className="pt-20 mt-20 ">
-                <BarChart source={results?.source}/>
+            <Row>
+                <h1>sadas</h1>
             </Row>
-        </div>
+        </Container>
             
     ):
     (
         <>
-
+             <h1>sdadasdsa</h1>
         </>
     )
 }

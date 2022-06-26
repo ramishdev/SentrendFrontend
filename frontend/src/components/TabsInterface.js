@@ -49,9 +49,9 @@ const TabsInterface = () => {
                     <Row className="p-10 d-flex justify-center">
                         <TrendRanking trendinfo={trendinfo} refresh={refresh}/>
                     </Row>
-                    <Row className="p-10 d-flex justify-center">
+                    {/* <Row className="p-10 d-flex justify-center">
                         <InfoCharts trendinfo={trendinfo} refresh={refresh}/>
-                    </Row>
+                    </Row> */}
                 </Tab>
                 <Tab eventKey="sentiment" title="Sentiment">         
                     <div>
