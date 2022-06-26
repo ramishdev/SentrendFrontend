@@ -50,7 +50,6 @@ export const AuthProvider = ({children}) => {
             console.error(err.message);
             logoutUser()
             alert(JSON.stringify(err.response?.data))
-
         }
 
     }
