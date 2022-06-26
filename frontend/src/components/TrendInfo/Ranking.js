@@ -111,8 +111,10 @@ function TrendRanking({trendinfo,info,refresh}) {
                 </Col>
                 <Col>
                     <div className="text-center">
-                       
+                    <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Average number of followers per user")}>
+                        <i className="bi bi-people" style={{fontSize: "4rem"}}></i>
                         <i className="bi bi-bar-chart" style={{fontSize: "4rem"}}></i>
+                    </OverlayTrigger>
                     </div>
                     <div className="text-center">
                         <h1 className = "text-2xl text-emerald-300">{info?.avg_followers}</h1>
@@ -121,8 +123,9 @@ function TrendRanking({trendinfo,info,refresh}) {
                 </Col>
                 <Col>
                     <div className="text-center">
-                       
+                    <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Average number of tweets per user")}>
                         <i className="bi bi-chat-left-text" style={{fontSize: "4rem"}}></i>
+                    </OverlayTrigger>
                     </div>
                     <div className="text-center">
                         <h1 className = "text-2xl text-emerald-300">{(results?.tweet_count / results?.unique_contributers).toPrecision(3)}</h1>
