@@ -16,7 +16,7 @@ import { IconContext } from "react-icons";
 import { BsFillAlarmFill} from "react-icons/bs";
 
 
-function TrendRanking({trendinfo,info,refresh}) {
+function TrendRanking({results,info}) {
 
     const popover = (data)=> (
         <Popover id="popover-basic">
@@ -28,48 +28,6 @@ function TrendRanking({trendinfo,info,refresh}) {
                 </>
         </Popover>
     );
-
-    const [results, setResults] = useState({});
-    const [loading, setloading] = useState(false);
-
-    useEffect(() => {
-        const controller = new AbortController();
-        const fetchdata = async () => {
-            setloading(true)
-            try{
-                console.log(trendinfo?.name)
-                const response = await axios.get(trendinfo?.url + 'rankings/', {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    signal: controller.signal
-                });
-                if(response?.status === 200){
-                    setResults(response?.data)
-                }
-            }
-            catch(err){
-                console.error(err.message);
-                setResults({})
-            }
-            setloading(false)
-
-        }
-        if(trendinfo){
-            fetchdata();
-        }
-        else{
-            setResults({})
-        }
-        return () => controller?.abort();
-    }, [trendinfo,refresh])
-    
-
-    if(loading){
-        return (
-            <PlaceHolder/>
-        );
-    }
 
     return(results && Object.keys(results).length > 0)?
     (
@@ -138,7 +96,6 @@ function TrendRanking({trendinfo,info,refresh}) {
     ):
     (
         <>
-             <h1>sdadasdsa</h1>
         </>
     )
 }

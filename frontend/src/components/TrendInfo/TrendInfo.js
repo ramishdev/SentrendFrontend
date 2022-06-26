@@ -10,6 +10,8 @@ import InfoCharts from './InfoCharts'
 
 function TrendInfo({trendinfo,refresh}) {
     const [results, setResults] = useState({});
+    const [results2, setResults2] = useState({});
+
     const [loading, setloading] = useState(false);
 
     useEffect(() => {
@@ -17,20 +19,29 @@ function TrendInfo({trendinfo,refresh}) {
         const fetchdata = async () => {
             setloading(true)
             try{
-                console.log(trendinfo?.name)
-                const response = await axios.get(trendinfo?.url + 'get_stats/', {
+                const response1 = await axios.get(trendinfo?.url + 'rankings/', {
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     signal: controller.signal
                 });
-                if(response?.status === 200){
-                    setResults(response?.data)
+                if(response1?.status === 200){
+                    setResults2(response1?.data)
+                }
+                const response2 = await axios.get(trendinfo?.url + 'get_stats/', {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    signal: controller.signal
+                });
+                if(response2?.status === 200){
+                    setResults(response2?.data)
                 }
             }
             catch(err){
                 console.error(err.message);
                 setResults({})
+                setResults2({})
             }
             setloading(false)
 
@@ -56,7 +67,7 @@ function TrendInfo({trendinfo,refresh}) {
     return(results && Object.keys(results).length > 0)?
     (
         <>
-            <TrendRanking trendinfo={trendinfo} info={results.user} results={refresh}/>
+            <TrendRanking results={results2} info={results}/>
             <InfoCharts results={results}/>
         </>
 
