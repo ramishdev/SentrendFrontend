@@ -88,13 +88,9 @@ function TrendRanking({trendinfo,refresh}) {
                     <h1 className="text-sm">
                         TOTAL TWEETS
                     </h1>
-                    <IconContext.Provider value={{size: '4em',className:"pr-2" }}>
-                        <OverlayTrigger trigger="hover" placement="bottom" overlay={popover}>
-                            <Button>
-                                <BsFillAlarmFill/>
-                            </Button>
+                        <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover}>
+                            <i className="bi bi-alarm" style={{fontSize: "2rem"}}></i>
                         </OverlayTrigger>
-                        </IconContext.Provider>
                         
                     </div>
 
