@@ -50,6 +50,7 @@ const SearchPage = () => {
       }
       catch (err) {
         console.error(err.message);
+        settier()
       }
       setloading(false)
     }
@@ -179,7 +180,7 @@ const SearchPage = () => {
 
   return (loading)? (
     <div className="d-flex justify-content-center"><Placeholder/></div>
-  ):(
+  ):usertier?(
     <div className="container flex min-h-screen flex-col justify-center">
       <div className="flex justify-center">
         <h3 className={"text-md"}>Search</h3>
@@ -299,12 +300,12 @@ const SearchPage = () => {
           <Button className="mt-2" variant="outline-primary" size="sm" type="submit">Submit form</Button>
         </div>
       </Form>
-      <div className="flex justify-center" style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
-      <div className="flex justify-center" style={{ marginTop: 20 }}>{JSON.stringify(crawlInfo)}</div>
-      <div className="flex justify-center" style={{ marginTop: 20 }}>{"tier_name : " + usertier?.tier_name + ", max_keywords : " + usertier?.max_keywords + ", Current : " + current + ", Can Add More : " + (usertier?.max_keywords - usertier?.remaining - reach)}</div>
+      {/* <div className="flex justify-center" style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
+      <div className="flex justify-center" style={{ marginTop: 20 }}>{JSON.stringify(crawlInfo)}</div> */}
+      <div className="flex justify-center" style={{ marginTop: 20 }}>{"Tier : " + usertier?.tier_name + ", Max Keywords in this tier : " + usertier?.max_keywords + ", Current : " + current + ", Can Add More : " + (usertier?.max_keywords - usertier?.remaining - reach)}</div>
 
     </div>
-  );
+  ):(<><h1> Error Connecting to Server</h1></>)
 }
 
 export default SearchPage;
