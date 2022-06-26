@@ -85,14 +85,15 @@ const Sidebar = ({setdata,setpad}) => {
       <div className={` ${ open ? "w-screen sm:w-72" : "w-20 "} bg-nav-color pl-5 pt-8 duration-300 h-screen overflow-x-hidden overflow-y-auto` } >       
         <div className="flex gap-x-4 items-center">
           <img
-            src={require("../assets/logo.png")} alt="./assets/logo.png"
+            src={require("../assets/white-logo.png")} alt="../assets/reactivex.svg"
             className={`cursor-pointer duration-500 ${
               open && "rotate-[360deg]"
             }`}
+            width="32" height="32"
             onClick={() => {setOpen(!open); setpad(!open)}}
           />
           <h1
-            className={`text-white origin-left font-medium text-xl duration-200 ${
+            className={`text-white origin-left font-medium text-xl duration-200 pt-2 ${
               !open && "scale-0"
             }`}
           >
