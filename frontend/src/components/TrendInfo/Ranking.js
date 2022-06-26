@@ -149,8 +149,17 @@ function TrendRanking({results,info}) {
             <Row>
                 <Col>
                     <ListGroup className="">
-                        <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                        <ListGroup.Item>{results?.top_contributers[0]}</ListGroup.Item>
+
+                        {
+                        Object.keys(results?.top_contributers).map((key,index) => {
+
+                            return(
+                                <ListGroup.Item>
+                                    {key}
+                                </ListGroup.Item>
+                            )
+                        })}
+                        
                     </ListGroup>
                 </Col>
             </Row>
