@@ -25,13 +25,9 @@ const NavComponent = () => {
             <Nav className="me-auto">
                 <Nav.Link onClick={()=> navigate("/dashboard")}>Dashboard</Nav.Link>
                 <Nav.Link onClick={()=> navigate("/login")}>Login</Nav.Link>
-                <NavDropdown title="More" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="http://127.0.0.1:8000/documentation">API</NavDropdown.Item>
-                </NavDropdown>
+                <Nav.Link onClick={()=> navigate("/register")}>Register</Nav.Link>
+                <Nav.Link href="http://127.0.0.1:8000/documentation">API</Nav.Link>
+
             </Nav>
             </Navbar.Collapse>
         </Container>
