@@ -10,7 +10,7 @@ import RadarChart from "./RadarChart"
 
 import PlaceHolder from "./PlaceHolder";
 
-function InfoCharts({trendinfo}) {
+function InfoCharts({trendinfo,refresh}) {
     const [results, setResults] = useState({});
     const [loading, setloading] = useState(false);
 
@@ -44,7 +44,7 @@ function InfoCharts({trendinfo}) {
             setResults({})
         }
         return () => controller?.abort();
-    }, [trendinfo])
+    }, [trendinfo,refresh])
     
 
     if(loading){

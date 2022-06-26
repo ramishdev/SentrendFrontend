@@ -3,7 +3,7 @@ import SubMenu from './SubMenu'
 import useAuth from "../hooks/useAuth"
 import Form from 'react-bootstrap/Form';
 import axios from '../hooks/axios.js'
-
+import Placeholder from './PlaceHolder'
 const Sidebar = ({setdata,setpad}) => {
   let {user} = useAuth()
   const [open, setOpen] = useState(true);
@@ -60,6 +60,7 @@ const Sidebar = ({setdata,setpad}) => {
         console.error(err.message);
       }
       setloading(false);
+      setpad(true)
     }
     fetchTrends();
     return () => controller?.abort();
@@ -68,12 +69,13 @@ const Sidebar = ({setdata,setpad}) => {
   
   const handlelocationChange = (e) => {
     const { name, value } = e.target;
+    setpad(-1)
     setlocation(value)
   };
 
   return (isloading)?(
 
-    <div><h1>Loading...</h1></div>
+    <><Placeholder/></>
 
   ):(
     <div className="fixed top-0 bottom-0">

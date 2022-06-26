@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
 import axios from '../../hooks/axios.js'
-
+import PlaceHolder from '../PlaceHolder'
 const PostCrawler = () => {
 
   let {authTokens} = useContext(AuthContext)
@@ -44,7 +44,7 @@ const PostCrawler = () => {
             data : JSON.stringify({'consumer_key':data['consumer_key'].value,
             'consumer_secret':data['consumer_secret'].value,
             'access_token': data['access_key'].value,
-            'access_token_secret': data['access_secret'].value,
+            'access_secret': data['access_secret'].value,
             'bearer_token':data['bearer_key'].value
             })
         })
@@ -88,7 +88,7 @@ const PostCrawler = () => {
 
   return(loading)?(
     <div className="d-flex justify-content-center">
-        <h2>Loading...</h2>
+        <PlaceHolder/>
     </div>
   ):(
     <div className="container flex min-h-screen flex-col justify-center">

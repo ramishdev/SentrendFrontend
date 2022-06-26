@@ -7,7 +7,7 @@ import TopTweets from "./TopTweets.js";
 
 import PlaceHolder from "../PlaceHolder";
 
-function Sentiment({trendinfo}) {
+function Sentiment({trendinfo,refresh}) {
     const [results, setResults] = useState({});
     const [loading, setloading] = useState(false);
 
@@ -45,7 +45,7 @@ function Sentiment({trendinfo}) {
             setResults({})
         }
         return () => controller?.abort();
-    }, [trendinfo])
+    }, [trendinfo,refresh])
 
     if(loading){
         return (
@@ -66,7 +66,6 @@ function Sentiment({trendinfo}) {
     ):
     (
         <>
-            
         </>
     )
 

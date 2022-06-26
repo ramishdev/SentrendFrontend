@@ -6,7 +6,7 @@ import Feedback from 'react-bootstrap/Feedback'
 
 import axios from '../hooks/axios.js'
 import useSock from '../hooks/useSock'
-
+import Placeholder from '../components/PlaceHolder'
 const SearchPage = () => {
   const [inputList, setInputList] = useState([{key: "",max_results:"",count:""}]);
   const [crawlList, setcrawlList] = useState();              //Dummy data
@@ -178,7 +178,7 @@ const SearchPage = () => {
   };
 
   return (loading)? (
-    <div className="d-flex justify-content-center">Loading</div>
+    <div className="d-flex justify-content-center"><Placeholder/></div>
   ):(
     <div className="container flex min-h-screen flex-col justify-center">
       <div className="flex justify-center">
