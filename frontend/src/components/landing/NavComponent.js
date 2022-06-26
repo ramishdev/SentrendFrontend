@@ -16,7 +16,7 @@ const NavComponent = () => {
                     SENTREND
                 </div>
                 <div className="text-sm font-light">
-                    Not so good Analytics for Twitter
+                    Analytics for Twitter
                 </div>
                 
             </Navbar.Brand>
