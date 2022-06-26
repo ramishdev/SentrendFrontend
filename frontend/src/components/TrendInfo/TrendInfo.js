@@ -67,7 +67,7 @@ function TrendInfo({trendinfo,refresh}) {
     return(results && Object.keys(results).length > 0)?
     (
         <>
-            <TrendRanking results={results2} info={results}/>
+            <TrendRanking results={results2} info={results.user}/>
             <InfoCharts results={results}/>
         </>
 

@@ -29,6 +29,9 @@ function TrendRanking({results,info}) {
         </Popover>
     );
 
+
+    console.log(info)
+
     return(results && Object.keys(results).length > 0)?
     (
 
@@ -70,7 +73,6 @@ function TrendRanking({results,info}) {
                 <Col>
                     <div className="text-center">
                     <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Average number of followers per user")}>
-                        <i className="bi bi-people" style={{fontSize: "4rem"}}></i>
                         <i className="bi bi-bar-chart" style={{fontSize: "4rem"}}></i>
                     </OverlayTrigger>
                     </div>
