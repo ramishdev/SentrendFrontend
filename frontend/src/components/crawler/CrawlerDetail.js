@@ -97,8 +97,8 @@ const CrawlerDetail = ({data,idx,item}) => {
             <p className ="text-sm italic opacity-50">{data.consumer_secret}</p>
             <h1>Access token:</h1>
             <p className ="text-sm italic opacity-50">{data.access_token}</p>
-            <h1>Access token secret:</h1>
-            <p className ="text-sm italic opacity-50">{data.access_token_secret}</p>
+            <h1>Access secret:</h1>
+            <p className ="text-sm italic opacity-50">{data.access_secret}</p>
             <h1>Bearer token:</h1>
             <p className ="text-sm italic opacity-50">{data.bearer_token}</p>
         </div>

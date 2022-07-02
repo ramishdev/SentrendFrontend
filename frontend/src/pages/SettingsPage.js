@@ -5,7 +5,7 @@ import Tab from 'react-bootstrap/Tab'
 import Crawler from '../components/crawler/crawler'
 import Profile from '../components/profile/Profile'
 import { NavLink } from 'react-router-dom'
-
+import Manage from '../components/Manage'
 
 const SettingsPage = () => {
 
@@ -13,7 +13,7 @@ const SettingsPage = () => {
     return (
         <>
             
-            <NavLink to={'/dashboard'} style={{  textDecoration: 'none' ,color:'black'}} className="pl-2"><i class="bi bi-arrow-left-circle" style={{fontSize: "2rem"}}></i></NavLink>
+            <NavLink to={'/dashboard'} style={{  textDecoration: 'none' ,color:'black'}} className="pl-2"><i className="bi bi-arrow-left-circle" style={{fontSize: "2rem"}}></i></NavLink>
             <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3" >
                 <Tab eventKey="profile" title="Profile">
                     <Profile/>
@@ -21,8 +21,8 @@ const SettingsPage = () => {
                 <Tab eventKey="crawler" title="Crawler">
                     <Crawler/>
                 </Tab>
-                <Tab eventKey="privacy" title="Privacy" >
-                    <p> Privacy </p>
+                <Tab eventKey="trends" title="Trends" >
+                    <Manage/>
                 </Tab>
             </Tabs>  
         </>

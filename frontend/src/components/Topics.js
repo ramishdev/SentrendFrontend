@@ -69,9 +69,9 @@ function TopicsCloud({trend}){
         setResults({})
         }
         setloading(false);
+        return () => controller?.abort();
     }
     const fetch = async () => {
-
         await fetchTopics()
     }
     if(isloading){

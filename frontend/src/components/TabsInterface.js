@@ -4,7 +4,7 @@ import Tabs from 'react-bootstrap/Tabs'
 import Tab from 'react-bootstrap/Tab'
 // import DoughnutChart from "./DoughnutChart"
 // import RadarChart from "./RadarChart"
-
+import Manage from "./Manage"
 import Sentiment from './sentiment/Sentiment'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -84,13 +84,13 @@ const TabsInterface = () => {
                         </Row>
                     </Container>
                 </Tab>
-                <Tab eventKey="manage" title="Manage">
+                {/* <Tab eventKey="manage" title="Manage">
                     <Container>
                         <Row className="p-10 flex-end">
                           <h1>Manage this</h1>  
                         </Row>
                     </Container>
-                </Tab>
+                </Tab> */}
             </Tabs>  
         </>
     )

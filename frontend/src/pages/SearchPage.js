@@ -184,7 +184,7 @@ const SearchPage = () => {
     <div className="d-flex justify-content-center"><Placeholder/></div>
   ):usertier?(
     <>
-    <NavLink to={'/dashboard'} style={{  textDecoration: 'none' ,color:'black'}} className="pl-2"><i class="bi bi-arrow-left-circle" style={{fontSize: "2rem"}}></i></NavLink>
+    <NavLink to={'/dashboard'} style={{  textDecoration: 'none' ,color:'black'}} className="pl-2"><i className="bi bi-arrow-left-circle" style={{fontSize: "2rem"}}></i></NavLink>
     <div className="container flex min-h-screen flex-col justify-center">
       <div className="flex justify-center">
         <h3 className={"text-md"}>Search</h3>

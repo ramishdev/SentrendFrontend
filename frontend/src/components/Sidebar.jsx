@@ -3,7 +3,7 @@ import SubMenu from './SubMenu'
 import useAuth from "../hooks/useAuth"
 import Form from 'react-bootstrap/Form';
 import axios from '../hooks/axios.js'
-import Placeholder from './PlaceHolder'
+import PlaceHolder from './PlaceHolder'
 const Sidebar = ({setdata,setpad}) => {
   let {user} = useAuth()
   const [open, setOpen] = useState(true);
@@ -78,7 +78,7 @@ const Sidebar = ({setdata,setpad}) => {
 
   return (isloading)?(
 
-    <div className="pl-10"><Placeholder/></div>
+    <div className="pl-10"><PlaceHolder/></div>
 
   ):(
     <div className="fixed top-0 bottom-0">
