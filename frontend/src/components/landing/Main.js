@@ -4,13 +4,14 @@ import Col from 'react-bootstrap/Col'
 import TypeIt from "typeit-react";
 import Typewriter from "typewriter-effect";
 
+
 const MainComponent = () => {
 
     return (
-        <Container>
+        <Container fluid = "true">
             <Row>
                 <Col>
-                    <div className="pt-20 px-10">
+                    <div className="pt-20 px-20">
 
                         <h1 className = "text-7xl text-sky-800">
                             Monitor your business and brand by analyzing 
@@ -47,16 +48,17 @@ const MainComponent = () => {
                         </p>
                     </div>
                 </Col>
-                <Col>
-                    <div style = {{}}>
-                        <img 
+                <Col className = "">
+                    {/* <div >
+                        <img
                             src={require("../../assets/landing/main-screen.png")}
                             width="1200px"
                             height="1200px"
-                            className="d-inline-block align-top pt-20"
+                            className="bg-left"
                             alt="logo"
                         />
-                    </div>
+                    </div> */}
+                    <div className = "bg-cover"   style={{backgroundImage: "url(/main-screen-lq.png)",   width:'800px',height:'900px'}}></div>
                 </Col>
             </Row>
         </Container>

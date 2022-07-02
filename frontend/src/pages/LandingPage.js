@@ -8,7 +8,7 @@ const LandingPage = () => {
 
     
     return (
-        <>
+        <div >
             <div>
                 <NavComponent/>
             </div>
@@ -16,7 +16,7 @@ const LandingPage = () => {
                 <MainComponent/>
             </div>
 
-        </>
+        </div>
       )
 
   }

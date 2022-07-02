@@ -8,6 +8,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Popover from 'react-bootstrap/Popover'
 
 import ListGroup from 'react-bootstrap/ListGroup'
+import Badge from 'react-bootstrap/Badge';
 
 function TrendRanking({results,info}) {
 
@@ -149,31 +150,54 @@ function TrendRanking({results,info}) {
             <Row className="p-5 border-b border-cyan-900">
                 
                 <Col>
-                    <h1 className = "text-2xl">Top Contributors</h1>
-                    <ListGroup className="">
+                    <h1 className = "text-2xl text-pink-500">Top Contributors</h1>
+                    <ListGroup  variant="flush">
 
                         {
-                        Object.keys(results?.top_contributers).map((key,index) => {
+                        Object.entries(results?.top_contributers).map((key,index) => {
 
                             return(
-                                <ListGroup.Item>
-                                    {key}
-                                </ListGroup.Item>
+                                // <ListGroup.Item>
+                                //     <h1>{key[0]}</h1>
+                                //     <h1 className = "">
+                                //         {key[1]}
+                                //     </h1>
+                                // </ListGroup.Item>
+                                <ListGroup.Item
+                                as="li"
+                                className="d-flex justify-content-between align-items-start hover:underline"
+                              >
+                                <div className="ms-2 me-auto">
+                                  <a href= {"https://twitter.com/" + String(key[0])} className="fw-bold " style = {{textDecoration: "none", color: "black"}}>{key[0]}</a>
+                                </div>
+                                <Badge bg="info">
+                                    {key[1]}
+                                </Badge>
+                              </ListGroup.Item>
                             )
                         })}
                         
                     </ListGroup>
                 </Col>
                 <Col>
-                    <h1 className = "text-2xl">Top Influencers</h1>
-                    <ListGroup className="">
+                    <h1 className = "text-2xl text-pink-500">Top Influencers</h1>
+                    <ListGroup  variant="flush">
                         {
-                        Object.keys(results?.top_contributers).map((key,index) => {
+                        Object.entries(results?.top_followers).map((key,index) => {
 
                             return(
-                                <ListGroup.Item>
-                                    {key}
-                                </ListGroup.Item>
+                                <ListGroup.Item
+                                as="li"
+                                className="d-flex justify-content-between align-items-start hover:underline"
+                              >
+                                <div className="ms-2 me-auto">
+                                  <a href= {"https://twitter.com/" + String(key[0])}  style = {{textDecoration: "none", color: "black"}} className="hover:text-sky-500 fw-bold">{key[0]}</a>
+                                  {/* <i class="bi bi-arrow-up-right-square"></i> */}
+                                </div>
+                                <Badge bg="info">
+                                    {key[1]}
+                                </Badge>
+                              </ListGroup.Item>
                             )
                         })}
                         

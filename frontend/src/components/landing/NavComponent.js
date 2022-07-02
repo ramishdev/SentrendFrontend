@@ -12,7 +12,7 @@ const NavComponent = () => {
         <Container>
             <Navbar.Brand href="/">
                 {/* <h1 className="text-3xl font-bold animate-pulse ">SENTREND</h1>                 */}
-                <div className="text-3xl font-bold animate-pulse">
+                <div className="text-3xl font-bold">
                     SENTREND
                 </div>
                 <div className="text-sm font-light">
