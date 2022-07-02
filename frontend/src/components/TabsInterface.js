@@ -84,6 +84,13 @@ const TabsInterface = () => {
                         </Row>
                     </Container>
                 </Tab>
+                <Tab eventKey="manage" title="Manage">
+                    <Container>
+                        <Row className="p-10 flex-end">
+                          <h1>Manage this</h1>  
+                        </Row>
+                    </Container>
+                </Tab>
             </Tabs>  
         </>
     )
