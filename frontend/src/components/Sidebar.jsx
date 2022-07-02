@@ -78,7 +78,7 @@ const Sidebar = ({setdata,setpad}) => {
 
   return (isloading)?(
 
-    <div className="pl-10"><PlaceHolder/></div>
+    <div className="px-5"><PlaceHolder/></div>
 
   ):(
     <div className="fixed top-0 bottom-0">
