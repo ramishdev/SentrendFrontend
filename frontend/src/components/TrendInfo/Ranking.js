@@ -88,7 +88,7 @@ function TrendRanking({results,info}) {
                 </Col>
                 <Col>
                     <div className="text-center">
-                    <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Maximum followers among users")}>
+                    <OverlayTrigger trigger={['hover', 'focus']} placement="left" overlay={popover("Maximum followers among users")}>
                         <i className="bi bi-person-hearts" style={{fontSize: "4rem"}}></i>
                     </OverlayTrigger>
                     </div>
@@ -136,7 +136,7 @@ function TrendRanking({results,info}) {
                 </Col>
                 <Col>
                     <div className="text-center">
-                    <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Minimum followers among users")}>
+                    <OverlayTrigger trigger={['hover', 'focus']} placement="left" overlay={popover("Minimum followers among users")}>
                         <i className="bi bi-person-dash" style={{fontSize: "4rem"}}></i>
                     </OverlayTrigger>
                     </div>
