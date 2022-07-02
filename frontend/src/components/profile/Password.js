@@ -38,7 +38,7 @@ function ChangePass(){
         e.preventDefault()
         try{
             await axios('/user/users/'  + user.user_id + '/change_password/', {
-                method: 'PUT',
+                method: 'PATCH',
                 headers: {'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + String(authTokens.access)
                 },

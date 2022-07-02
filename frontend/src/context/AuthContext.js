@@ -92,7 +92,7 @@ export const AuthProvider = ({children}) => {
 
         localStorage.removeItem('authTokens')
 
-        navigate(from,{replace:true})
+        navigate(from)
     }
 
     let updateToken = async ()=> {
