@@ -4,6 +4,10 @@ import useAuth from '../hooks/useAuth.js'
 import axios from '../hooks/axios.js'
 import PlaceHolder from './PlaceHolder'
 
+import ListGroup from 'react-bootstrap/ListGroup'
+import Badge from 'react-bootstrap/Badge';
+
+
 function Manage(){
     const {authTokens} = useAuth()
     const [isloading,setloading] = useState(false);
@@ -61,18 +65,34 @@ function Manage(){
     }
     return(usertrends)?(
         <>
-        {usertrends.map((trend,index) => {
-           return(
-                <div className="d-flex pt-2" key={index}>
-                    <h1 className="pl-5 pt-2">{trend?.name}</h1>
-                    <div className="">
-                        <Button variant="danger" onClick={() => DeleteTrend({trend,index})} >Delete</Button>
+
+        <ListGroup variant="flush">
+            {usertrends.map((trend,index) => {
+            return(
+
+                    <div key={index}>
+                        {/* <h1 className="pl-5 pt-2">{trend?.name}</h1>
+                        <div className="">
+                            
+                        </div> */}
+
+                        <ListGroup.Item
+                            as="li"
+                            className="d-flex justify-content-between align-items-start"
+                            >
+                            <div className="ms-2 me-auto">
+                                <h1 className="pl-5 pt-2">{trend?.name}</h1>
+                            </div>
+                            <Button variant="danger" onClick={() => DeleteTrend({trend,index})} >Delete</Button>
+                        </ListGroup.Item>
                     </div>
-                </div>
+                
            );
+           
         })}
-        
+            </ListGroup>
         </>
+        
     ):(<></>)
 }
 export default Manage

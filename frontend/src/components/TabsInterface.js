@@ -43,7 +43,7 @@ const TabsInterface = () => {
     console.log(refresh)
     return (
         <>
-            <Tabs defaultActiveKey="rankings" id="uncontrolled-tab-example" className="mb-3" >
+            <Tabs defaultActiveKey="rankings" id="uncontrolled-tab-example" fill className="mb-3" >
             <Tab eventKey="rankings" title="Rankings">
 
                     <Row className="p-10 d-flex justify-center">
