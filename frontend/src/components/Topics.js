@@ -60,7 +60,7 @@ function TopicsCloud({trend}){
              fetchTopics();
         }
         return () => controller?.abort();
-    },[trend])
+    },[trend,results])
     const newData = (data) => { 
         return(
             data.map((item) => ({
@@ -74,18 +74,17 @@ function TopicsCloud({trend}){
         setResults()
         const controller = new AbortController();
         try{
-        const data = await axios.get(trend?.url +"reset_cache_topics/", {
+        await axios.get(trend?.url +"reset_cache_topics/", {
             headers: {
                 'Content-Type': 'application/json'
             },
             signal: controller.signal
         });
-        console.log(data?.data)
-        setResults(data?.data)            
+        setResults({})            
         }
         catch(err){
-        console.error(err.message);
-        setResults({})
+            console.error(err.message);
+            setResults({})
         }
         setloading(false);
         return () => controller?.abort();
