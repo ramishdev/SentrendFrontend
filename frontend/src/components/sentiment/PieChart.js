@@ -79,7 +79,7 @@ function PieChart({results}) {
                     
                     <div className="shadow-2xl rounded-lg ...">
                         <div className="d-flex justify-center p-4">
-                            <div style={{ width: '20rem' }}>
+                            <div style={{ width: '18rem' }}>
                                 <Pie data={data1} options={{
                                     responsive: true,
                                     maintainAspectRatio: true,
@@ -115,7 +115,7 @@ function PieChart({results}) {
                     <h1 className = "text-2xl font-bold">Subjectivity</h1>
                     <div className="shadow-2xl rounded-lg ...">
                         <div className="d-flex justify-center p-4">
-                            <div  style={{ width: '20rem' }}>
+                            <div  style={{ width: '18rem' }}>
                                 <Doughnut data={data2} options={{
                                     responsive: true,
                                     maintainAspectRatio: true,

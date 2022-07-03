@@ -93,11 +93,11 @@ const Sidebar = ({setdata,setpad}) => {
             onClick={() => {setOpen(!open); setpad(!open)}}
           />
           <h1
-            className={`text-white origin-left font-medium text-xl duration-200 pt-2 ${
+            className={`text-white origin-left font-medium text-2xl duration-200 pt-2 ${
               !open && "scale-0"
             }`}
           >
-            Trends
+            TRENDS
           </h1>
           <div className="pt-4">
           <img
