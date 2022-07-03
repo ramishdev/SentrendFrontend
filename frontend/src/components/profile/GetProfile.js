@@ -78,7 +78,7 @@ const GetProfile = () => {
         setprofiles(list);   
     }
     catch(err){
-        console.log(err)
+        console.error(err)
         alert(JSON.stringify(err.response?.data))
     }
     setloading(false)

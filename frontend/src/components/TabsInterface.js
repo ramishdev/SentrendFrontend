@@ -65,7 +65,7 @@ const TabsInterface = () => {
                                                 {trendinfo?.name}
                                             </h1>
                                             <a href = {"https://twitter.com/search?q=" + trendinfo?.name} style = {{color: "deepskyblue"}}>
-                                                <i class="bi bi-twitter" style={{fontSize: "2rem"}}></i>
+                                                <i className="bi bi-twitter" style={{fontSize: "2rem"}}></i>
                                             </a>
                                         </div>
                                     ):(
@@ -95,7 +95,7 @@ const TabsInterface = () => {
                                         {trendinfo?.name}
                                     </h1>
                                     <a href = {"https://twitter.com/search?q=" + trendinfo?.name} style = {{color: "deepskyblue"}}>
-                                        <i class="bi bi-twitter" style={{fontSize: "2rem"}}></i>
+                                        <i className="bi bi-twitter" style={{fontSize: "2rem"}}></i>
                                     </a>
                                 </div>
                             ):(
@@ -125,7 +125,7 @@ const TabsInterface = () => {
                                         {trendinfo?.name}
                                     </h1>
                                     <a href = {"https://twitter.com/search?q=" + trendinfo?.name} style = {{color: "deepskyblue"}}>
-                                        <i class="bi bi-twitter" style={{fontSize: "2rem"}}></i>
+                                        <i className="bi bi-twitter" style={{fontSize: "2rem"}}></i>
                                     </a>
                                 </div>
                             ):(
