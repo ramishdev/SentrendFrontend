@@ -74,7 +74,7 @@ function TopicsCloud({trend}){
         setResults()
         const controller = new AbortController();
         try{
-        const data = await axios.get(trend?.url +"topics/", {
+        const data = await axios.get(trend?.url +"reset_cache_topics/", {
             headers: {
                 'Content-Type': 'application/json'
             },
