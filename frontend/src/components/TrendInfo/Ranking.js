@@ -24,8 +24,8 @@ function TrendRanking({results,info}) {
     );
 
     
-    console.log(results)
-    console.log(info)
+    // console.log(results)
+    // console.log(info)
 
     return(results && Object.keys(results).length > 0)?
     (

@@ -40,7 +40,7 @@ const MyNavbar = () => {
     function handleSubmit(e) {
         e.preventDefault();    
         navigate("/search")
-        console.log('You clicked submit.');
+        // console.log('You clicked submit.');
     }
 
     return (user)?(
@@ -78,7 +78,7 @@ const MyNavbar = () => {
                     <Navbar.Brand onClick={()=> navigate("/")}>Sentrend</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse className="justify-end">
-                        {console.log(ws)}
+                        {/* {console.log(ws)} */}
                         {(ws!==-1)?(
                             <div className="pr-2">
                                 <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>

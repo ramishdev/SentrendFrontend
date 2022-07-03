@@ -12,7 +12,7 @@ import axios from '../../hooks/axios.js'
 const ListCrawlers = () => {
 
   let [crawlerList, setcrawlerList] = useState([])
-  console.log(crawlerList)
+  // console.log(crawlerList)
 
   const refreshData = React.useMemo(() => ({
     crawlerList,setcrawlerList

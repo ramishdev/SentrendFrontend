@@ -4,7 +4,7 @@ import Popover from 'react-bootstrap/Popover'
 
 const PopOver = ({data}) => {
 
-    console.log(data)
+    // console.log(data)
 
     return(data)? (
         

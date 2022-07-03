@@ -5,7 +5,6 @@ import axios from '../hooks/axios.js'
 import PlaceHolder from './PlaceHolder'
 
 import ListGroup from 'react-bootstrap/ListGroup'
-import Badge from 'react-bootstrap/Badge';
 
 
 function Manage(){
@@ -35,7 +34,7 @@ function Manage(){
     },[])
 
     let DeleteTrend = async ({trend,index}) => {
-        console.log(trend)
+        // console.log(trend)
         setloading(true)
         try{
             await axios.delete(trend?.url,{

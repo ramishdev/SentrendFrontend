@@ -62,7 +62,7 @@ function RadarChart({info}) {
     //       },
     //     ],
     // };
-    console.log(info)
+    // console.log(info)
     return(info)?
     (
         <>

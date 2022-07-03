@@ -46,9 +46,8 @@ export const AuthProvider = ({children}) => {
             }
         }
         catch(err){
-            console.log(e.target.username.value)
+            // console.log(e.target.username.value)
             console.error(err.message);
-            logoutUser()
             alert(JSON.stringify(err.response?.data))
         }
 
@@ -65,7 +64,7 @@ export const AuthProvider = ({children}) => {
             })
 
             let data = await response.data
-            console.log('data: ', data)
+            // console.log('data: ', data)
 
             if (response.status === 200){
 
@@ -81,7 +80,7 @@ export const AuthProvider = ({children}) => {
         }
         catch(err){
             console.error(err.message);
-            alert('Something went wrong')
+            alert('Wrong credentials')
         }
     }
 

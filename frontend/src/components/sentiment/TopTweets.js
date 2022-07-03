@@ -6,9 +6,6 @@ import Col from 'react-bootstrap/Col'
 
 function TopTweets({results}){
 
-    console.log(results);
-
-    let list = []
     // results.map((result) => {console.log(result)})
 
     let posList = [results.top_pos_1,results.top_pos_2,results.top_pos_3]

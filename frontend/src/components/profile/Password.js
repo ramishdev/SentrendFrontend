@@ -21,20 +21,20 @@ function ChangePass(){
                 }
                 })
                 let data = await response.data
-                console.log(data)
+                // console.log(data)
                 if(response.status === 200){
                 setprofiles(data) 
                 }
             }
             catch(err){
-                console.log(err.message)
+                console.error(err.message)
             }
         }
         UserInfo()
         return () => controller?.abort();
     }, [])
     const handleSubmit = async (e) => {
-        console.log(e.target.password.value)
+        // console.log(e.target.password.value)
         e.preventDefault()
         try{
             await axios('/user/users/'  + user.user_id + '/change_password/', {
@@ -52,7 +52,6 @@ function ChangePass(){
         }
         catch(err){
             alert(JSON.stringify(err.response?.data))
-            console.log("Hello")
         }
     }
 
