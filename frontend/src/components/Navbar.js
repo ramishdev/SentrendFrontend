@@ -115,9 +115,9 @@ const MyNavbar = () => {
                                 <NavDropdown.Item onClick={() => navigate("/register")}>
                                     Register
                                 </NavDropdown.Item>
-                                <NavDropdown.Item onClick={() => navigate("/testing")}>
+                                {/* <NavDropdown.Item onClick={() => navigate("/testing")}>
                                     Test Socket
-                                </NavDropdown.Item>
+                                </NavDropdown.Item> */}
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>
