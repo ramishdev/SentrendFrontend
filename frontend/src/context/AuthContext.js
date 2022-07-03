@@ -145,12 +145,12 @@ export const AuthProvider = ({children}) => {
 
     }, [authTokens, loading])
 
-    const contextData = {
-        user, authTokens,loginUser,logoutUser,registerUser
-    }
-    // const contextData = React.useMemo(() => ({
+    // const contextData = {
     //     user, authTokens,loginUser,logoutUser,registerUser
-    // }), [user,authTokens]);
+    // }
+    const contextData = React.useMemo(() => ({
+        user, authTokens,loginUser,logoutUser,registerUser
+    }), [user,authTokens]);
 
 
 
