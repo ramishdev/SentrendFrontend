@@ -127,10 +127,6 @@ export const AuthProvider = ({children}) => {
     }
 
 
-    const contextData = React.useMemo(() => ({
-        user, authTokens,loginUser,logoutUser,registerUser
-    }), [user,authTokens]);
-
     useEffect(()=> {
 
         if(loading){
@@ -149,7 +145,12 @@ export const AuthProvider = ({children}) => {
 
     }, [authTokens, loading])
 
-
+    const contextData = {
+        user, authTokens,loginUser,logoutUser,registerUser
+    }
+    // const contextData = React.useMemo(() => ({
+    //     user, authTokens,loginUser,logoutUser,registerUser
+    // }), [user,authTokens]);
 
 
 

@@ -108,6 +108,7 @@ const SearchPage = () => {
       console.error(err.message);
     }
     setloading(false)
+    return () => controller?.abort();
   }
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
