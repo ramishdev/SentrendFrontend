@@ -1,0 +1,14 @@
+.nav-tabs .nav-link {
+    /* background-color: transparent !important; */
+    color: #000000 !important;
+
+    font-weight: 700 !important;
+    /* border-top: none !important;
+    border-left: none !important;
+    border-right: none !important; */
+  }
+  
+  .nav-tabs .nav-link.active {
+    color: #bd2850 !important;
+  }
+  

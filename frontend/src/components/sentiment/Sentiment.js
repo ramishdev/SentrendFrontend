@@ -52,9 +52,11 @@ function Sentiment({trendinfo,refresh}) {
     return (results && Object.keys(results).length > 0)?(
         <div> 
             <div>
+                <h1 className = "text-3xl font-bold" >Sentiment</h1>
                 <PieChart results={results}/>
             </div>
             <div className="pt-20 mt-20">
+                <h1 className = "text-3xl font-bold" >Top tweets</h1>
                 <TopTweets results={results}/>
             </div>
         </div>

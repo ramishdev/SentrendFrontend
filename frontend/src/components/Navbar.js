@@ -47,7 +47,7 @@ const MyNavbar = () => {
         <>
             <Navbar collapseOnSelect expand="lg" bg = 'dark' variant = 'dark'>
                 <Container fluid>
-                <Navbar.Brand onClick={()=> navigate("/")}>Sentrend</Navbar.Brand>
+                <Navbar.Brand onClick={()=> navigate("/")}>SENTREND</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse className="justify-end">
                     {(ws!== -1)?(

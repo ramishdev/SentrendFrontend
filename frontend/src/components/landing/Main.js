@@ -10,8 +10,8 @@ const MainComponent = () => {
     return (
         <Container fluid = "true">
             <Row>
-                <Col>
-                    <div className="pt-20 px-20">
+                <Col xs={7} className = "">
+                    <div className="p-40">
 
                         <h1 className = "text-7xl text-sky-800">
                             Monitor your business and brand by analyzing 
@@ -48,7 +48,7 @@ const MainComponent = () => {
                         </p>
                     </div>
                 </Col>
-                <Col className = "">
+                <Col className = "pt-20 d-flex justify-content-end">
                     {/* <div >
                         <img
                             src={require("../../assets/landing/main-screen.png")}
@@ -58,7 +58,7 @@ const MainComponent = () => {
                             alt="logo"
                         />
                     </div> */}
-                    <div className = "bg-cover"   style={{backgroundImage: "url(/main-screen-lq.png)",   width:'800px',height:'900px'}}></div>
+                    <div className = "bg-cover bg-no-repeat bg-right"   style={{backgroundImage: "url(/main-screen-lq.png)",   width:'600px',height:'700px'}}></div>
                 </Col>
             </Row>
         </Container>

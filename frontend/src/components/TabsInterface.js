@@ -14,6 +14,7 @@ import useSock from '../hooks/useSock'
 import TopicsCloud from './Topics'
 
 import TrendInfo from './TrendInfo/TrendInfo'
+import '../css/tabs.css'
 
 const TabsInterface = () => {
     //const navigate = useNavigate()
@@ -44,30 +45,29 @@ const TabsInterface = () => {
     return (
         <>
             <Tabs defaultActiveKey="rankings" id="uncontrolled-tab-example" fill className="mb-3" >
-            <Tab eventKey="rankings" title="Rankings">
-
-                    <Row className="p-10 d-flex justify-center">
-                                <Col>
-                                    <h1 className = "text-5xl">
-                                        {trendinfo?.name}
-                                    </h1>
-                                </Col>
-                            </Row>
-                    <Row className="p-10 d-flex justify-center">
-                        <TrendInfo trendinfo={trendinfo} refresh={refresh}/>
-                    </Row>
-                    {/* <Row className="p-10 d-flex justify-center">
-                        <InfoCharts trendinfo={trendinfo} refresh={refresh}/>
-                    </Row> */}
-                </Tab>
-                <Tab eventKey="sentiment" title="Sentiment">         
+            
+                <Tab eventKey="sentiment" title="Sentiment" >         
                     <div>
                         <Container>
-                            <Row className="p-10 d-flex justify-center">
+                            <Row className="p-10">
                                 <Col>
-                                    <h1 className = "text-5xl">
-                                        {trendinfo?.name}
-                                    </h1>
+                                    {(trendinfo)?(
+                                        <div className = "d-flex">
+                                            <h1 className = "pr-4 text-5xl text-cyan-600 font-bold">
+                                                {trendinfo?.name}
+                                            </h1>
+                                            <a href = {"https://twitter.com/search?q=" + trendinfo?.name} style = {{color: "deepskyblue"}}>
+                                                <i class="bi bi-twitter" style={{fontSize: "2rem"}}></i>
+                                            </a>
+                                        </div>
+                                    ):(
+                                        <>
+                                        <h1 className = "text-3xl font-bold">
+                                            Select a trend from Sidebar
+                                        </h1>
+                                        </>
+                                    )}
+                                    
                                 </Col>
                             </Row>
                             <Row className="p-10 d-flex justify-center">
@@ -76,9 +76,61 @@ const TabsInterface = () => {
                         </Container>
                     </div>
                 </Tab>
+
+                <Tab eventKey="rankings" title="Rankings">
+
+                    <Row className="p-10">
+                        <Col>
+                            {(trendinfo)?(
+                                <div className = "d-flex">
+                                    <h1 className = "pr-4 text-5xl text-cyan-600 font-bold">
+                                        {trendinfo?.name}
+                                    </h1>
+                                    <a href = {"https://twitter.com/search?q=" + trendinfo?.name} style = {{color: "deepskyblue"}}>
+                                        <i class="bi bi-twitter" style={{fontSize: "2rem"}}></i>
+                                    </a>
+                                </div>
+                            ):(
+                                <>
+                                <h1 className = "text-3xl font-bold">
+                                    Select a trend from Sidebar
+                                </h1>
+                                </>
+                            )}
+                        </Col>
+                    </Row>
+                    <Row className="p-10 d-flex justify-center">
+                        <TrendInfo trendinfo={trendinfo} refresh={refresh}/>
+                    </Row>
+                    {/* <Row className="p-10 d-flex justify-center">
+                        <InfoCharts trendinfo={trendinfo} refresh={refresh}/>
+                    </Row> */}
+                </Tab>
                 
                 <Tab eventKey="topic analysis" title="Topic Analysis">
                     <Container>
+                    <Row className="p-10">
+                        <Col>
+                            {(trendinfo)?(
+                                <div className = "d-flex">
+                                    <h1 className = "pr-4 text-5xl text-cyan-600 font-bold">
+                                        {trendinfo?.name}
+                                    </h1>
+                                    <a href = {"https://twitter.com/search?q=" + trendinfo?.name} style = {{color: "deepskyblue"}}>
+                                        <i class="bi bi-twitter" style={{fontSize: "2rem"}}></i>
+                                    </a>
+                                </div>
+                            ):(
+                                <>
+                                <h1 className = "text-3xl font-bold">
+                                    Select a trend from Sidebar
+                                </h1>
+                                </>
+                            )}
+                            
+                        </Col>
+                    </Row>
+
                         <Row className="p-10 d-flex justify-center">
                             <TopicsCloud trend={trendinfo}/>
                         </Row>

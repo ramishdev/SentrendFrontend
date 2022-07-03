@@ -82,7 +82,7 @@ const Sidebar = ({setdata,setpad}) => {
 
   ):(
     <div className="fixed top-0 bottom-0">
-      <div className={` ${ open ? "w-screen sm:w-72" : "w-20 "} bg-nav-color pl-5 pt-8 duration-300 h-screen overflow-x-hidden overflow-y-auto` } >       
+      <div className={` ${ open ? "w-screen sm:w-72" : "w-20 "} bg-black pl-5 pt-8 duration-300 h-screen overflow-x-hidden overflow-y-auto` } >       
         <div className="flex gap-x-4 items-center">
           <img
             src={require("../assets/white-logo.png")} alt="../assets/reactivex.svg"
