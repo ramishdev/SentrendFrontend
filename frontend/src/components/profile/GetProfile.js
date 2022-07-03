@@ -27,7 +27,7 @@ const GetProfile = () => {
         }
       })
       let data = await response.data
-      console.log(data)
+      // console.log(data)
       if(response.status === 200){
         setprofiles(data) 
       }
@@ -52,12 +52,11 @@ const GetProfile = () => {
         })
         const list = profiles
         list['username'] = e.target.username.value
-        console.log(list)
+        // console.log(list)
         setprofiles(list);   
     }
     catch(err){
         alert(JSON.stringify(err.response?.data))
-        console.log("Hello")
     }
     setloading(false)
   }
@@ -79,9 +78,8 @@ const GetProfile = () => {
         setprofiles(list);   
     }
     catch(err){
-        console.log(err)
+        console.error(err)
         alert(JSON.stringify(err.response?.data))
-        console.log("Hello")
     }
     setloading(false)
   }

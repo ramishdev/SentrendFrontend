@@ -42,9 +42,8 @@ const Sidebar = ({setdata,setpad}) => {
           signal: controller.signal
         });
         //let newState = data.data.map((trend) => ({"trend_name":trend.trend_name,"max_results":10,"count":1}));  
-        console.log(data?.data)
+        // console.log(data?.data)
         setTrends(data?.data);
-        console.log(data);
         if(user){
           const data = await axios.get('/core/trends/get_user_trends/', {
             headers: {
@@ -53,9 +52,8 @@ const Sidebar = ({setdata,setpad}) => {
             },
             signal: controller.signal
           });
-          console.log(data?.data)
+          // console.log(data?.data)
           setuserTrends(data?.data);
-          console.log(data);
         }
       }
       catch(err){

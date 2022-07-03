@@ -40,7 +40,7 @@ const MyNavbar = () => {
     function handleSubmit(e) {
         e.preventDefault();    
         navigate("/search")
-        console.log('You clicked submit.');
+        // console.log('You clicked submit.');
     }
 
     return (user)?(
@@ -53,7 +53,17 @@ const MyNavbar = () => {
                     {(ws!== -1)?(
                         <div  className="pr-2">
                         <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-                            <Button variant="success">Status</Button>
+                            <Button variant="success">
+                            {(ws?.readyState === 1)?(
+                                <>
+                                <span className="relative inline-flex rounded-full h-3 w-3 "></span>
+                                    Status
+                                <span className="relative inline-flex rounded-full h-3 w-3 -right-5 -top-4 bg-sky-500">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                                </span>
+                                </>
+                            ):(<>Status</>)}
+                            </Button>
                         </OverlayTrigger>
                         </div>
                     ):(<></>)}
@@ -78,11 +88,22 @@ const MyNavbar = () => {
                     <Navbar.Brand onClick={()=> navigate("/")}>Sentrend</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse className="justify-end">
-                        {console.log(ws)}
+                        {/* {console.log(ws)} */}
                         {(ws!==-1)?(
                             <div className="pr-2">
                                 <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-                                    <Button variant="success">Status</Button>
+                                    <Button variant="success" >
+                                    {(ws?.readyState === 1)?(
+                                        <>
+                                        <span className="relative inline-flex rounded-full h-3 w-3 "></span>
+                                            Status
+                                        <span className="relative inline-flex rounded-full h-3 w-3 -right-5 -top-4 bg-sky-500">
+                                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                                        </span>
+                                        </>
+                                    ):(<>Status</>)}
+                                    </Button>
+                                    
                                 </OverlayTrigger>
                             </div>
                         ):(<></>)}

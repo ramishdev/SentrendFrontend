@@ -29,19 +29,27 @@ const TabsInterface = () => {
             console.log('WebSocket Connected');
         }
         ws.onmessage = (event) => {            
-            console.log("WebSocket send the data",event.data)
-            dorefresh(event.data)
+            let D = JSON.parse(JSON.parse(event?.data)?.message)
+            console.log("WebSocket send the data",D)
+            if(D?.text === "Disconnected"){
+                ws.close()
+            }
+            else{
+                if(trendinfo && D.query.includes(trendinfo?.name)){
+                    dorefresh(D.elapsed)
+                }
+            }
         }
         ws.onclose = () => {
             console.log("WebSocket disconnect")
             setws(3)
         }
-        if(refresh === 0 && ws.readyState === 1){
-            ws.send("trendinfo?.id")
-        }
+        // if(refresh === 0 && ws.readyState === 1){
+        //     ws.send(trendinfo?.id)
+        // }
         // return () => ws.close()
-    }, [ws])
-    console.log(refresh)
+    }, [ws,trendinfo])
+    // console.log(refresh)
     return (
         <>
             <Tabs defaultActiveKey="rankings" id="uncontrolled-tab-example" fill className="mb-3" >
@@ -57,7 +65,7 @@ const TabsInterface = () => {
                                                 {trendinfo?.name}
                                             </h1>
                                             <a href = {"https://twitter.com/search?q=" + trendinfo?.name} style = {{color: "deepskyblue"}}>
-                                                <i class="bi bi-twitter" style={{fontSize: "2rem"}}></i>
+                                                <i className="bi bi-twitter" style={{fontSize: "2rem"}}></i>
                                             </a>
                                         </div>
                                     ):(
@@ -87,7 +95,7 @@ const TabsInterface = () => {
                                         {trendinfo?.name}
                                     </h1>
                                     <a href = {"https://twitter.com/search?q=" + trendinfo?.name} style = {{color: "deepskyblue"}}>
-                                        <i class="bi bi-twitter" style={{fontSize: "2rem"}}></i>
+                                        <i className="bi bi-twitter" style={{fontSize: "2rem"}}></i>
                                     </a>
                                 </div>
                             ):(
@@ -117,7 +125,7 @@ const TabsInterface = () => {
                                         {trendinfo?.name}
                                     </h1>
                                     <a href = {"https://twitter.com/search?q=" + trendinfo?.name} style = {{color: "deepskyblue"}}>
-                                        <i class="bi bi-twitter" style={{fontSize: "2rem"}}></i>
+                                        <i className="bi bi-twitter" style={{fontSize: "2rem"}}></i>
                                     </a>
                                 </div>
                             ):(

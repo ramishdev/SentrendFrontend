@@ -88,21 +88,21 @@ function PieChart({results}) {
                         </div>
                         <div className="absolute top-10 right-10">
                             <OverlayTrigger trigger={['hover', 'focus']} placement="left" overlay={popover("An estimate of the emotion contained in the tweet's text","Sentiment")}>
-                            <i class="bi bi-question-circle" style={{fontSize: "2rem"}}></i>
+                            <i className="bi bi-question-circle" style={{fontSize: "2rem"}}></i>
                             </OverlayTrigger>
                         </div>
     
                         <div className="d-flex justify-center">
                             <h1 className = "text-2xl text-green-500 px-4">
-                                <i class="bi bi-emoji-smile-fill" style={{fontSize: "2rem"}}></i>
+                                <i className="bi bi-emoji-smile-fill" style={{fontSize: "2rem"}}></i>
                                 {pos_pol_count.toPrecision(3)}%
                             </h1>
                             <h1 className = "text-2xl text-pink-500 px-4">
-                            <i class="bi bi-emoji-frown-fill" style={{fontSize: "2rem"}}></i>
+                            <i className="bi bi-emoji-frown-fill" style={{fontSize: "2rem"}}></i>
                                 {neg_pol_count.toPrecision(3)}%
                             </h1>
                             <h1 className = "text-2xl text-sky-600 px-4">
-                            <i class="bi bi-emoji-neutral-fill" style={{fontSize: "2rem"}}></i>
+                            <i className="bi bi-emoji-neutral-fill" style={{fontSize: "2rem"}}></i>
                                 {neu_pol_count.toPrecision(3)}%
                             </h1>
                             {/* <p>Tweet source labels.
@@ -124,16 +124,16 @@ function PieChart({results}) {
                         </div>
                         <div className="absolute top-10 right-10">
                             <OverlayTrigger trigger={['hover', 'focus']} placement="left" overlay={popover("An objective tweet conveys factual information, whereas a subjective tweet relays an opinion or belief","Opinion")}>
-                            <i class="bi bi-question-circle" style={{fontSize: "2rem"}}></i>
+                            <i className="bi bi-question-circle" style={{fontSize: "2rem"}}></i>
                             </OverlayTrigger>
                         </div>
                         <div className="d-flex justify-center">
                             <h1 className = "text-2xl text-pink-500 px-4">
-                            <i class="bi bi-signal" style={{fontSize: "2rem"}}></i>
+                            <i className="bi bi-signal" style={{fontSize: "2rem"}}></i>
                                 {sub_count.toPrecision(3)}%
                             </h1>
                             <h1 className = "text-2xl text-sky-500 px-4">
-                            <i class="bi bi-chat-right-quote-fill" style={{fontSize: "2rem"}}></i>
+                            <i className="bi bi-chat-right-quote-fill" style={{fontSize: "2rem"}}></i>
                                 {obj_count.toPrecision(3)}%
                             </h1>
                             {/* <p>An objective tweet conveys factual information, whereas a subjective tweet relays an opinion or belief</p> */}

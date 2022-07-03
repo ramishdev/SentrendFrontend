@@ -77,7 +77,7 @@ const CrawlerDetail = ({data,idx,item}) => {
       console.log("Error");
     }
   }
-  console.log(results)
+  // console.log(results)
   return (
 
       <div>

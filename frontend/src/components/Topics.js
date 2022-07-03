@@ -35,7 +35,6 @@ function TopicsCloud({trend}){
     const [results, setResults] = useState()
     const [refresh, setrefresh] = useState(false)
     const [isloading,setloading] = useState(false);
-    console.log(trend)
     useEffect(() => {
         const controller = new AbortController();
         const fetchTopics = async () => {
@@ -48,7 +47,7 @@ function TopicsCloud({trend}){
                 },
                 signal: controller.signal
             });
-            console.log(data?.data)
+            // console.log(data?.data)
             setResults(data?.data)            
           }
           catch(err){

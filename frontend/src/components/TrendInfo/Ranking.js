@@ -24,8 +24,8 @@ function TrendRanking({results,info}) {
     );
 
     
-    console.log(results)
-    console.log(info)
+    // console.log(results)
+    // console.log(info)
 
     return(results && Object.keys(results).length > 0)?
     (
@@ -166,6 +166,7 @@ function TrendRanking({results,info}) {
                                 <ListGroup.Item
                                 as="li"
                                 className="d-flex justify-content-between align-items-start hover:underline"
+                                key={index}
                               >
                                 <div className="ms-2 me-auto">
                                   <a href= {"https://twitter.com/" + String(key[0])} className="fw-bold " style = {{textDecoration: "none", color: "black"}}>{key[0]}</a>
@@ -189,10 +190,11 @@ function TrendRanking({results,info}) {
                                 <ListGroup.Item
                                 as="li"
                                 className="d-flex justify-content-between align-items-start hover:underline"
+                                key={index}
                               >
                                 <div className="ms-2 me-auto">
                                   <a href= {"https://twitter.com/" + String(key[0])}  style = {{textDecoration: "none", color: "black"}} className="hover:text-sky-500 fw-bold">{key[0]}</a>
-                                  {/* <i class="bi bi-arrow-up-right-square"></i> */}
+                                  {/* <i className="bi bi-arrow-up-right-square"></i> */}
                                 </div>
                                 <Badge bg="info">
                                     {key[1]}

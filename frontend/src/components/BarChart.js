@@ -34,7 +34,7 @@ function BarChart({source}) {
     let data= {}    
     let options = {}
 
-    console.log(source)
+    // console.log(source)
     let numOfSources =  Object.keys(source).length
     if(source){
 
