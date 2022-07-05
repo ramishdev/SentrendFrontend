@@ -39,14 +39,31 @@ function TrendRanking({results,info}) {
                         </h1>
                         <div className="d-flex">
                             <h1 className="text-sm pt-3">
-                                TOTAL TWEETS
+                                ANALYZED TWEETS
                             </h1>
                             <div className="pl-1">
                             <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Number of Tweets used for this analysis")}>
                                 <i className="bi bi-question-circle" style={{fontSize: "2rem"}}></i>
                             </OverlayTrigger>
                             </div>
-                            
+                        </div>
+
+                    </div>
+                </Col>
+                <Col className = "d-flex justify-center">
+                    <div>   
+                        <h1 className="font-black text-8xl text-pink-500">
+                            {results?.hastag_imrpessions}
+                        </h1>
+                        <div className="d-flex">
+                            <h1 className="text-sm pt-3">
+                                Hashtag Impressions
+                            </h1>
+                            <div className="pl-1">
+                            <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Number of Tweets used for this analysis")}>
+                                <i className="bi bi-question-circle" style={{fontSize: "2rem"}}></i>
+                            </OverlayTrigger>
+                            </div>
                         </div>
 
                     </div>
@@ -204,6 +221,39 @@ function TrendRanking({results,info}) {
                     </ListGroup>
                 </Col>
             </Row>
+            <Row className="p-5 border-b border-cyan-900">
+                
+                <Col>
+                    <h1 className = "text-2xl text-pink-500">Top Impactful users</h1>
+                    <ListGroup  variant="flush">
+                        {
+                        Object.entries(results?.top_impactful_users).map((key,index) => {
+
+                            return(
+                                // <ListGroup.Item>
+                                //     <h1>{key[0]}</h1>
+                                //     <h1 className = "">
+                                //         {key[1]}
+                                //     </h1>
+                                // </ListGroup.Item>
+                                <ListGroup.Item
+                                as="li"
+                                className="d-flex justify-content-between align-items-start hover:underline"
+                                key={index}
+                              >
+                                <div className="ms-2 me-auto">
+                                  <a href= {"https://twitter.com/" + String(key[0])} className="fw-bold " style = {{textDecoration: "none", color: "black"}}>{key[0]}</a>
+                                </div>
+                                <Badge bg="info">
+                                    {key[1]}
+                                </Badge>
+                              </ListGroup.Item>
+                            )
+                        })}
+                        
+                    </ListGroup>
+                </Col>
+                </Row>
         </Container>
             
     ):
