@@ -58,7 +58,7 @@ const MainComponent = () => {
                             alt="logo"
                         />
                     </div> */}
-                    <div className = "bg-contain bg-no-repeat"   style={{backgroundImage: "url(/test3.png)",   width:'900px',height:'900px'}}></div>
+                    <div className = "bg-contain bg-no-repeat"   style={{backgroundImage: "url(/test3.png)",   width:'700px',height:'700px'}}></div>
                 </Col>
             </Row>
         </Container>
