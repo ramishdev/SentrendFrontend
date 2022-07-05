@@ -9,8 +9,8 @@ const MainComponent = () => {
 
     return (
         <Container fluid = "true">
-            <Row>
-                <Col xs={7} className = "">
+            <Row className = "">
+                <Col className = "">
                     <div className="p-40">
 
                         <h1 className = "text-7xl text-sky-800">
@@ -48,7 +48,7 @@ const MainComponent = () => {
                         </p>
                     </div>
                 </Col>
-                <Col className = "pt-20 d-flex justify-content-end">
+                <Col className = "pt-40 d-flex justify-content-center">
                     {/* <div >
                         <img
                             src={require("../../assets/landing/main-screen.png")}
@@ -58,7 +58,7 @@ const MainComponent = () => {
                             alt="logo"
                         />
                     </div> */}
-                    <div className = "bg-cover bg-no-repeat bg-right"   style={{backgroundImage: "url(/main-screen-lq.png)",   width:'600px',height:'700px'}}></div>
+                    <div className = "bg-contain bg-no-repeat"   style={{backgroundImage: "url(/test3.png)",   width:'900px',height:'900px'}}></div>
                 </Col>
             </Row>
         </Container>
