@@ -215,7 +215,7 @@ const SearchPage = () => {
                   value={x.max_results}
                   size="sm"
                   min="10" 
-                  max="1000"
+                  max="100"
                   onChange={e => handleInputChange(e, i)} required
                 />
                 <Feedback type="invalid">Range (10-100)</Feedback>
@@ -282,7 +282,7 @@ const SearchPage = () => {
             <Feedback type="invalid">Range (1-200) in Min</Feedback>
             {/* <Feedback>Looks good!</Feedback> */}
           </Form.Group>
-          <Form.Group className='w-36 ml-1'>
+          {/* <Form.Group className='w-36 ml-1'>
             <Form.Control
               type="number"
               name="TotalCount"
@@ -294,8 +294,8 @@ const SearchPage = () => {
               onChange={e => handlecrawlerInputChange(e)} required
             /> 
             <Feedback type="invalid">Range (1-10000)</Feedback>
-            {/* <Feedback>Looks good!</Feedback> */}
-          </Form.Group>
+            <Feedback>Looks good!</Feedback>
+          </Form.Group> */}
           </>
           
           ):(<></>)

@@ -185,7 +185,6 @@ function TrendRanking({results,info}) {
                     <ListGroup  variant="flush">
                         {
                         Object.entries(results?.top_followers).map((key,index) => {
-
                             return(
                                 <ListGroup.Item
                                 as="li"
@@ -202,7 +201,6 @@ function TrendRanking({results,info}) {
                               </ListGroup.Item>
                             )
                         })}
-                        
                     </ListGroup>
                 </Col>
             </Row>

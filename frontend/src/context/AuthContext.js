@@ -132,13 +132,13 @@ export const AuthProvider = ({children}) => {
             updateToken()
         }
 
-        let fourMinutes = 1000 * 60 * 4
+        let Minutes = 1000 * 60 * 20
 
         let interval = setInterval(()=>{
             if(authTokens){
                 updateToken()
             }
-        }, fourMinutes)
+        }, Minutes)
 
         return ()=> clearInterval(interval)
 
