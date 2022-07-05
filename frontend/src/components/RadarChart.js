@@ -94,12 +94,12 @@ function RadarChart({info}) {
                   </div>
                 </Col>
                 <Col>
-                    <div>
+                    <>
                           <h1 className = "text-2xl text-pink-600 pt-20">
                               Public Metrics
                           </h1>
                           <p>Metrics' totals that are available for anyone to access on Twitter, such as number of likes and number of Retweets</p>
-                    </div>
+                    </>
                 </Col>
               </Row>
             </Container>

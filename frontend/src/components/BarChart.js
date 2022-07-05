@@ -33,7 +33,7 @@ function BarChart({source}) {
 
     let data= {}    
     let options = {}
-
+    console.log(source)
     // console.log(source)
     let numOfSources =  Object.keys(source).length
     if(source){
@@ -102,7 +102,7 @@ function BarChart({source}) {
             <Container>
               <Row className="shadow-2xl rounded-lg ..." > 
                 <Col xs={10}>
-                  <div  style={{ width:'60rem'}}>
+                  <div  style={{ width:'50rem'}}>
                     <Bar data={data} options={options}/>
                   </div>
                 </Col>
