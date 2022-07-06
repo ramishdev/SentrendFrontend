@@ -60,7 +60,7 @@ function TrendRanking({results,info}) {
                                 Hashtag Impressions
                             </h1>
                             <div className="pl-1">
-                            <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Number of Tweets used for this analysis")}>
+                            <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover("Potential Global Reach")}>
                                 <i className="bi bi-question-circle" style={{fontSize: "2rem"}}></i>
                             </OverlayTrigger>
                             </div>
