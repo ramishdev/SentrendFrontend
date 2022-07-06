@@ -52,7 +52,7 @@ const TabsInterface = () => {
     // console.log(refresh)
     return (
         <>
-            <Tabs defaultActiveKey="rankings" id="uncontrolled-tab-example" fill className="mb-3" >
+            <Tabs defaultActiveKey="sentiment" id="uncontrolled-tab-example" fill className="mb-3" >
             
                 <Tab eventKey="sentiment" title="Sentiment" >         
                     <div>

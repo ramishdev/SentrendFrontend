@@ -43,7 +43,7 @@ const MainComponent = () => {
                                     .start();
                                 }}
                             />
-                        <p className = "text-2xl">
+                        <p className = "text-xl">
                             Boost your Twitter performance by monitoring key engagement metrics in a dashboard
                         </p>
                     </div>
@@ -59,6 +59,74 @@ const MainComponent = () => {
                         />
                     </div> */}
                     <div className = "bg-contain bg-no-repeat"   style={{backgroundImage: "url(/test3.png)",   width:'700px',height:'700px'}}></div>
+                </Col>
+            </Row>
+
+            <Row className = "pb-20">
+                <Col className = "d-flex justify-center">
+                        <h1 className = "text-5xl text-black">
+                           Our Features 
+                        </h1>
+                </Col>
+            </Row>
+            <Row className = "pb-20"> 
+                <Col className="">
+                        <h1 className = "text-3xl text-sky-800  d-flex justify-center">
+                           Sentiment Analysis 
+                        </h1>
+                </Col>
+                <Col>
+                        <h1 className = "text-3xl text-sky-800 d-flex justify-center">
+                           Metrics Analysis 
+                        </h1>
+                        {/* <img
+                            src={require("../../assets/landing/topics.png")}
+                            width="500px"
+                            height="500px"
+                            className="d-flex justify-center"
+                            alt="logo"
+                        /> */}
+                </Col>
+                <Col className = "">
+                        <h1 className = "text-3xl text-sky-800 d-flex justify-center">
+                           Topic Analysis 
+                        </h1>
+                        {/* <img
+                            src={require("../../assets/landing/topics.png")}
+                            width="400px"
+                            height="400px"
+                            className="d-flex justify-center"
+                            alt="logo"
+                        /> */}
+                </Col>
+            </Row>
+            <Row className = "pb-20"> 
+                <Col className="">
+                        <img
+                            src={require("../../assets/landing/sentiment.jpg")}
+                            width="800px"
+                            height="800px"
+                            className="d-flex justify-content-center"
+                            alt="logo"
+                        />
+                </Col>
+                <Col className = "">
+                        <img
+                            src={require("../../assets/landing/metrics-nobg.png")}
+                            width="500px"
+                            height="500px"
+                            className="d-flex justify-content-center"
+                            alt="logo"
+                        />
+                </Col>
+                <Col className = "">
+                        <img
+                            src={require("../../assets/landing/topics.png")}
+                            width="500px"
+                            height="500px"
+                            className="d-flex justify-center"
+                            alt="logo"
+                        />
                 </Col>
             </Row>
         </Container>
